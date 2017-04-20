@@ -1,0 +1,17 @@
+{
+  "name": "nightingale-wp",
+  "version": "1.0.0",
+  "description": "Wordpress theme for NHS Leadership Academy using nightingale-core",
+  "dependencies": {
+    "nightingale": "git+ssh://git@github.com/NHSLeadership/nightingale.git#develop"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NHSLeadership/nightingale-wp.git"
+  },
+  "author": "NHS Leadership Academy",
+  "bugs": {
+    "url": "https://github.com/NHSLeadership/nightingale-wp/issues"
+  },
+  "homepage": "https://github.com/NHSLeadership/nightingale-wp#readme"
+}
