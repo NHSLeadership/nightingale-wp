@@ -10,7 +10,6 @@
 # Packages #
 ############
 # it's better to unpack these files and commit the raw source # git has its own built in compression methods *.7z *.dmg *.gz *.iso *.jar *.rar *.tar *.zip
-node_modules/
 
 # Logs and databases #
 ######################
@@ -35,3 +34,7 @@ wp-config.php
 /wp-content/uploads/*
 /wp-content/mu-plugins/load-wp-performance-profiler.php
 /wp-content/mu-plugins/wp-performance-profiler/*
+
+# NPM Generated Files
+node_modules/
+assets/main.css

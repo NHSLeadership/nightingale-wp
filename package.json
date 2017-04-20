@@ -2,8 +2,13 @@
   "name": "nightingale-wp",
   "version": "1.0.0",
   "description": "Wordpress theme for NHS Leadership Academy using nightingale-core",
+  "scripts": {
+    "build": "mkdir -p ./assets && cat assets/main.scss | node_modules/.bin/node-sass --include-path node_modules/ --output-style expanded > assets/main.css",
+    "watch": "npm run build && node_modules/.bin/node-sass --include-path node_modules/ assets/main.scss --watch"
+  },
   "dependencies": {
-    "nightingale": "git+ssh://git@github.com/NHSLeadership/nightingale.git#develop"
+    "nightingale": "git+ssh://git@github.com/NHSLeadership/nightingale.git#develop",
+    "node-sass": "^4.5.2"
   },
   "repository": {
     "type": "git",
