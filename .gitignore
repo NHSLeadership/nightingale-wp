@@ -34,3 +34,7 @@ wp-config.php
 /wp-content/uploads/*
 /wp-content/mu-plugins/load-wp-performance-profiler.php
 /wp-content/mu-plugins/wp-performance-profiler/*
+
+# NPM Generated Files
+node_modules/
+assets/main.css
