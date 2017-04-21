@@ -98,6 +98,40 @@ function nightingale_wp_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+
+	// First footer widget area, located in the footer. Empty by default.
+	register_sidebar( array(
+			'name' => __( 'Footer Widget Area 1', 'nightingale-wp' ),
+			'id' => 'footer-widget-area-1',
+			'description' => __( 'The first footer widget area', 'nightingale-wp' ),
+			'before_widget' => '<div class="o-layout__item  u-4/12@lg">',
+			'after_widget' => '</div>',
+			'before_title' => '<h4 class="widget-title">',
+			'after_title' => '</h4>',
+	) );
+
+	// Second Footer Widget Area, located in the footer. Empty by default.
+	register_sidebar( array(
+			'name' => __( 'Footer Widget Area 2', 'nightingale-wp' ),
+			'id' => 'footer-widget-area-2',
+			'description' => __( 'The second footer widget area', 'nightingale-wp' ),
+			'before_widget' => '<div class="o-layout__item  u-4/12@lg">',
+			'after_widget' => '</div>',
+			'before_title' => '<h4 class="widget-title">',
+			'after_title' => '</h4>',
+	) );
+
+	// Third Footer Widget Area, located in the footer. Empty by default.
+	register_sidebar( array(
+			'name' => __( 'Footer Widget Area 3', 'nightingale-wp' ),
+			'id' => 'footer-widget-area-3',
+			'description' => __( 'The third footer widget area', 'nightingale-wp' ),
+			'before_widget' => '<div class="o-layout__item  u-4/12@lg">',
+			'after_widget' => '</div>',
+			'before_title' => '<h4 class="widget-title">',
+			'after_title' => '</h4>',
+	) );
+
 }
 add_action( 'widgets_init', 'nightingale_wp_widgets_init' );
 
