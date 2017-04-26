@@ -15,19 +15,20 @@
 
 	<footer id="colophon" class="c-page-footer" role="contentinfo">
 
-		<aside class="o-wrapper" role="complementary">
+		<aside id="fatfooter" class="o-wrapper" role="complementary">
 			<div class="o-layout">
         <?php dynamic_sidebar( 'footer-widget-area-1' ); ?>
         <?php dynamic_sidebar( 'footer-widget-area-2' ); ?>
         <?php dynamic_sidebar( 'footer-widget-area-3' ); ?>
 			</div>
+			<hr class="c-splitter">
+			<p><small>
+				<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'nightingale-wp' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'nightingale-wp' ), 'WordPress' ); ?></a>
+				<span class="sep"> | </span>
+				<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'nightingale-wp' ), 'nightingale-wp', '<a href="https://automattic.com/" rel="designer">NHS Leadership Academy</a>' ); ?>
+			</small></p><!-- .site-info -->
 		</aside><!-- #fatfooter -->
 
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'nightingale-wp' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'nightingale-wp' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'nightingale-wp' ), 'nightingale-wp', '<a href="https://automattic.com/" rel="designer">NHS Leadership Academy</a>' ); ?>
-		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 
