@@ -12,7 +12,7 @@
 
 ?>
 
-	</div><!-- #content -->
+	</div><!-- #o-wrapper -->
 
 	<footer class="c-page-footer">
 		<div class="o-wrapper">
