@@ -1,3 +1,4 @@
+
 <?php
 /**
  * The template for displaying the footer
@@ -20,7 +21,7 @@
         <?php dynamic_sidebar( 'footer-widget-area-2' ); ?>
         <?php dynamic_sidebar( 'footer-widget-area-3' ); ?>
 			</div>
-			<hr class="c-splitter">
+			<hr class="c-divider">
 			<p>
 				<small>
 					<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'nightingale-wp' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'nightingale-wp' ), 'WordPress' ); ?></a>
