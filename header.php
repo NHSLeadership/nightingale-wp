@@ -1,5 +1,15 @@
 <?php
 /**
+uu
+
+
+
+
+
+
+
+
+
  * The header for our theme
  *
  * This is the template that displays all of the <head> section and everything up until <div id="content">
@@ -22,6 +32,8 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?php dynamic_sidebar( 'header-widget-area-1' ); ?>
+<?php dynamic_sidebar( 'header-widget-area-2' ); ?>
 <div id="page" class="site">
 	
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'nightingale-wp' ); ?></a>
@@ -50,4 +62,5 @@
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
 
+	<?php dynamic_sidebar( 'header-widget-area-3' ); ?>
 	<div id="content" class="o-wrapper">

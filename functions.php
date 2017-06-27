@@ -99,6 +99,17 @@ function nightingale_wp_widgets_init() {
 		'after_title'   => '</h2>',
 	) );
 
+	// First header widget area, located in the header. Empty by default.
+	register_sidebar( array(
+		'name' => esc_html__( 'Header Widget Area 1', 'nightingale-wp' ),
+		'id' => 'header-widget-area-1',
+		'description' => esc_html__( 'The first header widget area', 'nightingale-wp' ),
+		'before_widget' => '<div class="o-layout__item  u-4/12@lg">',
+		'after_widget' => '</div>',
+		'before_title' => '<h4 class="widget-title">',
+		'after_title' => '</h4>',
+	) );
+
 	// First footer widget area, located in the footer. Empty by default.
 	register_sidebar( array(
 			'name' => esc_html__( 'Footer Widget Area 1', 'nightingale-wp' ),
@@ -134,6 +145,79 @@ function nightingale_wp_widgets_init() {
 
 }
 add_action( 'widgets_init', 'nightingale_wp_widgets_init' );
+
+/**
+* Nightingale banner widgets
+*/
+// Register and load the widgets
+function load_banner_widgets() {
+	register_widget( 'beta_banner_widget' );
+}
+add_action( 'widgets_init', 'load_banner_widgets' );
+
+/**
+* BETA banner widget
+*/
+// Creating the widget 
+class beta_banner_widget extends WP_Widget {
+
+function __construct() {
+parent::__construct(
+
+// Base ID of the widget
+'beta_banner_widget', 
+
+// Widget name will appear in UI
+__('BETA Banner Widget', 'beta_banner_widget_domain'), 
+
+// Widget description
+array( 'description' => __( 'Beta banner widget', 'beta_banner_widget_domain' ), ) 
+);
+}
+
+// Creating widget front-end
+
+public function widget( $args, $instance ) {
+$url = apply_filters( 'url', $instance['url'] );
+
+$banner_text = '<div class="c-ribbon  c-ribbon--alpha  u-margin-bottom">
+    <div class="c-ribbon__icon">
+      <strong class="c-ribbon__tag">Beta</strong>
+    </div>
+    <strong class="c-ribbon__body">This page is part of a new service - your <a href=';
+$banner_text .=	$url;
+$banner_text .=	' target="_blank">feedback</a> will help us to improve it.</strong>
+  </div>';
+
+// Display the widget output
+echo __( $banner_text, 'beta_banner_widget_domain' );
+}
+		
+// Widget Backend 
+public function form( $instance ) {
+if ( isset( $instance[ 'url' ] ) ) {
+$url = $instance[ 'url' ];
+}
+else {
+$url = __( 'New url', 'beta_banner_widget_domain' );
+}
+// Widget admin form
+?>
+<p>This widget displays a banner announcing that the website is currently in beta testing. You can define the URL that is linked to in the feedback link. Please note that this widget should only ever be used in a <strong>Header Widget area</strong>.</p>
+<p>
+<label for="<?php echo $this->get_field_id( 'url' ); ?>"><?php _e( 'Feedback URL:' ); ?></label> 
+<input class="widefat" id="<?php echo $this->get_field_id( 'url' ); ?>" name="<?php echo $this->get_field_name( 'url' ); ?>" type="text" value="<?php echo esc_attr( $url ); ?>" />
+</p>
+<?php 
+}
+	
+// Updating widget replacing old instances with new
+public function update( $new_instance, $old_instance ) {
+$instance = array();
+$instance['url'] = ( ! empty( $new_instance['url'] ) ) ? strip_tags( $new_instance['url'] ) : '';
+return $instance;
+}
+} // Class beta_banner_widget ends here
 
 /**
  * Enqueue scripts and styles.
