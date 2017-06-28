@@ -147,79 +147,6 @@ function nightingale_wp_widgets_init() {
 add_action( 'widgets_init', 'nightingale_wp_widgets_init' );
 
 /**
-* Nightingale banner widgets
-*/
-// Register and load the widgets
-function load_banner_widgets() {
-	register_widget( 'beta_banner_widget' );
-}
-add_action( 'widgets_init', 'load_banner_widgets' );
-
-/**
-* BETA banner widget
-*/
-// Creating the widget 
-class beta_banner_widget extends WP_Widget {
-
-function __construct() {
-parent::__construct(
-
-// Base ID of the widget
-'beta_banner_widget', 
-
-// Widget name will appear in UI
-__('BETA Banner Widget', 'beta_banner_widget_domain'), 
-
-// Widget description
-array( 'description' => __( 'Beta banner widget', 'beta_banner_widget_domain' ), ) 
-);
-}
-
-// Creating widget front-end
-
-public function widget( $args, $instance ) {
-$url = apply_filters( 'url', $instance['url'] );
-
-$banner_text = '<div class="c-ribbon  c-ribbon--alpha  u-margin-bottom">
-    <div class="c-ribbon__icon">
-      <strong class="c-ribbon__tag">Beta</strong>
-    </div>
-    <strong class="c-ribbon__body">This page is part of a new service - your <a href=';
-$banner_text .=	$url;
-$banner_text .=	' target="_blank">feedback</a> will help us to improve it.</strong>
-  </div>';
-
-// Display the widget output
-echo __( $banner_text, 'beta_banner_widget_domain' );
-}
-		
-// Widget Backend 
-public function form( $instance ) {
-if ( isset( $instance[ 'url' ] ) ) {
-$url = $instance[ 'url' ];
-}
-else {
-$url = __( 'New url', 'beta_banner_widget_domain' );
-}
-// Widget admin form
-?>
-<p>This widget displays a banner announcing that the website is currently in beta testing. You can define the URL that is linked to in the feedback link. Please note that this widget should only ever be used in a <strong>Header Widget area</strong>.</p>
-<p>
-<label for="<?php echo $this->get_field_id( 'url' ); ?>"><?php _e( 'Feedback URL:' ); ?></label> 
-<input class="widefat" id="<?php echo $this->get_field_id( 'url' ); ?>" name="<?php echo $this->get_field_name( 'url' ); ?>" type="text" value="<?php echo esc_attr( $url ); ?>" />
-</p>
-<?php 
-}
-	
-// Updating widget replacing old instances with new
-public function update( $new_instance, $old_instance ) {
-$instance = array();
-$instance['url'] = ( ! empty( $new_instance['url'] ) ) ? strip_tags( $new_instance['url'] ) : '';
-return $instance;
-}
-} // Class beta_banner_widget ends here
-
-/**
  * Enqueue scripts and styles.
  */
 function nightingale_wp_scripts() {
@@ -259,3 +186,78 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+* Create banner settings page
+*/
+function banner_settings_page()
+{
+    ?>
+	    <div class="wrap">
+	    <h1>Banner Settings</h1>
+			<p>This is where you can switch various banners on and off, as well as customise their settings.</p>
+	    <form method="post" action="options.php">
+	        <?php
+	            settings_fields("section");
+	            do_settings_sections("banner-options");      
+	            submit_button(); 
+	        ?>          
+	    </form>
+		</div>
+	<?php
+}
+
+function add_theme_menu_item()
+{
+	add_menu_page("Banner Settings", "Banners", "manage_options", "banner-settings", "banner_settings_page", null, 99);
+}
+
+add_action("admin_menu", "add_theme_menu_item");
+
+function add_beta_banner_checkbox()
+{
+	?>
+		<input type="checkbox" name="beta_banner_checkbox" value="0" <?php checked(0, get_option('beta_banner_checkbox'), true); ?> />
+	<?php
+}
+
+function add_beta_banner_url()
+{
+	?>
+		<input class="widefat" type="text" name="beta_banner_url" id="beta_banner_url" value="<?php echo get_option('beta_banner_url'); ?>" />
+	<?php
+}
+
+function add_theme_panel_fields()
+{
+	add_settings_section("section", "Beta Banner", null, "banner-options");
+		add_settings_field("beta_banner_checkbox", "Display Beta Banner?", "add_beta_banner_checkbox", "banner-options", "section");
+		add_settings_field("beta_banner_url", "Beta Banner Feedback URL", "add_beta_banner_url", "banner-options", "section");
+		register_setting("section", "beta_banner_checkbox");
+		register_setting("section", "beta_banner_url");
+}
+
+add_action("admin_init", "add_theme_panel_fields");
+
+/**
+* Add banners after body tag
+*/
+function display_beta_banner() {
+// If box checked by admin, display beta banner
+	if (get_option('beta_banner_checkbox') != null) {
+		$beta_banner_url = get_option('beta_banner_url');
+
+		$banner_text = '<div class="c-ribbon  c-ribbon--alpha  u-margin-bottom">
+		    <div class="c-ribbon__icon">
+		      <strong class="c-ribbon__tag">Beta</strong>
+		    </div>
+		    <strong class="c-ribbon__body">This page is part of a new service - your <a href=';
+		$banner_text .=	$beta_banner_url;
+		$banner_text .=	' target="_blank">feedback</a> will help us to improve it.</strong>
+		  </div>';
+
+		// Display the banner
+		echo $banner_text;
+	}
+}
+add_action('nightingale_before_header','display_beta_banner');

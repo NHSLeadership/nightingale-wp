@@ -32,8 +32,10 @@ uu
 </head>
 
 <body <?php body_class(); ?>>
-<?php dynamic_sidebar( 'header-widget-area-1' ); ?>
-<?php dynamic_sidebar( 'header-widget-area-2' ); ?>
+
+<!-- Hook for inserting banners before the header -->
+<?php do_action('nightingale_before_header'); ?>
+
 <div id="page" class="site">
 	
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'nightingale-wp' ); ?></a>
