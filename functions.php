@@ -199,9 +199,9 @@ function banner_settings_page()
 	    <form method="post" action="options.php">
 	        <?php
 	            settings_fields("section");
-	            do_settings_sections("banner-options");      
-	            submit_button(); 
-	        ?>          
+	            do_settings_sections("banner-options");
+	            submit_button();
+	        ?>
 	    </form>
 		</div>
 	<?php
@@ -214,27 +214,31 @@ function add_theme_menu_item()
 
 add_action("admin_menu", "add_theme_menu_item");
 
-function add_beta_banner_checkbox()
+function add_dev_banner_selection()
 {
+	if ( get_option( 'dev_banner_selection' ) === false ) // default to 'none'
+		update_option( 'dev_banner_selection', 'none' );
 	?>
-		<input type="checkbox" name="beta_banner_checkbox" value="0" <?php checked(0, get_option('beta_banner_checkbox'), true); ?> />
+		<input type="radio" name="dev_banner_selection" value="alpha" <?php checked('alpha', get_option('dev_banner_selection'), true); ?>>Alpha
+		<input type="radio" name="dev_banner_selection" value="beta" <?php checked('beta', get_option('dev_banner_selection'), true); ?>>Beta
+		<input type="radio" name="dev_banner_selection" value="none" <?php checked('none', get_option('dev_banner_selection'), true); ?>>None
 	<?php
 }
 
-function add_beta_banner_url()
+function add_dev_banner_url()
 {
 	?>
-		<input class="widefat" type="text" name="beta_banner_url" id="beta_banner_url" value="<?php echo get_option('beta_banner_url'); ?>" />
+		<input class="widefat" type="text" name="dev_banner_url" id="dev_banner_url" value="<?php echo get_option('dev_banner_url'); ?>" />
 	<?php
 }
 
 function add_theme_panel_fields()
 {
-	add_settings_section("section", "Beta Banner", null, "banner-options");
-		add_settings_field("beta_banner_checkbox", "Display Beta Banner?", "add_beta_banner_checkbox", "banner-options", "section");
-		add_settings_field("beta_banner_url", "Beta Banner Feedback URL", "add_beta_banner_url", "banner-options", "section");
-		register_setting("section", "beta_banner_checkbox");
-		register_setting("section", "beta_banner_url");
+	add_settings_section("section", "Dev Banner", null, "banner-options");
+		add_settings_field("dev_banner_selection", "Choose Dev Banner:", "add_dev_banner_selection", "banner-options", "section");
+		add_settings_field("dev_banner_url", "Dev Banner URL:", "add_dev_banner_url", "banner-options", "section");
+		register_setting("section", "dev_banner_selection");
+		register_setting("section", "dev_banner_url");
 }
 
 add_action("admin_init", "add_theme_panel_fields");
@@ -242,22 +246,17 @@ add_action("admin_init", "add_theme_panel_fields");
 /**
 * Add banners after body tag
 */
-function display_beta_banner() {
-// If box checked by admin, display beta banner
-	if (get_option('beta_banner_checkbox') != null) {
-		$beta_banner_url = get_option('beta_banner_url');
-
-		$banner_text = '<div class="c-ribbon  c-ribbon--alpha  u-margin-bottom">
-		    <div class="c-ribbon__icon">
-		      <strong class="c-ribbon__tag">Beta</strong>
-		    </div>
-		    <strong class="c-ribbon__body">This page is part of a new service - your <a href=';
-		$banner_text .=	$beta_banner_url;
-		$banner_text .=	' target="_blank">feedback</a> will help us to improve it.</strong>
-		  </div>';
-
-		// Display the banner
-		echo $banner_text;
+function display_dev_banner() {
+// If alpha or beta option is selected, display appropriate dev banner
+// Note: the selection is used to define the CSS class that is used (e.g. c-ribbon--alpha or c-ribbon--beta) as well as the banner title
+	$dev_banner_selection = get_option('dev_banner_selection');
+	if ($dev_banner_selection == 'alpha' || $dev_banner_selection == 'beta') {
+		echo 	'<div class="c-ribbon  c-ribbon--'.$dev_banner_selection.' u-margin-bottom">
+						<div class="c-ribbon__icon">
+							<strong class="c-ribbon__tag">'.$dev_banner_selection.'</strong>
+						</div>
+						<strong class="c-ribbon__body">This page is part of a new service - your <a href='.get_option('dev_banner_url').' target="_blank">feedback</a> will help us to improve it.</strong>
+					</div>';
 	}
 }
-add_action('nightingale_before_header','display_beta_banner');
+add_action('nightingale_before_header','display_dev_banner');
