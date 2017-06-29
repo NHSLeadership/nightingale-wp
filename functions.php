@@ -234,9 +234,9 @@ function add_dev_banner_url()
 
 function add_theme_panel_fields()
 {
-	add_settings_section("section", "Dev Banner", null, "banner-options");
-		add_settings_field("dev_banner_selection", "Choose Dev Banner:", "add_dev_banner_selection", "banner-options", "section");
-		add_settings_field("dev_banner_url", "Dev Banner URL:", "add_dev_banner_url", "banner-options", "section");
+	add_settings_section("section", "Development Banner", null, "banner-options");
+		add_settings_field("dev_banner_selection", "Banner Type:", "add_dev_banner_selection", "banner-options", "section");
+		add_settings_field("dev_banner_url", "Banner URL:", "add_dev_banner_url", "banner-options", "section");
 		register_setting("section", "dev_banner_selection");
 		register_setting("section", "dev_banner_url");
 }
