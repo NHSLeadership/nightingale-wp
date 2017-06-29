@@ -188,18 +188,19 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /**
-* Create banner settings page
+* Create ribbon settings page
 */
-function banner_settings_page()
+function ribbon_settings_page()
 {
     ?>
 	    <div class="wrap">
-	    <h1>Banner Settings</h1>
-			<p>This is where you can switch various banners on and off, as well as customise their settings.</p>
+	    <h1>Ribbon Settings</h1>
+			<p>This is where you can switch various ribbons on and off, as well as customise their settings.</p>
 	    <form method="post" action="options.php">
 	        <?php
 	            settings_fields("section");
-	            do_settings_sections("banner-options");
+							do_settings_sections("cookies-ribbon-options");
+	            do_settings_sections("dev-ribbon-options");
 	            submit_button();
 	        ?>
 	    </form>
@@ -209,54 +210,99 @@ function banner_settings_page()
 
 function add_theme_menu_item()
 {
-	add_menu_page("Banner Settings", "Banners", "manage_options", "banner-settings", "banner_settings_page", null, 99);
+	add_menu_page("Ribbon Settings", "Ribbons", "manage_options", "ribbon-settings", "ribbon_settings_page", null, 99);
 }
 
 add_action("admin_menu", "add_theme_menu_item");
 
-function add_dev_banner_selection()
+function add_cookies_ribbon_checkbox()
 {
-	if ( get_option( 'dev_banner_selection' ) === false ) // default to 'none'
-		update_option( 'dev_banner_selection', 'none' );
 	?>
-		<input type="radio" name="dev_banner_selection" value="alpha" <?php checked('alpha', get_option('dev_banner_selection'), true); ?>>Alpha
-		<input type="radio" name="dev_banner_selection" value="beta" <?php checked('beta', get_option('dev_banner_selection'), true); ?>>Beta
-		<input type="radio" name="dev_banner_selection" value="none" <?php checked('none', get_option('dev_banner_selection'), true); ?>>None
+		<input type="checkbox" name="cookies_ribbon_checkbox" value="0" <?php checked(0, get_option('cookies_ribbon_checkbox'), true); ?> />
 	<?php
 }
 
-function add_dev_banner_url()
+function add_cookies_ribbon_cookies_url()
+{
+	if ( get_option( 'cookies_ribbon_cookies_url' ) == null ) // if not set, offer default value
+		update_option( 'cookies_ribbon_cookies_url', 'https://www.gov.uk/help/cookies' );
+	?>
+		<input class="widefat" type="text" name="cookies_ribbon_cookies_url" id="cookies_ribbon_cookies_url" value="<?php echo get_option('cookies_ribbon_cookies_url'); ?>" />
+	<?php
+}
+
+function add_cookies_ribbon_browser_url()
+{
+	if ( get_option( 'cookies_ribbon_browser_url' ) == null ) // if not set, offer default value
+		update_option( 'cookies_ribbon_browser_url', 'https://www.aboutcookies.org/' );
+	?>
+		<input class="widefat" type="text" name="cookies_ribbon_browser_url" id="cookies_ribbon_browser_url" value="<?php echo get_option('cookies_ribbon_browser_url'); ?>" />
+	<?php
+}
+
+function add_dev_ribbon_selection()
+{
+	if ( get_option( 'dev_ribbon_selection' ) == false ) // default to 'none'
+		update_option( 'dev_ribbon_selection', 'none' );
+	?>
+		<input type="radio" name="dev_ribbon_selection" value="alpha" <?php checked('alpha', get_option('dev_ribbon_selection'), true); ?>>Alpha
+		<input type="radio" name="dev_ribbon_selection" value="beta" <?php checked('beta', get_option('dev_ribbon_selection'), true); ?>>Beta
+		<input type="radio" name="dev_ribbon_selection" value="none" <?php checked('none', get_option('dev_ribbon_selection'), true); ?>>None
+	<?php
+}
+
+function add_dev_ribbon_url()
 {
 	?>
-		<input class="widefat" type="text" name="dev_banner_url" id="dev_banner_url" value="<?php echo get_option('dev_banner_url'); ?>" />
+		<input class="widefat" type="text" name="dev_ribbon_url" id="dev_ribbon_url" value="<?php echo get_option('dev_ribbon_url'); ?>" />
 	<?php
 }
 
 function add_theme_panel_fields()
 {
-	add_settings_section("section", "Development Banner", null, "banner-options");
-		add_settings_field("dev_banner_selection", "Banner Type:", "add_dev_banner_selection", "banner-options", "section");
-		add_settings_field("dev_banner_url", "Banner URL:", "add_dev_banner_url", "banner-options", "section");
-		register_setting("section", "dev_banner_selection");
-		register_setting("section", "dev_banner_url");
+	add_settings_section("section", "Cookies Ribbon", null, "cookies-ribbon-options");
+		add_settings_field("cookies_ribbon_checkbox", "Display Cookies Ribbon?", "add_cookies_ribbon_checkbox", "cookies-ribbon-options", "section");
+		add_settings_field("cookies_ribbon_cookies_url", "Cookies Information URL:", "add_cookies_ribbon_cookies_url", "cookies-ribbon-options", "section");
+		add_settings_field("cookies_ribbon_browser_url", "Browser Settings URL:", "add_cookies_ribbon_browser_url", "cookies-ribbon-options", "section");
+		register_setting("section", "cookies_ribbon_checkbox");
+		register_setting("section", "cookies_ribbon_cookies_url");
+		register_setting("section", "cookies_ribbon_browser_url");
+	add_settings_section("section", "Development Ribbon", null, "dev-ribbon-options");
+		add_settings_field("dev_ribbon_selection", "Ribbon Type:", "add_dev_ribbon_selection", "dev-ribbon-options", "section");
+		add_settings_field("dev_ribbon_url", "Ribbon URL:", "add_dev_ribbon_url", "dev-ribbon-options", "section");
+		register_setting("section", "dev_ribbon_selection");
+		register_setting("section", "dev_ribbon_url");
 }
 
 add_action("admin_init", "add_theme_panel_fields");
 
 /**
-* Add banners after body tag
+* Add ribbons after body tag
 */
-function display_dev_banner() {
-// If alpha or beta option is selected, display appropriate dev banner
-// Note: the selection is used to define the CSS class that is used (e.g. c-ribbon--alpha or c-ribbon--beta) as well as the banner title
-	$dev_banner_selection = get_option('dev_banner_selection');
-	if ($dev_banner_selection == 'alpha' || $dev_banner_selection == 'beta') {
-		echo 	'<div class="c-ribbon  c-ribbon--'.$dev_banner_selection.' u-margin-bottom">
+function display_cookies_ribbon() {
+// If cookies ribbon checkbox is selected, display cookies ribbon with URLs from settings
+	if (get_option('cookies_ribbon_checkbox') != null) {
+		echo 	'<div class="c-ribbon  c-ribbon--live u-margin-bottom">
 						<div class="c-ribbon__icon">
-							<strong class="c-ribbon__tag">'.$dev_banner_selection.'</strong>
+							<strong class="c-ribbon__icon">i</strong>
 						</div>
-						<strong class="c-ribbon__body">This page is part of a new service - your <a href='.get_option('dev_banner_url').' target="_blank">feedback</a> will help us to improve it.</strong>
+						<strong class="c-ribbon__body">By default this site uses <a href='.get_option('cookies_ribbon_cookies_url').' target="_blank">cookies</a> to collect information and improve. To control cookies, you can <a href='.get_option('cookies_ribbon_browser_url').' target="_blank">adjust your browser settings</a>.</strong>
 					</div>';
 	}
 }
-add_action('nightingale_before_header','display_dev_banner');
+add_action('nightingale_before_header','display_cookies_ribbon');
+
+function display_dev_ribbon() {
+// If alpha or beta option is selected, display appropriate dev ribbon with URL from settings
+// Note: the selection is used to define the CSS class that is used (e.g. c-ribbon--alpha or c-ribbon--beta) as well as the ribbon title
+	$dev_ribbon_selection = get_option('dev_ribbon_selection');
+	if ($dev_ribbon_selection == 'alpha' || $dev_ribbon_selection == 'beta') {
+		echo 	'<div class="c-ribbon  c-ribbon--'.$dev_ribbon_selection.' u-margin-bottom">
+						<div class="c-ribbon__icon">
+							<strong class="c-ribbon__tag">'.$dev_ribbon_selection.'</strong>
+						</div>
+						<strong class="c-ribbon__body">This page is part of a new service - your <a href='.get_option('dev_ribbon_url').' target="_blank">feedback</a> will help us to improve it.</strong>
+					</div>';
+	}
+}
+add_action('nightingale_before_header','display_dev_ribbon');
