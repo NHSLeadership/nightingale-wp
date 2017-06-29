@@ -201,6 +201,7 @@ function ribbon_settings_page()
 	            settings_fields("section");
 							do_settings_sections("cookies-ribbon-options");
 	            do_settings_sections("dev-ribbon-options");
+							do_settings_sections("partner-ribbon-options");
 	            submit_button();
 	        ?>
 	    </form>
@@ -218,7 +219,7 @@ add_action("admin_menu", "add_theme_menu_item");
 function add_cookies_ribbon_checkbox()
 {
 	?>
-		<input type="checkbox" name="cookies_ribbon_checkbox" value="0" <?php checked(0, get_option('cookies_ribbon_checkbox'), true); ?> />
+		<input type="checkbox" name="cookies_ribbon_checkbox" id="cookies_ribbon_checkbox" value="0" <?php checked(0, get_option('cookies_ribbon_checkbox'), true); ?> />
 	<?php
 }
 
@@ -245,9 +246,9 @@ function add_dev_ribbon_selection()
 	if ( get_option( 'dev_ribbon_selection' ) == false ) // default to 'none'
 		update_option( 'dev_ribbon_selection', 'none' );
 	?>
-		<input type="radio" name="dev_ribbon_selection" value="alpha" <?php checked('alpha', get_option('dev_ribbon_selection'), true); ?>>Alpha
-		<input type="radio" name="dev_ribbon_selection" value="beta" <?php checked('beta', get_option('dev_ribbon_selection'), true); ?>>Beta
-		<input type="radio" name="dev_ribbon_selection" value="none" <?php checked('none', get_option('dev_ribbon_selection'), true); ?>>None
+		<input type="radio" name="dev_ribbon_selection" id="dev_ribbon_selection" value="alpha" <?php checked('alpha', get_option('dev_ribbon_selection'), true); ?>>Alpha
+		<input type="radio" name="dev_ribbon_selection" id="dev_ribbon_selection" value="beta" <?php checked('beta', get_option('dev_ribbon_selection'), true); ?>>Beta
+		<input type="radio" name="dev_ribbon_selection" id="dev_ribbon_selection" value="none" <?php checked('none', get_option('dev_ribbon_selection'), true); ?>>None
 	<?php
 }
 
@@ -258,8 +259,30 @@ function add_dev_ribbon_url()
 	<?php
 }
 
+function add_partner_ribbon_checkbox()
+{
+	?>
+		<input type="checkbox" name="partner_ribbon_checkbox" id="partner_ribbon_checkbox" value="0" <?php checked(0, get_option('partner_ribbon_checkbox'), true); ?> />
+	<?php
+}
+
+function add_partner_ribbon_expandable()
+{
+	?>
+		<input type="checkbox" name="partner_ribbon_expandable" id="partner_ribbon_expandable" value="0" <?php checked(0, get_option('partner_ribbon_expandable'), true); ?> />
+	<?php
+}
+
+function add_partner_ribbon_text()
+{
+	?>
+	<input class="widefat" type="textarea" name="partner_ribbon_text" id="partner_ribbon_text" value="<?php echo get_option('partner_ribbon_text'); ?>" />
+	<?php
+}
+
 function add_theme_panel_fields()
 {
+//	add_settings_section("section", "Cookies Ribbon", null, "cookies-ribbon-options", $icon_url = get_template_directory_uri().'/node_modules/nightingale/assets/img/logo-nhs.png');
 	add_settings_section("section", "Cookies Ribbon", null, "cookies-ribbon-options");
 		add_settings_field("cookies_ribbon_checkbox", "Display Cookies Ribbon?", "add_cookies_ribbon_checkbox", "cookies-ribbon-options", "section");
 		add_settings_field("cookies_ribbon_cookies_url", "Cookies Information URL:", "add_cookies_ribbon_cookies_url", "cookies-ribbon-options", "section");
@@ -272,6 +295,13 @@ function add_theme_panel_fields()
 		add_settings_field("dev_ribbon_url", "Ribbon URL:", "add_dev_ribbon_url", "dev-ribbon-options", "section");
 		register_setting("section", "dev_ribbon_selection");
 		register_setting("section", "dev_ribbon_url");
+	add_settings_section("section", "Partnership Ribbon", null, "partner-ribbon-options");
+		add_settings_field("partner_ribbon_checkbox", "Display Partnership Ribbon?", "add_partner_ribbon_checkbox", "partner-ribbon-options", "section");
+		add_settings_field("partner_ribbon_expandable", "Expandable?", "add_partner_ribbon_expandable", "partner-ribbon-options", "section");
+		add_settings_field("partner_ribbon_text", "Ribbon Text:", "add_partner_ribbon_text", "partner-ribbon-options", "section");
+		register_setting("section", "partner_ribbon_checkbox");
+		register_setting("section", "partner_ribbon_expandable");
+		register_setting("section", "partner_ribbon_text");
 }
 
 add_action("admin_init", "add_theme_panel_fields");
@@ -306,3 +336,18 @@ function display_dev_ribbon() {
 	}
 }
 add_action('nightingale_before_header','display_dev_ribbon');
+
+function display_partner_ribbon() {
+// If partnership ribbon checkbox is selected, display partnership ribbon with text from settings
+	if (get_option('partner_ribbon_checkbox') != null) {
+		// If expandable checkbox is selected, turn leading text into a link that expands the box on click
+		$lead_text = 'In partnership with';
+		if (get_option('partner_ribbon_expandable') != null) {
+			$lead_text = '<a href="#"><i class="material-icons">play_arrow</i> '.$lead_text.'</a>';
+		}
+		echo 	'<div class="c-ribbon  c-ribbon--live u-margin-bottom">
+						<strong class="c-ribbon__body">'.$lead_text.': '.get_option('partner_ribbon_text').'</strong>
+					</div>';
+	}
+}
+add_action('nightingale_before_header','display_partner_ribbon');
