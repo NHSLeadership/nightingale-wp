@@ -34,7 +34,7 @@ uu
 
 <body <?php body_class(); ?>>
 
-<!-- Hook for inserting banners before the header -->
+<!-- Hook for inserting ribbons before the header -->
 <?php do_action('nightingale_before_header'); ?>
 
 <div id="page" class="site">

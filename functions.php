@@ -266,10 +266,10 @@ function add_partner_ribbon_checkbox()
 	<?php
 }
 
-function add_partner_ribbon_expandable()
+function add_partner_ribbon_pages()
 {
 	?>
-		<input type="checkbox" name="partner_ribbon_expandable" id="partner_ribbon_expandable" value="0" <?php checked(0, get_option('partner_ribbon_expandable'), true); ?> />
+	<input class="widefat" type="textarea" name="partner_ribbon_pages" id="partner_ribbon_pages" value="<?php echo get_option('partner_ribbon_pages'); ?>" />
 	<?php
 }
 
@@ -297,10 +297,10 @@ function add_theme_panel_fields()
 		register_setting("section", "dev_ribbon_url");
 	add_settings_section("section", "Partnership Ribbon", null, "partner-ribbon-options");
 		add_settings_field("partner_ribbon_checkbox", "Display Partnership Ribbon?", "add_partner_ribbon_checkbox", "partner-ribbon-options", "section");
-		add_settings_field("partner_ribbon_expandable", "Expandable?", "add_partner_ribbon_expandable", "partner-ribbon-options", "section");
+		add_settings_field("partner_ribbon_pages", "Ribbon Pages:", "add_partner_ribbon_pages", "partner-ribbon-options", "section");
 		add_settings_field("partner_ribbon_text", "Ribbon Text:", "add_partner_ribbon_text", "partner-ribbon-options", "section");
 		register_setting("section", "partner_ribbon_checkbox");
-		register_setting("section", "partner_ribbon_expandable");
+		register_setting("section", "partner_ribbon_pages");
 		register_setting("section", "partner_ribbon_text");
 }
 
@@ -312,7 +312,7 @@ add_action("admin_init", "add_theme_panel_fields");
 function display_cookies_ribbon() {
 // If cookies ribbon checkbox is selected, display cookies ribbon with URLs from settings
 	if (get_option('cookies_ribbon_checkbox') != null) {
-		echo 	'<div class="c-ribbon  c-ribbon--live u-margin-bottom">
+		echo 	'<div class="c-ribbon u-margin-bottom">
 						<div class="c-ribbon__icon">
 							<strong class="c-ribbon__icon">i</strong>
 						</div>
@@ -337,17 +337,28 @@ function display_dev_ribbon() {
 }
 add_action('nightingale_before_header','display_dev_ribbon');
 
-function display_partner_ribbon() {
-// If partnership ribbon checkbox is selected, display partnership ribbon with text from settings
-	if (get_option('partner_ribbon_checkbox') != null) {
-		// If expandable checkbox is selected, turn leading text into a link that expands the box on click
-		$lead_text = 'In partnership with';
-		if (get_option('partner_ribbon_expandable') != null) {
-			$lead_text = '<a href="#"><i class="material-icons">play_arrow</i> '.$lead_text.'</a>';
+function display_partner_ribbon($pageid) {
+// Display partnership ribbon with text from settings
+	// Read list of specified pages into array
+	$pages_array = explode(',',get_option('partner_ribbon_pages'));
+	// Loop through list of specified pages
+	foreach($pages_array as $page_id) {
+		// If current page matches, or no pages specified, display ribbon
+		if ($page_id==null || $pageid==$page_id) {
+			echo 	'<div class="c-ribbon  c-ribbon--live u-margin-bottom">
+							<strong class="c-ribbon__body">In partnership with: '.get_option('partner_ribbon_text').'</strong>
+						</div>';
 		}
-		echo 	'<div class="c-ribbon  c-ribbon--live u-margin-bottom">
-						<strong class="c-ribbon__body">'.$lead_text.': '.get_option('partner_ribbon_text').'</strong>
-					</div>';
 	}
 }
-add_action('nightingale_before_header','display_partner_ribbon');
+// If partnership ribbon checkbox is selected, display partnership ribbon with text from settings
+if (get_option('partner_ribbon_checkbox') != null) {
+	// If specific pages set, display partnership ribbon above page content for those pages
+	if(get_option('partner_ribbon_pages')!=null) {
+		add_action('nightingale_before_content','display_partner_ribbon',10,1);	
+	}
+	// If no page specified, display partnership ribbon above page header for all pages
+	else {
+		add_action('nightingale_before_header','display_partner_ribbon');
+	}
+}
