@@ -211,7 +211,7 @@ function ribbon_settings_page()
 
 function add_theme_menu_item()
 {
-	add_menu_page("Ribbon Settings", "Ribbons", "manage_options", "ribbon-settings", "ribbon_settings_page", null, 99);
+	add_options_page("Ribbon Settings", "Ribbons", "manage_options", "ribbon-settings", "ribbon_settings_page", null, 99);
 }
 
 add_action("admin_menu", "add_theme_menu_item");
