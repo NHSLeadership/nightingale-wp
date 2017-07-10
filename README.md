@@ -1,6 +1,6 @@
 # Nightingale WordPress theme
 
-This is a WordPress theme that imlements the NHS Leadership Academy frontend framework [Nightingale](https://github.com/NHSLeadership/nightingale).
+This is a WordPress theme that implements the NHS Leadership Academy front-end framework [Nightingale](https://github.com/NHSLeadership/nightingale).
 
 ## Introduction
 
