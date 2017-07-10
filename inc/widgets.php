@@ -11,38 +11,15 @@ function nightingale_wp_widgets_init() {
 		'after_title'   => '</h2>',
 	) );
 
-	// First footer widget area, located in the footer. Empty by default.
-	register_sidebar( array(
-			'name' => esc_html__( 'Footer Widget Area 1', 'nightingale-wp' ),
-			'id' => 'footer-widget-area-1',
-			'description' => esc_html__( 'The first footer widget area', 'nightingale-wp' ),
-			'before_widget' => '<div class="o-layout__item  u-4/12@lg">',
-			'after_widget' => '</div>',
-			'before_title' => '<h4 class="widget-title">',
-			'after_title' => '</h4>',
-	) );
-
-	// Second Footer Widget Area, located in the footer. Empty by default.
-	register_sidebar( array(
-			'name' => esc_html__( 'Footer Widget Area 2', 'nightingale-wp' ),
-			'id' => 'footer-widget-area-2',
-			'description' => esc_html__( 'The second footer widget area', 'nightingale-wp' ),
-			'before_widget' => '<div class="o-layout__item  u-4/12@lg">',
-			'after_widget' => '</div>',
-			'before_title' => '<h4 class="widget-title">',
-			'after_title' => '</h4>',
-	) );
-
-	// Third Footer Widget Area, located in the footer. Empty by default.
-	register_sidebar( array(
-			'name' => esc_html__( 'Footer Widget Area 3', 'nightingale-wp' ),
-			'id' => 'footer-widget-area-3',
-			'description' => esc_html__( 'The third footer widget area', 'nightingale-wp' ),
-			'before_widget' => '<div class="o-layout__item  u-4/12@lg">',
-			'after_widget' => '</div>',
-			'before_title' => '<h4 class="widget-title">',
-			'after_title' => '</h4>',
-	) );
-
+  // Three widget areas, located in the footer. Empty by default.
+  register_sidebars( 3, array(
+    'id' => 'footer-widget-area',
+    'name' => esc_html__( 'Footer Widget Area %d', 'nightingale-wp' ),
+    'description' => esc_html__( 'Add widgets here', 'nightingale-wp' ),
+    'before_widget' => '<div class="o-layout__item  u-4/12@lg">',
+    'after_widget' => '</div>',
+    'before_title' => '<h4 class="widget-title">',
+    'after_title' => '</h4>',
+  ) );
 }
 add_action( 'widgets_init', 'nightingale_wp_widgets_init' );
