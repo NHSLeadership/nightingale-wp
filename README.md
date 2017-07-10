@@ -8,7 +8,9 @@ Please checkout the [contributing instructions](CONTRIBUTING.md) before pitching
 
 ### Installation instructions
 
-[ ] Add setup for local dev environment
+Please note: this theme is intended for *self-hosted* WordPress sites only (as described at [WordPress.org](https://wordpress.org)) and not for sites hosted at [WordPress.com(https://wordpress.com)].
+
+1. If WordPress is not already installed, follow the [WordPress installation instructions](https://codex.wordpress.org/Installing_WordPress) to install it.
 
 ### Deployment
 
