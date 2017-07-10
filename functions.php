@@ -312,7 +312,7 @@ add_action("admin_init", "add_theme_panel_fields");
 function display_cookies_ribbon() {
 // If cookies ribbon checkbox is selected, display cookies ribbon with URLs from settings
 	if (get_option('cookies_ribbon_checkbox') != null) {
-		echo 	'<div class="c-ribbon u-margin-bottom">
+		echo 	'<div class="c-ribbon">
 						<strong class="c-ribbon__body">By default this site uses <a href='.get_option('cookies_ribbon_cookies_url').' target="_blank">cookies</a> to collect information and improve. To control cookies, you can <a href='.get_option('cookies_ribbon_browser_url').' target="_blank">adjust your browser settings</a>.</strong>
 					</div>';
 	}
@@ -324,7 +324,7 @@ function display_dev_ribbon() {
 // Note: the selection is used to define the CSS class that is used (e.g. c-ribbon--alpha or c-ribbon--beta) as well as the ribbon title
 	$dev_ribbon_selection = get_option('dev_ribbon_selection');
 	if ($dev_ribbon_selection == 'alpha' || $dev_ribbon_selection == 'beta') {
-		echo 	'<div class="c-ribbon  c-ribbon--'.$dev_ribbon_selection.' u-margin-bottom">
+		echo 	'<div class="c-ribbon  c-ribbon--'.$dev_ribbon_selection.'">
 						<div class="c-ribbon__icon">
 							<strong class="c-ribbon__tag">'.$dev_ribbon_selection.'</strong>
 						</div>
@@ -342,7 +342,7 @@ function display_partner_ribbon($pageid) {
 	foreach($pages_array as $page_id) {
 		// If current page matches, or no pages specified, display ribbon
 		if ($page_id==null || $pageid==$page_id) {
-			echo 	'<div class="c-ribbon  c-ribbon--live u-margin-bottom">
+			echo 	'<div class="c-ribbon  c-ribbon--live">
 							<strong class="c-ribbon__body">In partnership with: '.get_option('partner_ribbon_text').'</strong>
 						</div>';
 		}
