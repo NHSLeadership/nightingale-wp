@@ -1,5 +1,15 @@
 <?php
 /**
+uu
+
+
+
+
+
+
+
+
+
  * The header for our theme
  *
  * This is the template that displays all of the <head> section and everything up until <div id="content">
@@ -13,18 +23,27 @@
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0">
 <link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="preload" href="<?php echo get_template_directory_uri(); ?>/node_modules/nightingale/assets/fonts/0811514e-6660-4043-92c1-23d0b8caaa2f.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="<?php echo get_template_directory_uri(); ?>/node_modules/nightingale/assets/fonts/8c92eb68-ce37-4962-a9f4-5b47d336bd1c.woff2" as="font" type="font/woff2" crossorigin />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
+
+<!-- Hook for inserting ribbons before the header -->
+<?php do_action('nightingale_before_header'); ?>
+
 <div id="page" class="site">
+	
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'nightingale-wp' ); ?></a>
 
 	<header id="masthead" class="site-header" role="banner">
 		<div class="site-branding">
+			<img src="<?php echo get_template_directory_uri(); ?>/node_modules/nightingale/assets/img/logo-nhs.png" alt="" width="74" height="30" class="u-margin-bottom" style="vertical-align: middle;" />
 			<?php
 			if ( is_front_page() && is_home() ) : ?>
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
@@ -46,4 +65,4 @@
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
 
-	<div id="content" class="site-content">
+	<div id="content" class="o-wrapper">

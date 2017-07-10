@@ -84,22 +84,11 @@ function nightingale_wp_content_width() {
 add_action( 'after_setup_theme', 'nightingale_wp_content_width', 0 );
 
 /**
- * Register widget area.
+ * Register widget areas.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function nightingale_wp_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'nightingale-wp' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'nightingale-wp' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-}
-add_action( 'widgets_init', 'nightingale_wp_widgets_init' );
+require get_template_directory() . '/inc/widgets.php';
 
 /**
  * Enqueue scripts and styles.
@@ -141,3 +130,8 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Ribbons (also known as banners)
+ */
+require get_template_directory() . '/inc/ribbons.php';
