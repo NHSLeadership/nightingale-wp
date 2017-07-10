@@ -313,9 +313,6 @@ function display_cookies_ribbon() {
 // If cookies ribbon checkbox is selected, display cookies ribbon with URLs from settings
 	if (get_option('cookies_ribbon_checkbox') != null) {
 		echo 	'<div class="c-ribbon u-margin-bottom">
-						<div class="c-ribbon__icon">
-							<strong class="c-ribbon__icon">i</strong>
-						</div>
 						<strong class="c-ribbon__body">By default this site uses <a href='.get_option('cookies_ribbon_cookies_url').' target="_blank">cookies</a> to collect information and improve. To control cookies, you can <a href='.get_option('cookies_ribbon_browser_url').' target="_blank">adjust your browser settings</a>.</strong>
 					</div>';
 	}
