@@ -11,17 +11,6 @@ function nightingale_wp_widgets_init() {
 		'after_title'   => '</h2>',
 	) );
 
-	// First header widget area, located in the header. Empty by default.
-	register_sidebar( array(
-		'name' => esc_html__( 'Header Widget Area 1', 'nightingale-wp' ),
-		'id' => 'header-widget-area-1',
-		'description' => esc_html__( 'The first header widget area', 'nightingale-wp' ),
-		'before_widget' => '<div class="o-layout__item  u-4/12@lg">',
-		'after_widget' => '</div>',
-		'before_title' => '<h4 class="widget-title">',
-		'after_title' => '</h4>',
-	) );
-
 	// First footer widget area, located in the footer. Empty by default.
 	register_sidebar( array(
 			'name' => esc_html__( 'Footer Widget Area 1', 'nightingale-wp' ),

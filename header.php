@@ -65,5 +65,4 @@ uu
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
 
-	<?php dynamic_sidebar( 'header-widget-area-3' ); ?>
 	<div id="content" class="o-wrapper">
