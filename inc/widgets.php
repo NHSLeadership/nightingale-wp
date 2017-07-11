@@ -16,7 +16,7 @@ function nightingale_wp_widgets_init() {
     'id' => 'footer-widget-area',
     'name' => esc_html__( 'Footer Widget Area %d', 'nightingale-wp' ),
     'description' => esc_html__( 'Add widgets here', 'nightingale-wp' ),
-    'before_widget' => '<div class="o-layout__item  u-4/12@lg">',
+    'before_widget' => '<div class="footer-widget o-layout__item  u-4/12@lg">',
     'after_widget' => '</div>',
     'before_title' => '<h4 class="widget-title">',
     'after_title' => '</h4>',
