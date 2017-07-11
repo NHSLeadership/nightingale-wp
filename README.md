@@ -36,11 +36,11 @@ You can either use Git to install the theme or you can download it:
 
 #### Installing the theme modules
 
-This theme relies on a number of open source code 'modules'. Install the required modules by going into the wp-content/themes/nightingale-wp/node_modules folder and entering the following commands: ````npm install```` and ````npm update````
+This theme relies on a number of open source code 'modules'. Install the required modules by going into the wp-content/themes/nightingale-wp folder and entering the following commands: ````npm install```` and ````npm update````
 
 #### Compiling the CSS
 
-This theme uses [SASS](http://sass-lang.com/), so you will need to compile your CSS file by going into the wp-content/themes/nightingale-wp/assets folder and entering the following command: ````npm run build````
+This theme uses [SASS](http://sass-lang.com/), so you will need to compile your CSS file by going into the wp-content/themes/nightingale-wp folder and entering the following command: ````npm run build````
 
 #### Final Steps
 
