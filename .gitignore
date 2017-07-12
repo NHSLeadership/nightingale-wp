@@ -37,4 +37,6 @@ wp-config.php
 
 # NPM Generated Files
 node_modules/
-assets/main.css
+style.css
+style.min.css
+.sass-cache/
