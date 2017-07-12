@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Wordpress theme for NHS Leadership Academy using nightingale-core",
   "scripts": {
-    "build": "cat style.scss | node_modules/.bin/node-sass --include-path node_modules/ style.scss --output-style expanded > style.css | node_modules/.bin/node-sass --include-path node_modules/ style.scss --output-style compressed > style.min.css",
-    "watch": "node_modules/.bin/node-sass --include-path node_modules/ --precision 9 --output-style expanded --watch style.scss style.css | node_modules/.bin/node-sass --include-path node_modules/ --precision 9 --output-style compressed --watch style.scss style.min.css"
+    "build": "mkdir -p ./assets && cat assets/main.scss | node_modules/.bin/node-sass --include-path node_modules/ --output-style expanded > assets/main.css",
+    "watch": "npm run build && node_modules/.bin/node-sass --include-path node_modules/ assets/main.scss --watch"
   },
   "dependencies": {
     "nightingale": "git+ssh://git@github.com/NHSLeadership/nightingale.git#develop",
