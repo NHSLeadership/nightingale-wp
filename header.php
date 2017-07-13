@@ -39,28 +39,14 @@ uu
 
 <div id="page" class="site">
 	
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'nightingale-wp' ); ?></a>
-
-	<header id="masthead" class="site-header" role="banner">
-		<div class="site-branding">
-			<img src="<?php echo get_template_directory_uri(); ?>/node_modules/nightingale/assets/img/logo-nhs.png" alt="" width="74" height="30" class="u-margin-bottom" style="vertical-align: middle;" />
-			<?php
-			if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php
-			endif;
-
-			$description = get_bloginfo( 'description', 'display' );
-			if ( $description || is_customize_preview() ) : ?>
-				<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-			<?php
-			endif; ?>
+	<header id="masthead" class="site-header c-page-header" role="banner">
+		<div class="site-branding o-wrapper">
+				<img src="<?php echo get_template_directory_uri(); ?>/node_modules/nightingale/assets/img/logo-nhs-white.png" alt="NHS" width="74" height="30" class="c-page-header__logo" style="vertical-align: middle;" />
+				<strong class="c-page-header__title"><?php bloginfo( 'name' ); ?></strong>
 		</div><!-- .site-branding -->
-
+		
 		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'nightingale-wp' ); ?></button>
+			<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#primary-menu" aria-controls="primary-menu" aria-expanded="false">☰</button>
 			<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->

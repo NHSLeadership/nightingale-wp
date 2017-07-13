@@ -22,9 +22,18 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 
 
 /* Pull in styles from Nightingale framework */
-@import "nightingale/main";
+@import "nightingale/main.scss";
 
 /* Map WordPress styles to Nightingale */
 .footer-widget ul {
   @extend .o-list-bare;
+}
+ul.nav-menu {
+  @extend .c-nav-primary__list;
+}
+ul.nav-menu li {
+  @extend .c-nav-primary__item;
+}
+ul.nav-menu a {
+  @extend .c-nav-primary__link;
 }
