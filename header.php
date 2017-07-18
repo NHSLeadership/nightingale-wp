@@ -1,15 +1,5 @@
 <?php
 /**
-uu
-
-
-
-
-
-
-
-
-
  * The header for our theme
  *
  * This is the template that displays all of the <head> section and everything up until <div id="content">
@@ -40,15 +30,17 @@ uu
 <div id="page" class="site">
 	
 	<header id="masthead" class="site-header c-page-header" role="banner">
-		<div class="site-branding o-wrapper">
+		<div class="o-wrapper">
 				<img src="<?php echo get_template_directory_uri(); ?>/node_modules/nightingale/assets/img/logo-nhs-white.png" alt="NHS" width="74" height="30" class="c-page-header__logo" style="vertical-align: middle;" />
 				<strong class="c-page-header__title"><?php bloginfo( 'name' ); ?></strong>
+
+				<nav id="site-navigation" class="c-nav-primary c-page-header__nav" role="navigation">
+					<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#primary-menu" role="button" aria-expanded="false">☰</button>
+					<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
+				</nav><!-- #site-navigation -->
+
 		</div><!-- .site-branding -->
 		
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#primary-menu" aria-controls="primary-menu" aria-expanded="false">☰</button>
-			<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
-		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
 
 	<div id="content" class="o-wrapper">
