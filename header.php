@@ -29,18 +29,18 @@
 
 <div id="page" class="site">
 	
-	<header id="masthead" class="site-header c-page-header" role="banner">
+	<header id="jsPageHeader" class="site-header c-page-header" role="banner">
 		<div class="o-wrapper">
 				<img src="<?php echo get_template_directory_uri(); ?>/node_modules/nightingale/assets/img/logo-nhs-white.png" alt="NHS" width="74" height="30" class="c-page-header__logo" style="vertical-align: middle;" />
 				<strong class="c-page-header__title"><?php bloginfo( 'name' ); ?></strong>
 
 				<nav id="site-navigation" class="c-nav-primary c-page-header__nav" role="navigation">
-					<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#primary-menu" role="button" aria-expanded="false">☰</button>
-					<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
+					<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav" >☰</button>
+					<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'jsNav' ) ); ?>
 				</nav><!-- #site-navigation -->
 
 		</div><!-- .site-branding -->
 		
-	</header><!-- #masthead -->
+	</header><!-- #jsPageHeader -->
 
 	<div id="content" class="o-wrapper">
