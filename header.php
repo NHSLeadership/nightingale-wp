@@ -31,7 +31,8 @@
 	
 	<header id="jsPageHeader" class="site-header c-page-header" role="banner">
 		<div class="o-wrapper">
-				<img src="<?php echo get_template_directory_uri(); ?>/node_modules/nightingale/assets/img/logo-nhs.png" alt="NHS" width="74" height="30" class="c-page-header__logo" style="vertical-align: middle;" />
+
+				<img src="<?php echo get_template_directory_uri(); ?>/node_modules/nightingale/assets/img/logo-nhs.png" alt="NHS" width="89" height="36" class="c-page-header__logo" style="vertical-align: middle;" />
 				<strong class="c-page-header__title"><?php bloginfo( 'name' ); ?></strong>
 
 				<nav id="site-navigation" class="c-nav-primary c-page-header__nav" role="navigation">
