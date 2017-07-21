@@ -28,14 +28,17 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 .footer-widget ul {
   @extend .o-list-bare;
 }
-ul.nav-menu {
+.nav-menu {
   @extend .c-nav-primary__list;
 }
-ul.nav-menu li {
+.nav-menu > li {
   @extend .c-nav-primary__item;
 }
-ul.nav-menu a {
+.nav-menu > li > a {
   @extend .c-nav-primary__link;
+}
+.menu-item {
+  @extend .c-nav-primary__item;
 }
 .c-page-header__title {
   font-size: 138%;

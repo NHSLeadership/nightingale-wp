@@ -37,7 +37,7 @@
 
 				<nav id="site-navigation" class="c-nav-primary c-page-header__nav" role="navigation">
 					<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav" >☰</button>
-					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'jsNav' )); ?>
+					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'jsNav', 'menu_class' => 'c-nav-primary__list' )); ?>
 				</nav><!-- #site-navigation -->
 
 		</div><!-- .site-branding -->
