@@ -33,8 +33,8 @@
 		<div class="o-wrapper">
 
 				<img src="<?php echo get_template_directory_uri(); ?>/node_modules/nightingale/assets/img/logo-nhs.png" alt="NHS" width="89" height="36" class="c-page-header__logo" style="vertical-align: middle;" />
-				<strong class="c-page-header__title"><?php bloginfo( 'name' ); ?></strong>
-
+				<strong class="c-page-header__title"><img src="<?php echo get_template_directory_uri(); ?>/node_modules/nightingale/assets/img/logo-sub.png" alt="Leadership Academy" width="241" height="25"></strong>
+				
 				<nav id="site-navigation" class="c-nav-primary c-page-header__nav" role="navigation">
 					<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav" >☰</button>
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'jsNav', 'menu_class' => 'c-nav-primary__list' )); ?>
