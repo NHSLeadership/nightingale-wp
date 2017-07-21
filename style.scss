@@ -37,7 +37,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 .nav-menu > li > a {
   @extend .c-nav-primary__link;
 }
-.menu-item {
+.c-nav-primary .menu-item {
   @extend .c-nav-primary__item;
 }
 .c-page-header__title {
