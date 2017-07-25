@@ -46,7 +46,7 @@ function nightingale_wp_setup() {
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'nightingale-wp' ),
 	) );
-
+		
 	/*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
@@ -135,3 +135,8 @@ require get_template_directory() . '/inc/jetpack.php';
  * Ribbons (also known as banners)
  */
 require get_template_directory() . '/inc/ribbons.php';
+
+/**
+ * Main menu (using Walker Nav Menu).
+ */
+require get_template_directory() . '/inc/walker-menu.php';
