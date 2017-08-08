@@ -32,7 +32,7 @@
 	<header id="jsPageHeader" class="site-header c-page-header" role="banner">
 		<div class="o-wrapper">
 
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/NHS_LA_Logo_Blue@2x.png" alt="NHS Leadership Academy Logo" width="241" height="71" class="c-page-header__logo" style="vertical-align: middle;" />
+				<span class="logo"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/NHS_LA_Logo_Blue@2x.png" alt="NHS Leadership Academy Logo" class="c-page-header__logo" style="vertical-align: middle;" /></span>
 				
 				<nav id="site-navigation" class="c-nav-primary c-page-header__nav" role="navigation">
 					<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav" >☰</button>
