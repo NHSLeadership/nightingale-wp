@@ -162,7 +162,7 @@ function display_partner_ribbon($pageid) {
       echo '<div class="c-ribbon  c-ribbon--expandable">
           <div class="o-wrapper">
             <details class="c-ribbon__body">
-              <summary><b>In partnership with:</b> '.get_option('partner_ribbon_text').'.</summary>
+              <summary><b>In partnership with:</b> '.get_option('partner_ribbon_text').'</summary>
             </details>
           </div>
         </div>';
