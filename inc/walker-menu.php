@@ -1,63 +1,62 @@
 <?php
-// Main menu
 class Walker_Nightingale_Menu extends Walker_Nav_Menu {
-  /**
-   * Filter used to remove built in WordPress-generated classes
-   * @param  mixed $var The array item to verify
-   * @return boolean      Whether or not the item matches the filter
-   */
-   private $menuID;
-
-  function filter_builtin_classes( $var ) {
-  return ( FALSE === strpos( $var, 'item' ) ) ? $var : ''; 
-  }
-
-  function start_lvl( &$output, $depth = 0, $args = array() ) {
-    // retrieve the menu ID
-    $id = $this->menuID;
-    $indent = str_repeat("\t", $depth);
-    $menuSuffix = $depth + 1;
-    $output .= "\n$indent<nav class='c-nav-primary__sub  jsNavSub' id=menu-item-$id-$menuSuffix>\n";
-  }
-  
-  function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-    $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-
-    $class_names = $value = '';
-
-    $unfiltered_classes = empty( $item->classes ) ? array() : (array) $item->classes;
-    $classes = array_filter( $unfiltered_classes, array( $this, 'filter_builtin_classes' ) );
-
-    if ( preg_grep("/^current/", $unfiltered_classes) ) {
-      $classes[] = 'active';
+    
+    private $menuID;  // Store menu id so that sub-menus can reference their parent menus
+    
+    public function start_lvl( &$output, $depth = 0, $args = array() ) {
+      // start sub-menus
+      $id = $this->menuID;  // retrieve the menu ID
+      $output .= '<nav class="c-nav-primary__sub jsNavSub" id="menu-item-'.$id.'-sub" role="group" aria-label="submenu">';
+      $output .= '<div class="o-wrapper">';
+      $output .= '<div class="o-layout">';
+      $output .= '<ul class="c-nav-primary__sub-links">';
     }
 
-    $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
-    $class_names .= ' c-nav-primary__item';
-    $class_names = $class_names ? ' class="' . ltrim(esc_attr( $class_names )) . '"' : '';
+    public function end_lvl( &$output, $depth = 0, $args = array() ) {
+      // end sub-menus
+      $output .= '</ul>';
+      $output .= '</div>';  // o-layout
+      $output .= '</div>';  // o-wrapper
+      $output .= '</nav>';
+    }
 
-    $id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
+    public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+      $classes = array();
+      if( !empty( $item->classes ) ) {
+          $classes = (array) $item->classes;
+      }
 
-    $item_output = "\n<li class='c-nav-primary__item' id=menu-item-$item->ID>";
-    if ( $depth == 0 && $args->walker->has_children ) {
-      $menuSuffix = $depth + 1;
-      $item_output .= sprintf( "<button class='c-nav-primary__link' data-expands=#menu-item-".$item->ID."-$menuSuffix data-popup='' role='button' aria-expanded='false' aria-haspopup='true'>".$item->title."</button>",
-          $item->url,
-          ( $item->object_id === get_the_ID() ) ? ' class="current"' : '',
-          $item->title
-      );
-    } else
-      $item_output .= sprintf( "<a href='%s'%s>%s</a>",
-          $item->url,
-          ( $item->object_id === get_the_ID() ) ? ' class="current"' : '',
-          $item->title
-      );
-      $item_output .= "</li>\n";
+      $active_class = '';
+      if( in_array('current-menu-item', $classes) ) {
+          $active_class = ' class="active"';
+      } else if( in_array('current-menu-parent', $classes) ) {
+          $active_class = ' class="active-parent"';
+      } else if( in_array('current-menu-ancestor', $classes) ) {
+          $active_class = ' class="active-ancestor"';
+      }
 
-    $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+      $url = '';
+      if( !empty( $item->url ) ) {
+          $url = $item->url;
+      }
 
-    // store the menu ID
-    $this->menuID = $item->ID;
-  }
+      $output .= '<li class="c-nav-primary__item"';
+      if ( $depth == 0 && $args->walker->has_children ) {
+        // parent-menus
+        $output .= '><button class="c-nav-primary__link" data-expands=#menu-item-'.$item->ID.'-sub data-popup="" role="button" aria-expanded="false" aria-haspopup="true">'.$item->title.'</button>';
+      }
+      else {
+        // menus without childen (including sub-menus)
+        $output .= $active_class . '><a href="' . $url . '">' . $item->title . '</a>';
+      }
+      $output .= '</li>';
+
+      $this->menuID = $item->ID;  // store the menu ID
+
+    }
+
+    public function end_el( &$output, $item, $depth = 0, $args = array() ) {
+      $output .= '</li>';
+    }
 
 } // Walker_Nav_Menu

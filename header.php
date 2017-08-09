@@ -32,14 +32,23 @@
 	<header id="jsPageHeader" class="site-header c-page-header" role="banner">
 		<div class="o-wrapper">
 
-				<span class="logo"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/NHS_LA_Logo_Blue@2x.png" alt="NHS Leadership Academy Logo" class="c-page-header__logo" style="vertical-align: middle;" /></span>
+				<span class="logo">
+					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/NHS_LA_Logo_Blue@2x.png" alt="NHS Leadership Academy Logo" class="c-page-header__logo" style="vertical-align: middle;"/>
+				</span>
 				
-				<nav id="site-navigation" class="c-nav-primary c-page-header__nav" role="navigation">
+				<nav class="c-nav-primary c-page-header__nav" id="site-navigation" role="navigation">
 					<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav" >☰</button>
-					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'jsNav', 'menu_class' => 'c-nav-primary__list', 'walker'  => new Walker_Nightingale_Menu() )); ?>
+					<?php wp_nav_menu( array( 
+						'theme_location' => 'primary', 
+						'menu_id' => 'jsNav', 
+						'menu_class' => 'c-nav-primary__list', 
+						'walker'  => new Walker_Nightingale_Menu(),
+						'container' => false,
+						'depth' => 2
+					)); ?>
 				</nav><!-- #site-navigation -->
 
-		</div><!-- .site-branding -->
+		</div><!-- .o-wrapper -->
 		
 	</header><!-- #jsPageHeader -->
 
