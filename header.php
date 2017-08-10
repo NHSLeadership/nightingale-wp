@@ -36,6 +36,10 @@
 					<img src="<?php echo get_theme_mod('logo_image'); ?>" alt="Logo" class="c-page-header__logo" style="vertical-align: middle;"/>
 				</span>
 				
+				<div class="o-layout--right">
+					<?php get_search_form(); ?>
+				</div>
+				
 				<nav class="c-nav-primary c-page-header__nav" id="site-navigation" role="navigation">
 					<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav" >☰</button>
 					<?php wp_nav_menu( array( 
