@@ -32,9 +32,9 @@
 	<header id="jsPageHeader" class="site-header c-page-header" role="banner">
 		<div class="o-wrapper">
 
-				<span class="logo">
+				<a href="\" class="logo" title="Home">
 					<img src="<?php echo get_theme_mod('logo_image'); ?>" alt="Logo" class="c-page-header__logo" style="vertical-align: middle;"/>
-				</span>
+				</a>
 				
 				<div class="o-layout--right">
 					<?php get_search_form(); ?>
