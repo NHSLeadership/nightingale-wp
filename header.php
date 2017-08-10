@@ -33,7 +33,7 @@
 		<div class="o-wrapper">
 
 				<span class="logo">
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/NHS_LA_Logo_Blue@2x.png" alt="NHS Leadership Academy Logo" class="c-page-header__logo" style="vertical-align: middle;"/>
+					<img src="<?php echo get_theme_mod('logo_image'); ?>" alt="Logo" class="c-page-header__logo" style="vertical-align: middle;"/>
 				</span>
 				
 				<nav class="c-nav-primary c-page-header__nav" id="site-navigation" role="navigation">
