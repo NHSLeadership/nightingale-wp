@@ -150,7 +150,7 @@ function add_login_logout_link($items, $args) {
 	wp_loginout('index.php');
 	$loginoutlink = ob_get_contents();
 	ob_end_clean();
-	$items .= '<li>'. $loginoutlink .'</li>';
+	$items .= '<li class="c-btn c-btn--submit login-btn">'. $loginoutlink .'</li>';
 	return $items;
 }
 add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2);
