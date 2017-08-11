@@ -21,6 +21,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 */
 
 
+/* Enable/disable css hints */
+$global-hints: false;
+
 /* Pull in styles from Nightingale framework */
 @import "nightingale/main.scss";
 
@@ -50,5 +53,6 @@ img.c-page-header__logo {
   width: 50%;
 }
 .login-btn > a {
-  color: white !important;
+  @extend .c-btn;
+  @extend .c-btn--submit;
 }
