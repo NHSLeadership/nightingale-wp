@@ -35,3 +35,16 @@ function nightingale_wp_widgets_init() {
 	
 }
 add_action( 'widgets_init', 'nightingale_wp_widgets_init' );
+
+// For new sites only, add search box widget to header widget area
+function nightingale_wp_widgets_add( $blog_id ) {
+
+	add_option( 'widget_categories',
+	array( 'title' => 'My Categories' ));
+
+	add_option("sidebars_widgets",
+	array("header-widget-area" => array("Search"),
+	));
+
+}
+add_action('populate_options', 'nightingale_wp_widgets_add');
