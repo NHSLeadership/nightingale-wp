@@ -37,7 +37,7 @@
 				</a>
 				
 				<div class="o-layout--right">
-					<?php dynamic_sidebar( 'header-widget-area' ); ?>
+					<?php get_search_form(); ?>
 				</div>
 				
 				<nav class="c-nav-primary c-page-header__nav" id="site-navigation" role="navigation">
