@@ -31,27 +31,40 @@
 	
 	<header id="jsPageHeader" class="site-header c-page-header" role="banner">
 		<div class="o-wrapper">
-
-				<a href="\" class="logo" title="Home">
-					<img src="<?php echo get_theme_mod('logo_image'); ?>" alt="Logo" class="c-page-header__logo" style="vertical-align: middle;"/>
-				</a>
+			<div class="o-layout">
+				<div class="o-layout__item  u-4/12">
+					<a href="/" title="Home">
+						<picture>
+							<!-- logo image for retina displays -->
+ 							<source srcset="<?php echo get_theme_mod('logo_retina_image'); ?>" media="only screen and (min-resolution: 192dpi)">
+							<!-- logo image for standard displays -->
+							<source srcset="<?php echo get_theme_mod('logo_image'); ?>" >
+							<!-- default logo image (if not set in WordPress dashboard) -->
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-nhs.png" alt="Logo" class="c-page-header__logo" />
+						</picture>
+					</a>
+				</div><!-- .o-layout__item -->
 				
-				<div class="o-layout--right">
-					<?php dynamic_sidebar( 'header-widget-area' ); ?>
-				</div>
+				<div class="o-layout__item  u-8/12">
+					<div class="o-layout--right">
+						<?php dynamic_sidebar( 'header-widget-area' ); ?>
+					</div><!-- .o-layout--right -->
+						
+					<nav class="c-nav-primary c-page-header__nav" id="site-navigation" role="navigation">
+						<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav" >☰</button>
+						<?php wp_nav_menu( array( 
+							'theme_location' => 'primary', 
+							'menu_id' => 'jsNav', 
+							'menu_class' => 'c-nav-primary__list', 
+							'walker'  => new Walker_Nightingale_Menu(),
+							'container' => false,
+							'depth' => 2
+						)); ?>
+					</nav><!-- #site-navigation -->
+					
+				</div><!-- .o-layout__item -->
 				
-				<nav class="c-nav-primary c-page-header__nav" id="site-navigation" role="navigation">
-					<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav" >☰</button>
-					<?php wp_nav_menu( array( 
-						'theme_location' => 'primary', 
-						'menu_id' => 'jsNav', 
-						'menu_class' => 'c-nav-primary__list', 
-						'walker'  => new Walker_Nightingale_Menu(),
-						'container' => false,
-						'depth' => 2
-					)); ?>
-				</nav><!-- #site-navigation -->
-
+			</div><!-- .o-layout -->
 		</div><!-- .o-wrapper -->
 		
 	</header><!-- #jsPageHeader -->

@@ -20,12 +20,23 @@ function nightingale_wp_customize_register( $wp_customize ) {
 	) );	
 	
 	$wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 'logo_image', array(
-	'label'        => 'Logo Image',
-	'description' => 'Note: To allow for retina displays, the logo is displayed at <strong>50%</strong> of its actual size.',
+	'label'        => 'Logo Image (Standard)',
+	'description' => 'Choose a logo to be used on standard displays',
 	'section'    => 'title_tagline',
 	'settings'   => 'logo_image',
 	) ) );
 	
+	$wp_customize->add_setting( 'logo_retina_image' , array(
+	    'transport'   => 'refresh',
+	) );	
+
+	$wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 'logo_retina_image', array(
+	'label'        => 'Logo Image (Retina)',
+	'description' => 'Choose a double-size logo to be used on retina displays',
+	'section'    => 'title_tagline',
+	'settings'   => 'logo_retina_image',
+	) ) );
+
 }
 add_action( 'customize_register', 'nightingale_wp_customize_register' );
 

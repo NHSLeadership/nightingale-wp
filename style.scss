@@ -46,12 +46,6 @@ $global-hints: false;
 .c-page-header__title {
   font-size: 138%;
 }
-.logo {
-  display: inline-block;
-}
-img.c-page-header__logo {
-  width: 50%;
-}
 .login-btn > a {
   @extend .c-btn;
   @extend .c-btn--submit;
