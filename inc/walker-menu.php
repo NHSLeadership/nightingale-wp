@@ -15,8 +15,8 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
     public function end_lvl( &$output, $depth = 0, $args = array() ) {
       // end sub-menus
       $output .= '</ul>';
-      $output .= '</div>';  // o-layout
-      $output .= '</div>';  // o-wrapper
+      $output .= '</div><!-- .o-layout -->';
+      $output .= '</div><!-- .o-wrapper -->';
       $output .= '</nav>';
     }
 
@@ -61,14 +61,13 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
           $output .= $active_class . '><a href="' . $url . '" class="c-nav-primary__link">' . $item->title . '</a>';
         }
       }
-      $output .= '</li>';
 
       $this->menuID = $item->ID;  // store the menu ID
 
     }
 
     public function end_el( &$output, $item, $depth = 0, $args = array() ) {
-      $output .= '</li>';
+      $output .= '</li><!-- .c-nav-primary__item -->';
     }
 
 } // Walker_Nav_Menu
