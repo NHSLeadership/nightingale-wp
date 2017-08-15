@@ -49,13 +49,13 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
         // menus without childen (including sub-menus)
         if( in_array('subnav-header', $classes) ) {
           // if css classes include text 'subnav-header' then display sub-menu panel header
-          $output .= '<h4 class="u-margin-bottom-small">' . $item->title . '</h4>';
-        } elseif( in_array('subnav-description', $classes) ) {
+          $output .= '><h4 class="u-margin-bottom-small">' . $item->title . '</h4>';
+        } else if( in_array('subnav-description', $classes) ) {
           // if css classes include text 'subnav-description' then display sub-menu panel description
-          $output .= '<p class="u-margin-bottom-small"><small>' . $item->title . '</small></p>';
-        } elseif( in_array('subnav-button', $classes) ) {
+          $output .= '><p class="u-margin-bottom-small"><small>' . $item->title . '</small></p>';
+        } else if( in_array('subnav-button', $classes) ) {
           // if css classes include text 'subnav-button' then display sub-menu panel button
-          $output .= '<p class="u-margin-bottom-small"><a href="' . $url . '" class="c-btn  c-btn--primary  c-btn--full">'. $item->title .'</a></p>';
+          $output .= '><p class="u-margin-bottom-small"><a href="' . $url . '" class="c-btn  c-btn--primary  c-btn--full">'. $item->title .'</a></p>';
         } else {
           // standard menu item
           $output .= $active_class . '><a href="' . $url . '" class="c-nav-primary__link">' . $item->title . '</a>';
