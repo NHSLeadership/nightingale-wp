@@ -31,22 +31,25 @@ $global-hints: false;
 .footer-widget ul {
   @extend .o-list-bare;
 }
-.nav-menu {
-  @extend .c-nav-primary__list;
-}
-.nav-menu > li {
-  @extend .c-nav-primary__item;
-}
-.nav-menu > li > a {
-  @extend .c-nav-primary__link;
-}
-.c-nav-primary .menu-item {
-  @extend .c-nav-primary__item;
-}
+
 .c-page-header__title {
   font-size: 138%;
 }
+
+/**
+ * Override Nightingale’s default nav alignment.
+ */
+.c-nav-primary__item {
+  vertical-align: middle;
+}
+
+/**
+ * We can’t directly access the login button in the header, so we’re forcing it
+ * to emulate the button styles within Nightingale via `@extends`.
+ */
 .login-btn > a {
   @extend .c-btn;
   @extend .c-btn--submit;
+  padding-left: 30px;
+  padding-right: 30px;
 }

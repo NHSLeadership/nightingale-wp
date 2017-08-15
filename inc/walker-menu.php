@@ -58,7 +58,7 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
           $output .= '<p class="u-margin-bottom-small"><a href="' . $url . '" class="c-btn  c-btn--primary  c-btn--full">'. $item->title .'</a></p>';
         } else {
           // standard menu item
-          $output .= $active_class . '><a href="' . $url . '">' . $item->title . '</a>';
+          $output .= $active_class . '><a href="' . $url . '" class="c-nav-primary__link">' . $item->title . '</a>';
         }
       }
       $output .= '</li>';
