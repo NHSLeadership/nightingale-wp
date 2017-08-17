@@ -154,3 +154,8 @@ function add_login_logout_link($items, $args) {
 	return $items;
 }
 add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2);
+
+/**
+* Add support for custom logos
+*/
+add_theme_support( 'custom-logo' );
