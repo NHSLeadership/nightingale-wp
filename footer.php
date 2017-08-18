@@ -22,13 +22,16 @@
         <?php dynamic_sidebar( 'footer-widget-area-3' ); ?>
 			</div>
 			<hr class="c-divider">
-			<p>
-				<small>
-					<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'nightingale-wp' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'nightingale-wp' ), 'WordPress' ); ?></a>
-					<span class="sep"> | </span>
-					<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'nightingale-wp' ), 'nightingale-wp', '<a href="https://automattic.com/" rel="designer">NHS Leadership Academy</a>' ); ?>
-				</small>
-			</p>
+			<?php
+			wp_nav_menu(
+			  array(
+			    'theme_location' => 'footer-menu',
+					'menu_class' => 'c-page-footer__nav',
+			    'container' => false
+			  )
+			); 
+			?>
+			<p class="c-page-footer__smallprint"><small>Copyright © <?php echo get_bloginfo( 'name' ) ." ". date('Y'); ?>. All rights reserved.</small></p>
 		</div>
 	</footer>
 </div><!-- #page -->

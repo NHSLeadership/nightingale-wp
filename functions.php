@@ -132,6 +132,11 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /**
- * Ribbons (also known as banners)
+ * Ribbons (also known as banners).
  */
 require get_template_directory() . '/inc/ribbons.php';
+
+/**
+ * Custom menus.
+ */
+require get_template_directory() . '/inc/custom-menus.php';
