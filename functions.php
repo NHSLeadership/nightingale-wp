@@ -141,6 +141,11 @@ require get_template_directory() . '/inc/ribbons.php';
  */
 require get_template_directory() . '/inc/walker-menu.php';
 
+/**
+ * Cutome menus.
+ */
+require get_template_directory() . '/inc/custom-menus.php';
+
 // Add login/out/register link to main menu
 function add_login_logout_link($items, $args) {
 	if ( $args->theme_location != 'primary' ) {
