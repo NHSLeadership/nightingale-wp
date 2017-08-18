@@ -44,9 +44,9 @@ function nightingale_wp_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'menu-1' => esc_html__( 'Primary', 'nightingale-wp' ),
+		'primary' => esc_html__( 'Primary', 'nightingale-wp' ),
 	) );
-
+		
 	/*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
@@ -135,3 +135,32 @@ require get_template_directory() . '/inc/jetpack.php';
  * Ribbons (also known as banners)
  */
 require get_template_directory() . '/inc/ribbons.php';
+
+/**
+ * Main menu (using Walker Nav Menu).
+ */
+require get_template_directory() . '/inc/walker-menu.php';
+
+/**
+ * Custom menus.
+ */
+require get_template_directory() . '/inc/custom-menus.php';
+
+// Add login/out/register link to main menu
+function add_login_logout_link($items, $args) {
+	if ( $args->theme_location != 'primary' ) {
+  return $items;
+  }
+	ob_start();
+	wp_loginout('index.php');
+	$loginoutlink = ob_get_contents();
+	ob_end_clean();
+	$items .= '<li class="c-nav-primary__item login-btn">'. $loginoutlink .'</li>';
+	return $items;
+}
+add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2);
+
+/**
+* Add support for custom logos
+*/
+add_theme_support( 'custom-logo' );

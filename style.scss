@@ -21,10 +21,35 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 */
 
 
+/* Enable/disable css hints */
+$global-hints: false;
+
 /* Pull in styles from Nightingale framework */
-@import "nightingale/main";
+@import "nightingale/main.scss";
 
 /* Map WordPress styles to Nightingale */
 .footer-widget ul {
   @extend .o-list-bare;
+}
+
+.c-page-header__title {
+  font-size: 138%;
+}
+
+/**
+ * Override Nightingale’s default nav alignment.
+ */
+.c-nav-primary__item {
+  vertical-align: middle;
+}
+
+/**
+ * We can’t directly access the login button in the header, so we’re forcing it
+ * to emulate the button styles within Nightingale via `@extends`.
+ */
+.login-btn > a {
+  @extend .c-btn;
+  @extend .c-btn--submit;
+  padding-left: 30px;
+  padding-right: 30px;
 }

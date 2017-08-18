@@ -1,15 +1,5 @@
 <?php
 /**
-uu
-
-
-
-
-
-
-
-
-
  * The header for our theme
  *
  * This is the template that displays all of the <head> section and everything up until <div id="content">
@@ -39,30 +29,37 @@ uu
 
 <div id="page" class="site">
 	
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'nightingale-wp' ); ?></a>
-
-	<header id="masthead" class="site-header" role="banner">
-		<div class="site-branding">
-			<img src="<?php echo get_template_directory_uri(); ?>/node_modules/nightingale/assets/img/logo-nhs.png" alt="" width="74" height="30" class="u-margin-bottom" style="vertical-align: middle;" />
-			<?php
-			if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php
-			endif;
-
-			$description = get_bloginfo( 'description', 'display' );
-			if ( $description || is_customize_preview() ) : ?>
-				<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-			<?php
-			endif; ?>
-		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'nightingale-wp' ); ?></button>
-			<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+	<header id="jsPageHeader" class="site-header c-page-header" role="banner">
+		<div class="o-wrapper">
+			<div class="o-layout">
+				<div class="o-layout__item  u-4/12">
+					<a href="/" title="Home">
+						<?php if ( function_exists( 'the_custom_logo' ) ) { the_custom_logo(); } ?>
+					</a>
+				</div><!-- .o-layout__item -->
+				
+				<div class="o-layout__item  u-8/12">
+					<div class="o-layout--right">
+						<?php dynamic_sidebar( 'header-widget-area' ); ?>
+					</div><!-- .o-layout--right -->
+						
+					<nav class="c-nav-primary c-page-header__nav" id="site-navigation" role="navigation">
+						<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav" >☰</button>
+						<?php wp_nav_menu( array( 
+							'theme_location' => 'primary', 
+							'menu_id' => 'jsNav', 
+							'menu_class' => 'c-nav-primary__list', 
+							'walker'  => new Walker_Nightingale_Menu(),
+							'container' => false,
+							'depth' => 2
+						)); ?>
+					</nav><!-- #site-navigation -->
+					
+				</div><!-- .o-layout__item -->
+				
+			</div><!-- .o-layout -->
+		</div><!-- .o-wrapper -->
+		
+	</header><!-- #jsPageHeader -->
 
 	<div id="content" class="o-wrapper">
