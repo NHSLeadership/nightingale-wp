@@ -142,7 +142,7 @@ require get_template_directory() . '/inc/ribbons.php';
 require get_template_directory() . '/inc/walker-menu.php';
 
 /**
- * Cutome menus.
+ * Custom menus.
  */
 require get_template_directory() . '/inc/custom-menus.php';
 
