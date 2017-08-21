@@ -16,13 +16,14 @@
 
 	<footer class="c-page-footer">
 		<div class="o-wrapper">
-			<div class="o-layout">
-        <?php dynamic_sidebar( 'footer-widget-area-1' ); ?>
-        <?php dynamic_sidebar( 'footer-widget-area-2' ); ?>
-        <?php dynamic_sidebar( 'footer-widget-area-3' ); ?>
-			</div>
-			<hr class="c-divider">
-			<?php
+			<?php if (is_active_sidebar('footer-widget-area-1') || is_active_sidebar('footer-widget-area-2') || is_active_sidebar('footer-widget-area-3')) {
+				echo '<div class="o-layout">';
+					dynamic_sidebar( 'footer-widget-area-1' );
+					dynamic_sidebar( 'footer-widget-area-2' );
+					dynamic_sidebar( 'footer-widget-area-3' );
+				echo '</div>';
+				echo '<hr class="c-divider">';
+			}
 			wp_nav_menu(
 			  array(
 			    'theme_location' => 'footer-menu',
