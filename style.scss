@@ -31,9 +31,8 @@ $global-hints: false;
 .footer-widget ul {
   @extend .o-list-bare;
 }
-
-.c-page-header__title {
-  font-size: 138%;
+.custom-logo-link {
+  @extend .c-page-header__lockup;
 }
 
 /**

@@ -29,36 +29,33 @@
 
 <div id="page" class="site">
 	
-	<header id="jsPageHeader" class="site-header c-page-header" role="banner">
-		<div class="o-wrapper">
-			<div class="o-layout">
-				<div class="o-layout__item  u-4/12">
-					<a href="/" title="Home">
-						<?php if ( function_exists( 'the_custom_logo' ) ) { the_custom_logo(); } ?>
-					</a>
-				</div><!-- .o-layout__item -->
-				
-				<div class="o-layout__item  u-8/12">
+	<header id="jsPageHeader" class="c-page-header" role="banner">
+		<div class="o-wrapper c-page-header__inner">
+				<!-- Logo -->
+				<?php if ( function_exists( 'the_custom_logo' ) ) { the_custom_logo(); } ?>
+				<div class="c-page-header__controls">
+					
+					<!-- Search box -->
 					<div class="o-layout--right">
 						<?php dynamic_sidebar( 'header-widget-area' ); ?>
 					</div><!-- .o-layout--right -->
-						
-					<nav class="c-nav-primary c-page-header__nav" id="site-navigation" role="navigation">
-						<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav" >☰</button>
+					
+					<!-- Main menu -->
+					<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav" >☰</button>
+					<nav class="c-nav-primary" id="primaryNav" role="navigation">
 						<?php wp_nav_menu( array( 
 							'theme_location' => 'primary', 
-							'menu_id' => 'jsNav', 
 							'menu_class' => 'c-nav-primary__list', 
+							'menu_id' => 'jsNav', 
 							'walker'  => new Walker_Nightingale_Menu(),
 							'container' => false,
-							'depth' => 2
+							'depth' => 2  // limit menu depth (otherwise login button goes astray)
 						)); ?>
 					</nav><!-- #site-navigation -->
 					
-				</div><!-- .o-layout__item -->
+				</div><!-- .c-page-header__controls -->
 				
-			</div><!-- .o-layout -->
-		</div><!-- .o-wrapper -->
+		</div><!-- .o-wrapper .c-page-header__inner-->
 		
 	</header><!-- #jsPageHeader -->
 
