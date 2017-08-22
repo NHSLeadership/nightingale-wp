@@ -132,7 +132,7 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /**
- * Ribbons (also known as banners)
+ * Ribbons (also known as banners).
  */
 require get_template_directory() . '/inc/ribbons.php';
 
@@ -140,6 +140,16 @@ require get_template_directory() . '/inc/ribbons.php';
  * Main menu (using Walker Nav Menu).
  */
 require get_template_directory() . '/inc/walker-menu.php';
+
+/**
+ * Custom menus.
+ */
+require get_template_directory() . '/inc/custom-menus.php';
+
+/**
+* Add support for custom logos
+*/
+add_theme_support( 'custom-logo' );
 
 // Add login/out/register link to main menu
 function add_login_logout_link($items, $args) {
@@ -154,8 +164,3 @@ function add_login_logout_link($items, $args) {
 	return $items;
 }
 add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2);
-
-/**
-* Add support for custom logos
-*/
-add_theme_support( 'custom-logo' );
