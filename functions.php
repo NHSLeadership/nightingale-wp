@@ -44,9 +44,9 @@ function nightingale_wp_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'menu-1' => esc_html__( 'Primary', 'nightingale-wp' ),
+		'primary' => esc_html__( 'Primary', 'nightingale-wp' ),
 	) );
-
+		
 	/*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
@@ -137,6 +137,20 @@ require get_template_directory() . '/inc/jetpack.php';
 require get_template_directory() . '/inc/ribbons.php';
 
 /**
+ * Main menu (using Walker Nav Menu).
+ */
+require get_template_directory() . '/inc/walker-menu.php';
+
+/**
  * Custom menus.
  */
 require get_template_directory() . '/inc/custom-menus.php';
+
+/**
+ * Login/logout button.
+ */
+require get_template_directory() . '/inc/login-buttons.php';
+/**
+* Add support for custom logos
+*/
+add_theme_support( 'custom-logo' );
