@@ -27,8 +27,8 @@ function nightingale_wp_widgets_init() {
 		'name'          => esc_html__( 'Header', 'nightingale-wp' ),
 		'id'            => 'header-widget-area',
 		'description'   => esc_html__( 'Add widgets here.', 'nightingale-wp' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
+		'before_widget' => '<div class="o-layout--right"><section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section></div><!-- .o-layout--right -->',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
