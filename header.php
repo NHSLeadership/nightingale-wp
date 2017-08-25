@@ -27,8 +27,17 @@
 	
 	<header id="jsPageHeader" class="c-page-header" role="banner">
 		<div class="o-wrapper c-page-header__inner">
+
 				<!-- Logo -->
-				<?php if ( function_exists( 'the_custom_logo' ) ) { the_custom_logo(); } ?>
+				<?php if ( has_custom_logo() ) {
+					the_custom_logo();
+				}
+				else { ?>
+					<h1>
+					<a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a>
+					</h1>
+				<?php } ?>
+
 				<div class="c-page-header__controls">
 					
 					<!-- Search box -->
