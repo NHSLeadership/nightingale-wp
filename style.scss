@@ -36,7 +36,7 @@ $global-hints: false;
 }
 
 /**
- * Override Nightingale’s default nav alignment.
+ * Override Nightingale’s default nav alignment (until issue #146 is addressed).
  */
 .c-nav-primary__item {
   vertical-align: middle;
