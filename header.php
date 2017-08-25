@@ -32,9 +32,11 @@
 				<div class="c-page-header__controls">
 					
 					<!-- Search box -->
-					<div class="o-layout--right">
-						<?php dynamic_sidebar( 'header-widget-area' ); ?>
-					</div><!-- .o-layout--right -->
+					<?php if (is_active_sidebar('header-widget-area') ) { ?>
+						<div class="o-layout--right">
+							<?php dynamic_sidebar( 'header-widget-area' ); ?>
+						</div><!-- .o-layout--right -->
+					<?php } ?>
 					
 					<!-- Main menu -->
 					<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav" >☰</button>
