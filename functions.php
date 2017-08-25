@@ -147,20 +147,10 @@ require get_template_directory() . '/inc/walker-menu.php';
 require get_template_directory() . '/inc/custom-menus.php';
 
 /**
+ * Login/logout button.
+ */
+require get_template_directory() . '/inc/login-buttons.php';
+/**
 * Add support for custom logos
 */
 add_theme_support( 'custom-logo' );
-
-// Add login/out/register link to main menu
-function add_login_logout_link($items, $args) {
-	if ( $args->theme_location != 'primary' ) {
-  return $items;
-  }
-	ob_start();
-	wp_loginout('index.php');
-	$loginoutlink = ob_get_contents();
-	ob_end_clean();
-	$items .= '<li class="c-nav-primary__item login-btn">'. $loginoutlink .'</li>';
-	return $items;
-}
-add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2);
