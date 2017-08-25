@@ -52,3 +52,11 @@ $global-hints: false;
   padding-left: 30px;
   padding-right: 30px;
 }
+
+/**
+* Force sub-menu links to line up vertically
+*/
+.c-nav-primary__sub .c-nav-primary__item {
+  display: inline;
+  margin-left: 0;
+}
