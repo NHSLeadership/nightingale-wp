@@ -20,6 +20,7 @@ function nightingale_loginout_styling($link)
     $link = str_replace($login_text_before, $login_text_after ,$link);
     return $link;
 }
+// Use loginout filter hook (https://developer.wordpress.org/reference/hooks/loginout/)
 add_filter('loginout','nightingale_loginout_styling');
 
 // Only display login button if set in dashboard
