@@ -43,17 +43,6 @@ $global-hints: false;
 }
 
 /**
- * We can’t directly access the login button in the header, so we’re forcing it
- * to emulate the button styles within Nightingale via `@extends`.
- */
-.login-btn > a {
-  @extend .c-btn;
-  @extend .c-btn--submit;
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
-/**
 * Force sub-menu links to line up vertically
 */
 .c-nav-primary__sub .c-nav-primary__item {
