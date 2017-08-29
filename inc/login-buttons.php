@@ -14,11 +14,11 @@ function add_login_logout_link($items, $args) {
 add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2);
 
 // Apply stying to link
-function loginout_styling($link) 
+function nightingale_loginout_styling($link) 
 {
     $login_text_before = 'a href';
     $login_text_after = 'a class="c-btn  c-btn--submit" href';
     $link = str_replace($login_text_before, $login_text_after ,$link);
     return $link;
 }
-add_filter('loginout','loginout_styling');
+add_filter('loginout','nightingale_loginout_styling');
