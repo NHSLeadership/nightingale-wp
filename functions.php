@@ -94,7 +94,14 @@ require get_template_directory() . '/inc/widgets.php';
  * Enqueue scripts and styles.
  */
 function nightingale_wp_scripts() {
-	wp_enqueue_style( 'nightingale-wp-style', get_stylesheet_uri() );
+
+	// load minified stylesheet, if available, otherwise use style.css
+	$located = locate_template( 'style.min.css' );
+	if ($located != '' ) {
+		wp_enqueue_style ('nightingale-wp-style', get_template_directory_uri().'/style.min.css');
+	} else {
+		wp_enqueue_style( 'nightingale-wp-style', get_stylesheet_uri() );
+	}
 
 	wp_enqueue_script( 'nightingale-wp-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
