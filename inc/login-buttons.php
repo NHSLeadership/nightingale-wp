@@ -11,10 +11,6 @@ function add_login_logout_link($items, $args) {
 	$items .= '<li class="c-nav-primary__item">'. $loginoutlink .'</li>';
 	return $items;
 }
-// Only display login button if set in dashboard
-if (get_theme_mod('login_button')) {
-	add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2);
-}
 
 // Apply stying to link
 function nightingale_loginout_styling($link) 
@@ -25,3 +21,11 @@ function nightingale_loginout_styling($link)
     return $link;
 }
 add_filter('loginout','nightingale_loginout_styling');
+
+// Only display login button if set in dashboard
+function display_login_button() {
+	if (get_theme_mod('login_button')) {
+		add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2);
+	}
+}
+add_action( 'get_header', 'display_login_button' );
