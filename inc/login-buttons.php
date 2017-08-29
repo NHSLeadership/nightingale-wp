@@ -23,9 +23,9 @@ function nightingale_loginout_styling($link)
 add_filter('loginout','nightingale_loginout_styling');
 
 // Only display login button if set in dashboard
-function display_login_button() {
+function nightingale_display_login_button() {
 	if (get_theme_mod('login_button')) {
 		add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2);
 	}
 }
-add_action( 'get_header', 'display_login_button' );
+add_action( 'get_header', 'nightingale_display_login_button' );
