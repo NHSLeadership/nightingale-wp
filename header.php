@@ -64,9 +64,16 @@
 		
 	</header><!-- #jsPageHeader -->
 
-	<!-- Hook for inserting ribbons before the page content (sending page/post id as a parameter) -->
-	<div class="page-partnership-ribbon">
-	<?php do_action('nightingale_before_content', get_the_ID()); ?>
-	</div><!-- page-partnership-ribbon -->
+	<!-- page-specific partnership ribbon (added via custom field named "partnership-ribbon") -->
+	<?php $PartneshipRibbonText = get_post_meta(get_the_ID(), "partnership_ribbon", true);
+	if ($PartneshipRibbonText) { ?>
+		<div class="c-ribbon c-ribbon--expandable page-partnership-ribbon">
+			<div class="o-wrapper">
+				<details class="c-ribbon__body">
+					<summary><b>In partnership with:</b> <?php echo $PartneshipRibbonText; ?></summary>
+				</details>
+			</div>
+		</div>
+	<?php } ?>
 	
 	<div id="content" class="o-wrapper">		

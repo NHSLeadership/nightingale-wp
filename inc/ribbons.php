@@ -11,9 +11,14 @@ function ribbon_settings_page()
 	    <form method="post" action="options.php">
 	        <?php
 	            settings_fields("section");
+              echo "<hr>";
 							do_settings_sections("cookies-ribbon-options");
+              echo "<hr>";
 	            do_settings_sections("dev-ribbon-options");
+              echo "<hr>";
 							do_settings_sections("partner-ribbon-options");
+              ?><p>Please note: This ribbon will be displayed at the top of the <strong>entire website</strong>. To add page-specific partnership ribbons, add a custom field named "partnership_ribbon", with the text you require, to each relevant page.</p><?php
+              echo "<hr>";
 	            submit_button();
 	        ?>
 	    </form>
@@ -78,13 +83,6 @@ function add_partner_ribbon_checkbox()
 	<?php
 }
 
-function add_partner_ribbon_pages()
-{
-	?>
-	<input class="widefat" type="textarea" name="partner_ribbon_pages" id="partner_ribbon_pages" value="<?php echo get_option('partner_ribbon_pages'); ?>" />
-	<?php
-}
-
 function add_partner_ribbon_text()
 {
 	?>
@@ -109,10 +107,8 @@ function add_theme_panel_fields()
 		register_setting("section", "dev_ribbon_url");
 	add_settings_section("section", "Partnership Ribbon", null, "partner-ribbon-options");
 		add_settings_field("partner_ribbon_checkbox", "Display Partnership Ribbon?", "add_partner_ribbon_checkbox", "partner-ribbon-options", "section");
-		add_settings_field("partner_ribbon_pages", "Ribbon Pages:", "add_partner_ribbon_pages", "partner-ribbon-options", "section");
 		add_settings_field("partner_ribbon_text", "Ribbon Text:", "add_partner_ribbon_text", "partner-ribbon-options", "section");
 		register_setting("section", "partner_ribbon_checkbox");
-		register_setting("section", "partner_ribbon_pages");
 		register_setting("section", "partner_ribbon_text");
 }
 
@@ -151,32 +147,16 @@ function display_dev_ribbon() {
 }
 add_action('nightingale_before_header','display_dev_ribbon');
 
-function display_partner_ribbon($pageid) {
-// Display partnership ribbon with text from settings
-	// Read list of specified pages into array
-	$pages_array = explode(',',get_option('partner_ribbon_pages'));
-	// Loop through list of specified pages
-	foreach($pages_array as $page_id) {
-		// If current page matches, or no pages specified, display ribbon
-		if ($page_id==null || $pageid==$page_id) {
-      echo '<div class="c-ribbon  c-ribbon--expandable">
-          <div class="o-wrapper">
-            <details class="c-ribbon__body">
-              <summary><b>In partnership with:</b> '.get_option('partner_ribbon_text').'</summary>
-            </details>
-          </div>
-        </div>';
-		}
-	}
+function display_partner_ribbon() {
+// If site-wide partnership ribbon checkbox is selected, display partnership ribbon with text from settings
+  if (get_option('partner_ribbon_checkbox') != null) {
+    echo '<div class="c-ribbon  c-ribbon--expandable">
+        <div class="o-wrapper">
+          <details class="c-ribbon__body">
+            <summary><b>In partnership with:</b> '.get_option('partner_ribbon_text').'</summary>
+          </details>
+        </div>
+      </div>';
+  }
 }
-// If partnership ribbon checkbox is selected, display partnership ribbon with text from settings
-if (get_option('partner_ribbon_checkbox') != null) {
-	// If specific pages set, display partnership ribbon above page content for those pages
-	if(get_option('partner_ribbon_pages')!=null) {
-		add_action('nightingale_before_content','display_partner_ribbon',10,1);	
-	}
-	// If no page specified, display partnership ribbon above page header for all pages
-	else {
-		add_action('nightingale_before_header','display_partner_ribbon');
-	}
-}
+add_action('nightingale_before_header','display_partner_ribbon');
