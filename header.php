@@ -69,7 +69,7 @@
 	if (get_the_ID()) {
 		$PartneshipRibbonText = get_post_meta(get_the_ID(), "partnership_ribbon", true);
 		if ($PartneshipRibbonText) { ?>
-			<div class="c-ribbon c-ribbon--expandable page-partnership-ribbon">
+			<div class="c-ribbon c-ribbon--expandable page-partnership-ribbon u-margin-bottom">
 				<div class="o-wrapper">
 					<details class="c-ribbon__body">
 						<summary><b>In partnership with:</b> <?php echo $PartneshipRibbonText; ?></summary>

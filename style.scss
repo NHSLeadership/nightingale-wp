@@ -52,9 +52,7 @@ $global-hints: false;
 
 /**
 * Remove space above page-specific partnership ribbons
-* and make sure space above page headings below these ribbons remains the same
 */
 .page-partnership-ribbon {
   margin-top: -30px !important;
-  margin-bottom: 28px !important;
 }
