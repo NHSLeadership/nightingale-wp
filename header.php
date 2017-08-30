@@ -64,7 +64,7 @@
 		
 	</header><!-- #jsPageHeader -->
 
-	<!-- page-specific partnership ribbon (added via custom field named "partnership-ribbon") -->
+	<!-- page-specific partnership ribbon (added via custom field named "partnership_ribbon") -->
 	<?php $PartneshipRibbonText = get_post_meta(get_the_ID(), "partnership_ribbon", true);
 	if ($PartneshipRibbonText) { ?>
 		<div class="c-ribbon c-ribbon--expandable page-partnership-ribbon">
