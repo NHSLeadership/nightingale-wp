@@ -65,15 +65,20 @@
 	</header><!-- #jsPageHeader -->
 
 	<!-- page-specific partnership ribbon (added via custom field named "partnership_ribbon") -->
-	<?php $PartneshipRibbonText = get_post_meta(get_the_ID(), "partnership_ribbon", true);
-	if ($PartneshipRibbonText) { ?>
-		<div class="c-ribbon c-ribbon--expandable page-partnership-ribbon">
-			<div class="o-wrapper">
-				<details class="c-ribbon__body">
-					<summary><b>In partnership with:</b> <?php echo $PartneshipRibbonText; ?></summary>
-				</details>
+	<?php 
+	if (get_the_ID()) {
+		$PartneshipRibbonText = get_post_meta(get_the_ID(), "partnership_ribbon", true);
+		if ($PartneshipRibbonText) { ?>
+			<div class="c-ribbon c-ribbon--expandable page-partnership-ribbon">
+				<div class="o-wrapper">
+					<details class="c-ribbon__body">
+						<summary><b>In partnership with:</b> <?php echo $PartneshipRibbonText; ?></summary>
+					</details>
+				</div>
 			</div>
-		</div>
-	<?php } ?>
+	<?php 
+		}
+	}
+	?>
 	
 	<div id="content" class="o-wrapper">		
