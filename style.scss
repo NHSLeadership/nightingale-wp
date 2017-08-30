@@ -49,3 +49,11 @@ $global-hints: false;
   display: inline;
   margin-left: 0;
 }
+
+/**
+* Remove space above page-specific partnership ribbons
+*/
+.page-partnership-ribbon > .c-ribbon {
+  margin-top: -40px !important;
+  margin-bottom: 40px !important;
+}

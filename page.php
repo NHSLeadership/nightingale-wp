@@ -14,9 +14,6 @@
 
 get_header(); ?>
 
-	<!-- Hook for inserting ribbons before the page content (sending page/post id as a parameter) -->
-	<?php do_action('nightingale_before_content', get_the_ID()); ?>
-
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
