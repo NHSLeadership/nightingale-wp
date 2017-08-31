@@ -69,17 +69,17 @@
 	if (get_the_ID()) {
 		$PartneshipRibbonText = get_post_meta(get_the_ID(), "partnership_ribbon", true);
 		if ($PartneshipRibbonText) {
-			$SummaryDetail = '<summary><b>In partnership with:</b> '.$PartneshipRibbonText.'</summary>';
+			$SummaryDetail = '<b>In partnership with:</b> '.$PartneshipRibbonText;
 			?>
 			<div class="c-ribbon c-ribbon--expandable page-partnership-ribbon u-margin-bottom">
 				<div class="o-wrapper">
 					<?php
 					if (strlen($PartneshipRibbonText) <= 30 ) {
-						// don't use details element for short text
-						echo '<div class="c-ribbon__body">'.$SummaryDetail.'</div><!-- .c-ribbon__body -->';
+						// don't use details/summary for short text
+						echo '<div class="c-ribbon__body short-ribbon">'.$SummaryDetail.'</div><!-- .c-ribbon__body -->';
 					}
 					else {
-						echo '<details class="c-ribbon__body">'.$SummaryDetail.'</details><!-- .c-ribbon__body -->';
+						echo '<details class="c-ribbon__body"><summary>'.$SummaryDetail.'</summary></details><!-- .c-ribbon__body -->';
 		 			}
 					?>
 			</div><!-- .o-wrapper -->
