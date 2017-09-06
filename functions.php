@@ -107,11 +107,19 @@ function nightingale_wp_scripts() {
 
 	wp_enqueue_script( 'nightingale-wp-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 	
-	// Local storage scripts
-	wp_register_script('nightingale-burger-menu', get_template_directory_uri() . '/js/burger-menu.js', array(), '1.1', true);
+	// JS variables
+	wp_register_script('nightingale-javascript-variables', get_template_directory_uri() . '/js/javascript-variables.js', array(), '1.1', false);
+	wp_enqueue_script('nightingale-javascript-variables');
+
+	// Mobile menu script
+	wp_register_script('nightingale-burger-menu', get_template_directory_uri() . '/js/burger-menu-new.js', array(), '1.1', true);
 	wp_enqueue_script('nightingale-burger-menu');
 	
-	// Local storage scripts
+	// Heading selector script
+	wp_register_script('nightingale-heading-selector', get_template_directory_uri() . '/js/heading-selector.js', array(), '1.1', true);
+	wp_enqueue_script('nightingale-heading-selector');
+	
+	// Local storage script
 	wp_register_script('nightingale-local-storage', get_template_directory_uri() . '/js/local-storage.js', array(), '1.1', true);
 	wp_enqueue_script('nightingale-local-storage');
 	
