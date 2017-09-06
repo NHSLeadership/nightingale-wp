@@ -106,7 +106,19 @@ function nightingale_wp_scripts() {
 	wp_enqueue_script( 'nightingale-wp-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'nightingale-wp-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-
+	
+	// Local storage scripts
+	wp_register_script('nightingale-burger-menu', get_template_directory_uri() . '/js/burger-menu.js', array(), '1.1', true);
+	wp_enqueue_script('nightingale-burger-menu');
+	
+	// Local storage scripts
+	wp_register_script('nightingale-local-storage', get_template_directory_uri() . '/js/local-storage.js', array(), '1.1', true);
+	wp_enqueue_script('nightingale-local-storage');
+	
+	// Yukky Safari bug fix
+	wp_register_script('nightingale-safari-bug-fix', get_template_directory_uri() . '/js/safari-bug-fix.js', array(), '1.1', true);
+	wp_enqueue_script('nightingale-safari-bug-fix');
+	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
