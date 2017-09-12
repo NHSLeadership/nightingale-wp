@@ -22,7 +22,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 
 
 /* Enable/disable css hints */
-$global-hints: false;
+$global-hints: true;
 
 /* Pull in styles from Nightingale framework */
 @import "nightingale/main.scss";
