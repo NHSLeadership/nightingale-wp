@@ -111,9 +111,9 @@ function nightingale_wp_scripts() {
 	wp_register_script('nightingale-javascript-variables', get_template_directory_uri() . '/js/javascript-variables.js', array(), '1.1', false);
 	wp_enqueue_script('nightingale-javascript-variables');
 
-	// Mobile menu script
-	wp_register_script('nightingale-burger-menu', get_template_directory_uri() . '/js/burger-menu.js', array(), '1.1', true);
-	wp_enqueue_script('nightingale-burger-menu');
+	// Script for menus, sub-menus, burger-menu, etc.
+	wp_register_script('nightingale-menus', get_template_directory_uri() . '/node_modules/nightingale/js/menus.js', array(), '1.1', true);
+	wp_enqueue_script('nightingale-menus');
 	
 	// Heading selector script
 	wp_register_script('nightingale-heading-selector', get_template_directory_uri() . '/js/heading-selector.js', array(), '1.1', true);
@@ -124,7 +124,7 @@ function nightingale_wp_scripts() {
 	wp_enqueue_script('nightingale-local-storage');
 	
 	// Yukky Safari bug fix
-	wp_register_script('nightingale-safari-bug-fix', get_template_directory_uri() . '/js/safari-bug-fix.js', array(), '1.1', true);
+	wp_register_script('nightingale-safari-bug-fix', get_template_directory_uri() . '/node_modules/nightingale/js/safari-bug-fix.js', array(), '1.1', true);
 	wp_enqueue_script('nightingale-safari-bug-fix');
 	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
