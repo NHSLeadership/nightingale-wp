@@ -112,7 +112,7 @@ function nightingale_wp_scripts() {
 	wp_enqueue_script('nightingale-javascript-variables');
 
 	// Mobile menu script
-	wp_register_script('nightingale-burger-menu', get_template_directory_uri() . '/js/burger-menu-new.js', array(), '1.1', true);
+	wp_register_script('nightingale-burger-menu', get_template_directory_uri() . '/js/burger-menu.js', array(), '1.1', true);
 	wp_enqueue_script('nightingale-burger-menu');
 	
 	// Heading selector script
