@@ -16,7 +16,7 @@ function add_login_logout_link($items, $args) {
 function nightingale_loginout_styling($link) 
 {
     $login_text_before = 'a href';
-    $login_text_after = 'a class="c-btn  c-btn--submit" href';
+    $login_text_after = 'a class="c-btn c-btn--submit c-btn--natural" href';
     $link = str_replace($login_text_before, $login_text_after ,$link);
     return $link;
 }
