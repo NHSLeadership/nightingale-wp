@@ -24,6 +24,26 @@ function nightingale_wp_customize_register( $wp_customize ) {
 		'settings'   => 'login_button',
 		'type'      => 'checkbox',
 	) ) );
+
+	// Customizer theme settings section
+	$wp_customize->add_section( 'theme_settings', array(
+		'title'    => __( 'Theme Settings' ),
+		'priority' => 999,
+	) );
+
+// Customizer show sidebar section
+	$wp_customize->add_setting( 'show_sidebar' , array(
+    'default'     => true,
+    'transport'   => 'refresh',
+	) );
+	// Customizer show sidebar control
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'show_sidebar', array(
+		'label'        => 'Display Sidebar',
+		'section'    => 'theme_settings',
+		'settings'   => 'show_sidebar',
+		'type'      => 'checkbox',
+		'default'     => true
+	) ) );
 }
 add_action( 'customize_register', 'nightingale_wp_customize_register' );
 
