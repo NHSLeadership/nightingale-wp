@@ -40,7 +40,11 @@ get_header(); ?>
 
 			endwhile;
 
-			the_posts_navigation();
+//			the_posts_navigation();
+			the_posts_pagination( array(
+				'type'               => 'list',
+				'screen_reader_text' => 'Other Posts'
+			));
 
 		else :
 
