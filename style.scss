@@ -27,6 +27,9 @@ $global-hints: true;
 /* Pull in styles from Nightingale framework */
 @import "nightingale/main.scss";
 
+/* Pull in underscores sidebar styling */
+@import "layouts/content-sidebar.css";
+
 /* Map WordPress styles to Nightingale */
 .footer-widget ul {
   @extend .o-list-bare;
