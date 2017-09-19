@@ -13,8 +13,15 @@
  */
 
 get_header(); ?>
-
-	<div id="primary" class="content-area">
+<div class="o-layout  o-layout--wide">
+	<div id="primary" class="o-layout__item
+	<?php
+	// reduce width of main content if "display sidebar" if set in dashboard
+	if ( get_theme_mod('show_sidebar')) {
+		echo '  u-8/12@lg';
+	}
+	?>
+	">
 		<main id="main" class="site-main" role="main">
 
 		<?php
@@ -50,7 +57,7 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-
+	<?php get_sidebar(); ?>
+</div><!-- .o-layout -->
 <?php
-get_sidebar();
 get_footer();
