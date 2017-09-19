@@ -31,7 +31,7 @@ $global-hints: true;
 @import "layouts/content-sidebar.css";
 
 /* Map WordPress styles to Nightingale */
-.footer-widget ul {
+.widget ul {
   @extend .o-list-bare;
 }
 .custom-logo-link {
