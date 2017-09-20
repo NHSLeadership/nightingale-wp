@@ -14,14 +14,9 @@
 
 get_header(); ?>
 <div class="o-layout  o-layout--wide">
-	<div id="primary" class="o-layout__item
-	<?php
-	// reduce width of main content if "display sidebar" if set in dashboard
-	if ( get_theme_mod('show_sidebar')) {
-		echo '  u-8/12@lg';
-	}
-	?>
-	">
+
+	<!-- reduce width of primary content if sidebar contains widgets -->
+	<div id="primary" class="o-layout__item<?php if ( is_active_sidebar( 'sidebar-1' ) ) { echo ' u-8/12@lg'; }?>">
 		<main id="main" class="site-main" role="main">
 
 		<?php

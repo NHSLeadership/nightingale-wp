@@ -15,19 +15,20 @@ function nightingale_wp_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
-	// Customizer theme settings section
+	// Add "Theme Settings" section
+	// This appears in the WordPress dashboard under Appearance > Customize
 	$wp_customize->add_section( 'theme_settings', array(
 		'title'    => __( 'Theme Settings' ),
 		'priority' => 999,
 	) );
 
-	// Customizer login button setting
+	// Add "Login Button" setting within "Theme Settings" section (see above)
 	$wp_customize->add_setting( 'login_button' , array(
     'default'     => true,
     'transport'   => 'refresh',
 	) );
 
-	// Customizer login button control
+	// Add "Login Button" control within "Theme Settings" setting (see above)
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'login_button', array(
 		'label'        => 'Display Login Button in Menu(s)',
 		'section'    => 'theme_settings',
@@ -35,19 +36,6 @@ function nightingale_wp_customize_register( $wp_customize ) {
 		'type'      => 'checkbox',
 	) ) );
 
-	// Customizer show sidebar setting
-	$wp_customize->add_setting( 'show_sidebar' , array(
-    'default'     => true,
-    'transport'   => 'refresh',
-	) );
-	// Customizer show sidebar control
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'show_sidebar', array(
-		'label'        => 'Display Sidebar',
-		'section'    => 'theme_settings',
-		'settings'   => 'show_sidebar',
-		'type'      => 'checkbox',
-		'default'     => true
-	) ) );
 }
 add_action( 'customize_register', 'nightingale_wp_customize_register' );
 
