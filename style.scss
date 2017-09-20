@@ -27,14 +27,13 @@ $global-hints: true;
 /* Pull in styles from Nightingale framework */
 @import "nightingale/main.scss";
 
-/* Pull in underscores sidebar styling */
-@import "layouts/content-sidebar.css";
-
 /* Map WordPress styles to Nightingale */
 .widget ul {
+  // Use Nightingale styling for lists within widgets
   @extend .o-list-bare;
 }
 .custom-logo-link {
+  // Use Nightingale styling for logo
   @extend .c-page-header__lockup;
 }
 
