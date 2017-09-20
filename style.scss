@@ -34,21 +34,6 @@ $global-hints: true;
 .custom-logo-link {
   @extend .c-page-header__lockup;
 }
-.nav-links > ul {
-  @extend .c-pagination;
-}
-.nav-links > ul > li {
-  @extend .c-pagination__item;
-}
-.nav-links > ul > li > a {
-  @extend .c-pagination__link;
-}
-.nav-links > ul > li > a.prev {
-  @extend .c-sprite, .c-sprite--prev-blue
-}
-.nav-links > ul > li > a.next {
-  @extend .c-sprite, .c-sprite--next-blue
-}
 
 /**
  * Override Nightingale’s default nav alignment (until issue #146 is addressed).
