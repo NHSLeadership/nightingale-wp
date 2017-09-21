@@ -161,3 +161,8 @@ require get_template_directory() . '/inc/login-buttons.php';
 * Add support for custom logos
 */
 add_theme_support( 'custom-logo' );
+
+/**
+ * Custom pagination.
+ */
+require get_template_directory() . '/inc/pagination.php';
