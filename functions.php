@@ -166,3 +166,8 @@ add_theme_support( 'custom-logo' );
  * Custom pagination.
  */
 require get_template_directory() . '/inc/pagination.php';
+
+/**
+ * Gravity Forms styling.
+ */
+require get_template_directory() . '/inc/gravity-forms.php';
