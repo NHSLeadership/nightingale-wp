@@ -28,10 +28,12 @@ $global-hints: true;
 @import "nightingale/main.scss";
 
 /* Map WordPress styles to Nightingale */
-.footer-widget ul {
+.widget ul {
+  // Use Nightingale styling for lists within widgets
   @extend .o-list-bare;
 }
 .custom-logo-link {
+  // Use Nightingale styling for logo
   @extend .c-page-header__lockup;
 }
 
