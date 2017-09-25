@@ -64,6 +64,10 @@
 		
 	</header><!-- #jsPageHeader -->
 
+	<div class="o-wrapper">
+		<?php the_breadcrumb() ?>
+	</div><!-- .o-wrapper -->
+
 	<!-- page-specific partnership ribbon (added via custom field named "partnership_ribbon") -->
 	<?php 
 	if (get_the_ID()) {
