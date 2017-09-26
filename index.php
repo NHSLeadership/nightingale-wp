@@ -40,9 +40,6 @@ get_header(); ?>
 
 			endwhile;
 
-//			the_posts_navigation();
-			nightingale_pagination();
-			
 		else :
 
 			get_template_part( 'template-parts/content', 'none' );
@@ -54,4 +51,5 @@ get_header(); ?>
 
 <?php
 get_sidebar();
+nightingale_pagination();
 get_footer();
