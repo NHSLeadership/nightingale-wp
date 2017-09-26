@@ -53,9 +53,9 @@ $global-hints: true;
 }
 
 /**
-* Remove space above page-specific partnership ribbons
+* Remove space above breadcrumbs and page-specific partnership ribbons
 */
-.page-partnership-ribbon {
+.page-partnership-ribbon, .c-breadcrumb {
   margin-top: -30px !important;
 }
 
