@@ -36,32 +36,7 @@ $global-hints: true;
   // Use Nightingale styling for logo
   @extend .c-page-header__lockup;
 }
-// Gravity Forms
-.gform_title {
-  @extend h2;
-}
-.gform_heading {
-  @extend .u-margin-bottom-small;
-}
-.gform_description {
-  // No matching Nightingale element
-}
-ul.gform_fields {
-  @extend .c-form-list;
-}
-.ginput_container_select {
-  @extend .c-form-dropdown;
-}
-.gfield_select {
-  @extend .c-form-dropdown__select;
-  @extend .c-form-input;
-}
-.gfield_description {
-  @extend small;
-}
-.gform_fields input {
-  @extend .c-form-input;
-}
+
 /**
  * Override Nightingale’s default nav alignment (until issue #146 is addressed).
  */
