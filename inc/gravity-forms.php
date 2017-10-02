@@ -34,6 +34,9 @@
 
     // Replace checkbox and radio option <label>s with <span>s
     $form_string = preg_replace("#<label for='choice(.*?)>(.*?)</label>#i", "<span class='c-form-checkbox__faux'></span>$2", $form_string);
+    
+    //Style the submit button
+    $form_string = str_replace( "gform_button", "c-btn c-btn--submit gform_button", $form_string );
 
     return $form_string;
  }, 10, 2 );
@@ -57,12 +60,12 @@ add_filter( 'gform_field_content', function ( $field_content, $field ) {
     if ( $field->type == 'email' ) {
       $field_content = str_replace( "type='email' value='' class='", "type='email' value='' class='c-form-input ", $field_content );
       $errorHTML = <<<'EOD'
-  <details class='c-form-error'>
-      <summary>$1</summary>
-      <div>
-          Please enter a valid email address in the form <em>name@address.com</em>
-      </div>
-  </details>
+        <details class='c-form-error'>
+            <summary>$1</summary>
+            <div>
+                Please enter a valid email address in the form <em>name@address.com</em>
+            </div>
+        </details>
 EOD;
       $field_content = preg_replace("#<div class='gfield_description validation_message'>(.*?)</div>#", $errorHTML, $field_content);
     }
