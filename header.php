@@ -64,6 +64,8 @@
 		
 	</header><!-- #jsPageHeader -->
 
+	<div id="content" class="o-wrapper">
+	
 	<!-- page-specific partnership ribbon (added via custom field named "partnership_ribbon") -->
 	<?php 
 	if (get_the_ID()) {
@@ -88,5 +90,3 @@
 		}
 	}
 	?>
-	
-	<div id="content" class="o-wrapper">		
