@@ -56,6 +56,15 @@ add_filter( 'gform_field_content', function ( $field_content, $field ) {
     // Emails
     if ( $field->type == 'email' ) {
       $field_content = str_replace( "type='email' value='' class='", "type='email' value='' class='c-form-input ", $field_content );
+      $errorHTML = <<<'EOD'
+  <details class='c-form-error'>
+      <summary>$1</summary>
+      <div>
+          Please enter a valid email address in the form <em>name@address.com</em>
+      </div>
+  </details>
+EOD;
+      $field_content = preg_replace("#<div class='gfield_description validation_message'>(.*?)</div>#", $errorHTML, $field_content);
     }
     
     // Numbers
