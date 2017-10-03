@@ -59,6 +59,15 @@ add_filter( 'gform_field_content', function ( $field_content, $field ) {
     // Text inputs
     if ( $field->type == 'text' ) {
       $field_content = str_replace( "type='text' value='' class='", "type='text' value='' class='c-form-input ", $field_content );
+      $errorHTML = <<<'EOD'
+        <details class='c-form-error'>
+            <summary>$1</summary>
+            <div>
+                Please enter valid text
+            </div>
+        </details>
+EOD;
+      $field_content = preg_replace("#<div class='gfield_description validation_message'>(.*?)</div>#", $errorHTML, $field_content);
     }
 
     // Text areas
@@ -89,6 +98,15 @@ EOD;
     // Numbers
     if ( $field->type == 'number' ) {
       $field_content = preg_replace("#<input(.*?)class='#", "<input$1class='c-form-input ", $field_content);
+      $errorHTML = <<<'EOD'
+        <details class='c-form-error'>
+            <summary>$1</summary>
+            <div>
+                Please enter a valid number
+            </div>
+        </details>
+EOD;
+      $field_content = preg_replace("#<div class='gfield_description validation_message'>(.*?)</div>#", $errorHTML, $field_content);
     }
     
     // Checkboxes
