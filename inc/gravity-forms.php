@@ -57,6 +57,11 @@ add_filter( 'gform_field_content', function ( $field_content, $field ) {
       $field_content = str_replace( "type='text' value='' class='", "type='text' value='' class='c-form-input ", $field_content );
     }
 
+    // Text areas
+    if ( $field->type == 'textarea' ) {
+      $field_content = preg_replace( "#<textarea(.*?)class='#", "<textarea$1class='c-form-input ", $field_content );
+    }
+
     // Selects
     if ( $field->type == 'select' ) {
       $field_content = str_replace( "ginput_container ginput_container_select", "c-form-dropdown", $field_content );
