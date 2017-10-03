@@ -16,6 +16,13 @@
  // See https://docs.gravityforms.com/gform_get_form_filter/
  add_filter( 'gform_get_form_filter', function ( $form_string, $form ) {
 
+    // Replace form description span with <small> elements
+    $form_string = preg_replace("#<span class='gform_description'>(.*?)</span>#", "<small>$1</small>", $form_string);
+
+    // Style error messages
+    $form_string = str_replace( "validation_error", "c-form-input is-error validation_error", $form_string );
+    $form_string = str_replace( "gfield_error", "c-form-input is-error validation_error", $form_string );
+
     // Style <ul>
     $form_string = str_replace( "class='gform_fields", "class='c-form-list gform_fields", $form_string );
 
