@@ -20,8 +20,12 @@
     $form_string = preg_replace("#<span class='gform_description'>(.*?)</span>#", "<small>$1</small>", $form_string);
 
     // Style error messages
-    $form_string = str_replace( "validation_error", "c-form-input is-error validation_error", $form_string );
-    $form_string = str_replace( "gfield_error", "c-form-input is-error validation_error", $form_string );
+      // Message at top of form
+      $form_string = str_replace( "validation_error", "c-form-input is-error validation_error", $form_string );
+      // Fields with CSS class = "gfield_error"
+      $form_string = str_replace( "gfield_error", "is-error gfield_error", $form_string );
+      // Fields contained in <li> elements that have CSS class = "gfield_error"
+      $form_string = preg_replace( "#<li(.*?)gfield_error(.*?)<input(.*?)class='#s", "<li$1gfield_error$2<input$3class='gfield_error is-error ", $form_string );
 
     // Style <ul>
     $form_string = str_replace( "class='gform_fields", "class='c-form-list gform_fields", $form_string );
