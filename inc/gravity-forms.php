@@ -26,7 +26,7 @@
       $form_string = str_replace( "gfield_error", "is-error gfield_error", $form_string );
       // Fields contained in <li> elements that have CSS class = "gfield_error"
       $form_string = preg_replace( "#<li(.*?)gfield_error(.*?)<input(.*?)class='#s", "<li$1gfield_error$2<input$3class='gfield_error is-error ", $form_string );
-      // Actual error messages
+      // Error messages below fields
       $form_string = str_replace("validation_message", "c-form-error validation_message", $form_string);
 
     // Style <ul>
@@ -41,6 +41,9 @@
 
     // Replace field instruction divs with <small> elements
     $form_string = preg_replace("#<div class='instruction(.*?)>(.*?)</div>#", "<small>$2</small>", $form_string);
+    
+    // Indicate mandatory fields with "Required" rather than "*" 
+    $form_string = str_replace( "<span class='gfield_required'>*</span>", "<span class='gfield_required'> (Required)</span>", $form_string );
 
     // Replace main <label> elements with <strong>s
     $form_string = preg_replace("#<label class='gfield_label'(.*?)>(.*?)</label>#", "<strong class='c-form-label'>$2</strong>", $form_string);
