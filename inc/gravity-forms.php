@@ -26,6 +26,8 @@
       $form_string = str_replace( "gfield_error", "is-error gfield_error", $form_string );
       // Fields contained in <li> elements that have CSS class = "gfield_error"
       $form_string = preg_replace( "#<li(.*?)gfield_error(.*?)<input(.*?)class='#s", "<li$1gfield_error$2<input$3class='gfield_error is-error ", $form_string );
+      // Actual error messages
+      $form_string = str_replace("validation_message", "c-form-error validation_message", $form_string);
 
     // Style <ul>
     $form_string = str_replace( "class='gform_fields", "class='c-form-list gform_fields", $form_string );
@@ -36,6 +38,9 @@
 
     // Replace field description divs with <small> elements
     $form_string = preg_replace("#<div class='gfield_description'>(.*?)</div>#", "<small>$1</small>", $form_string);
+
+    // Replace field instruction divs with <small> elements
+    $form_string = preg_replace("#<div class='instruction(.*?)>(.*?)</div>#", "<small>$2</small>", $form_string);
 
     // Replace main <label> elements with <strong>s
     $form_string = preg_replace("#<label class='gfield_label'(.*?)>(.*?)</label>#", "<strong class='c-form-label'>$2</strong>", $form_string);
@@ -59,15 +64,6 @@ add_filter( 'gform_field_content', function ( $field_content, $field ) {
     // Text inputs
     if ( $field->type == 'text' ) {
       $field_content = str_replace( "type='text' value='' class='", "type='text' value='' class='c-form-input ", $field_content );
-      $errorHTML = <<<'EOD'
-        <details class='c-form-error'>
-            <summary>$1</summary>
-            <div>
-                Please enter valid text
-            </div>
-        </details>
-EOD;
-      $field_content = preg_replace("#<div class='gfield_description validation_message'>(.*?)</div>#", $errorHTML, $field_content);
     }
 
     // Text areas
@@ -84,29 +80,11 @@ EOD;
     // Emails
     if ( $field->type == 'email' ) {
       $field_content = str_replace( "type='email' value='' class='", "type='email' value='' class='c-form-input ", $field_content );
-      $errorHTML = <<<'EOD'
-        <details class='c-form-error'>
-            <summary>$1</summary>
-            <div>
-                Please enter a valid email address in the form <em>name@address.com</em>
-            </div>
-        </details>
-EOD;
-      $field_content = preg_replace("#<div class='gfield_description validation_message'>(.*?)</div>#", $errorHTML, $field_content);
     }
     
     // Numbers
     if ( $field->type == 'number' ) {
       $field_content = preg_replace("#<input(.*?)class='#", "<input$1class='c-form-input ", $field_content);
-      $errorHTML = <<<'EOD'
-        <details class='c-form-error'>
-            <summary>$1</summary>
-            <div>
-                Please enter a valid number
-            </div>
-        </details>
-EOD;
-      $field_content = preg_replace("#<div class='gfield_description validation_message'>(.*?)</div>#", $errorHTML, $field_content);
     }
     
     // Checkboxes

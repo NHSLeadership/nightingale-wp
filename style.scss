@@ -63,5 +63,16 @@ $global-hints: true;
 * Set colour of short partnership ribbon text 
 */
 .short-ribbon {
-  color: #231f20;
+  color: #231f20 !important;
+}
+
+.gfield_description {
+  
+}
+
+/**
+* Apply colour to Gravity Forms error messages
+*/
+.validation_message {
+  color: $color-error;
 }
