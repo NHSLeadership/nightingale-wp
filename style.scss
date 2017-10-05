@@ -65,3 +65,18 @@ $global-hints: true;
 .short-ribbon {
   color: #231f20;
 }
+
+/**
+* Restrict images to width of container
+* with height adjusting to maintain aspect ratio
+*/
+img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+.entry-content {
+  clear: both !important;
+}
+h1, h2 {
+  margin-bottom: 0;
+}

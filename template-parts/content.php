@@ -17,17 +17,23 @@
 		else :
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
-
+		
+		
 		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
 			<?php nightingale_wp_posted_on(); ?>
 		</div><!-- .entry-meta -->
 		<?php
-		endif; ?>
-	</header><!-- .entry-header -->
+		endif;
+ 	
+	?></header><!-- .entry-header -->
 
 	<div class="entry-content">
 		<?php
+
+			// Display featured image
+			the_post_thumbnail();
+
 			the_content( sprintf(
 				/* translators: %s: Name of current post. */
 				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'nightingale-wp' ), array( 'span' => array( 'class' => array() ) ) ),
@@ -41,7 +47,7 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
+	<footer class="u-margin-bottom-small entry-footer">
 		<?php nightingale_wp_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
