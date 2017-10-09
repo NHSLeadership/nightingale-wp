@@ -4,9 +4,7 @@
 */
 function the_breadcrumb() {
   
-//  $mods = get_theme_mods();
-//var_dump($mods);
-
+  // Check that breadcrumbs are enabled in customizer
   if (get_theme_mod('breadcrumbs')) {
 
     // Check current page is NOT the home page
