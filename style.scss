@@ -63,11 +63,7 @@ $global-hints: true;
 * Set colour of short partnership ribbon text 
 */
 .short-ribbon {
-  color: #231f20 !important;
-}
-
-.gfield_description {
-  
+  color: $color-ribbon-expandable;
 }
 
 /**
