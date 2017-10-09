@@ -2,7 +2,7 @@
 /**
 * Generate breadcrumbs
 */
-function the_breadcrumb() {
+function nightingale_breadcrumb() {
   
   // Check that breadcrumbs are enabled in customizer
   if (get_theme_mod('breadcrumbs')) {

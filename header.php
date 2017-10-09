@@ -67,7 +67,7 @@
 	<div id="content" class="o-wrapper">
 		
 		<!-- Breadcrumbs -->
-		<?php the_breadcrumb() ?>
+		<?php nightingale_breadcrumb() ?>
 	
 		<!-- page-specific partnership ribbon (added via custom field named "partnership_ribbon") -->
 		<?php 
