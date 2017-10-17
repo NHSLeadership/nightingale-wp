@@ -36,6 +36,20 @@ function nightingale_wp_customize_register( $wp_customize ) {
 		'type'      => 'checkbox',
 	) ) );
 
+	// Add "Breadcrumbs" setting within "Theme Settings" section (see above)
+	$wp_customize->add_setting( 'breadcrumbs' , array(
+    'default'     => true,
+    'transport'   => 'refresh',
+	) );
+
+	// Add "Breadcrumbs" control within "Theme Settings" setting (see above)
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'breadcrumbs', array(
+		'label'        => 'Display Breadcrumbs in Header',
+		'section'    => 'theme_settings',
+		'settings'   => 'breadcrumbs',
+		'type'      => 'checkbox',
+	) ) );
+
 }
 add_action( 'customize_register', 'nightingale_wp_customize_register' );
 

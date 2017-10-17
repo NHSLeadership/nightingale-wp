@@ -53,9 +53,9 @@ $global-hints: true;
 }
 
 /**
-* Remove space above page-specific partnership ribbons
+* Remove space above breadcrumbs and page-specific partnership ribbons
 */
-.page-partnership-ribbon {
+.page-partnership-ribbon, .c-breadcrumb {
   margin-top: -30px !important;
 }
 
@@ -63,7 +63,7 @@ $global-hints: true;
 * Set colour of short partnership ribbon text 
 */
 .short-ribbon {
-  color: #231f20;
+  color: $color-ribbon-expandable;
 }
 
 /**
@@ -79,4 +79,11 @@ img {
 }
 h1, h2 {
   margin-bottom: 0;
+}
+
+/**
+* Apply colour to Gravity Forms error messages
+*/
+.validation_message {
+  color: $color-error;
 }
