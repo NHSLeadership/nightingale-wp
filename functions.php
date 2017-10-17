@@ -168,6 +168,11 @@ add_theme_support( 'custom-logo' );
 require get_template_directory() . '/inc/pagination.php';
 
 /**
+ * Breadcrumbs.
+ */
+require get_template_directory() . '/inc/breadcrumbs.php';
+
+/**
  * Gravity Forms styling.
  */
 require get_template_directory() . '/inc/gravity-forms.php';

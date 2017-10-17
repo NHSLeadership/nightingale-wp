@@ -65,28 +65,31 @@
 	</header><!-- #jsPageHeader -->
 
 	<div id="content" class="o-wrapper">
+		
+		<!-- Breadcrumbs -->
+		<?php nightingale_breadcrumb() ?>
 	
-	<!-- page-specific partnership ribbon (added via custom field named "partnership_ribbon") -->
-	<?php 
-	if (get_the_ID()) {
-		$PartneshipRibbonText = get_post_meta(get_the_ID(), "partnership_ribbon", true);
-		if ($PartneshipRibbonText) {
-			$SummaryDetail = '<b>In partnership with:</b> '.$PartneshipRibbonText;
-			?>
-			<div class="c-ribbon c-ribbon--expandable page-partnership-ribbon u-margin-bottom">
-				<div class="o-wrapper">
-					<?php
-					if (strlen($PartneshipRibbonText) <= 30 ) {
-						// don't use details/summary for short text
-						echo '<div class="c-ribbon__body short-ribbon">'.$SummaryDetail.'</div><!-- .c-ribbon__body -->';
-					}
-					else {
-						echo '<details class="c-ribbon__body"><summary>'.$SummaryDetail.'</summary></details><!-- .c-ribbon__body -->';
-		 			}
-					?>
-			</div><!-- .o-wrapper -->
-		</div><!-- .c-ribbon -->
-		<?php
+		<!-- page-specific partnership ribbon (added via custom field named "partnership_ribbon") -->
+		<?php 
+		if (get_the_ID()) {
+			$PartneshipRibbonText = get_post_meta(get_the_ID(), "partnership_ribbon", true);
+			if ($PartneshipRibbonText) {
+				$SummaryDetail = '<b>In partnership with:</b> '.$PartneshipRibbonText;
+				?>
+				<div class="c-ribbon c-ribbon--expandable page-partnership-ribbon u-margin-bottom">
+					<div class="o-wrapper">
+						<?php
+						if (strlen($PartneshipRibbonText) <= 30 ) {
+							// don't use details/summary for short text
+							echo '<div class="c-ribbon__body short-ribbon">'.$SummaryDetail.'</div><!-- .c-ribbon__body -->';
+						}
+						else {
+							echo '<details class="c-ribbon__body"><summary>'.$SummaryDetail.'</summary></details><!-- .c-ribbon__body -->';
+			 			}
+						?>
+				</div><!-- .o-wrapper -->
+			</div><!-- .c-ribbon -->
+			<?php
+			}
 		}
-	}
 	?>
