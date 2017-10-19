@@ -34,19 +34,14 @@
 			// Display featured image
 			the_post_thumbnail();
 
+			/* translators: %s: Name of current post. */
+			$post_parameters = sprintf(wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'nightingale-wp' ), array( 'span' => array( 'class' => array() ) ) ), the_title( '<span class="screen-reader-text">"', '"</span>', false ));
+
 			// Display excerpts on home page, category page and archive pages only. Otherwise display full post
 			if ( is_home () || is_category() || is_archive() ) {
-				 the_excerpt( sprintf(
- 					/* translators: %s: Name of current post. */
- 					wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'nightingale-wp' ), array( 'span' => array( 'class' => array() ) ) ),
- 					the_title( '<span class="screen-reader-text">"', '"</span>', false )
- 				) );
+				 the_excerpt( $post_parameters );
 			} else {
-				the_content( sprintf(
-					/* translators: %s: Name of current post. */
-					wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'nightingale-wp' ), array( 'span' => array( 'class' => array() ) ) ),
-					the_title( '<span class="screen-reader-text">"', '"</span>', false )
-				) );
+				the_content( $post_parameters );
 			}
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'nightingale-wp' ),
