@@ -181,6 +181,6 @@ require get_template_directory() . '/inc/gravity-forms.php';
  * Read more links.
  */
 function nightingale_excerpt_more( $more ) {
-    return ' <a href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'nightingale') . '</a>';
+    return ' <a href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'nightingale-wp') . '</a>';
 }
 add_filter( 'excerpt_more', 'nightingale_excerpt_more' );
