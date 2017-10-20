@@ -180,7 +180,7 @@ require get_template_directory() . '/inc/gravity-forms.php';
 /**
  * Read more links.
  */
-function new_excerpt_more( $more ) {
-    return ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'your-text-domain') . '</a>';
+function nightingale_excerpt_more( $more ) {
+    return ' <a href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'nightingale') . '</a>';
 }
-add_filter( 'excerpt_more', 'new_excerpt_more' );
+add_filter( 'excerpt_more', 'nightingale_excerpt_more' );

@@ -39,7 +39,7 @@
 
 			// Display excerpts on home page, category page and archive pages only. Otherwise display full post
 			if ( is_home () || is_category() || is_archive() ) {
-				 the_excerpt( $post_parameters );
+				the_excerpt( $post_parameters );
 			} else {
 				the_content( $post_parameters );
 			}
