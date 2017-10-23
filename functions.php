@@ -176,11 +176,3 @@ require get_template_directory() . '/inc/breadcrumbs.php';
  * Gravity Forms styling.
  */
 require get_template_directory() . '/inc/gravity-forms.php';
-
-/**
- * Read more links.
- */
-function nightingale_excerpt_more( $more ) {
-    return ' <div class="o-layout--right"><a href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'nightingale-wp') . '</a></div><!-- .o-layout--right -->';
-}
-add_filter( 'excerpt_more', 'nightingale_excerpt_more' );

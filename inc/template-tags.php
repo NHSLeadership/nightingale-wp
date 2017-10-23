@@ -42,14 +42,30 @@ if ( ! function_exists( 'nightingale_wp_entry_footer' ) ) :
  * Prints HTML with meta information for the categories, tags and comments.
  */
 function nightingale_wp_entry_footer() {
-
-	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-		echo '<span class="comments-link">';
-		/* translators: %s: post title */
-		comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'nightingale-wp' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
-		echo '</span>';
-	}
-
+	
+	?>
+	<div class="o-layout">
+		<div class="o-layout__item u-9/12@lg">
+			<div class="o-layout--left">
+				<?php
+				if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+					/* translators: %s: post title */		
+					comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'nightingale-wp' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
+				}
+				?>	
+			</div><!--o-layout--left-->
+		</div><!--o-layout__item-->
+		<div class="o-layout__item  u-3/12@lg">
+			<div class="o-layout--right">
+				<?php
+				// Read more link
+				echo '<a href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'nightingale-wp') . '</a>';
+				?>
+			</div><!--o-layout--right-->
+		</div><!--o-layout__item-->
+	</div><!--o-layout-->
+	<?php
+	
 	edit_post_link(
 		sprintf(
 			/* translators: %s: Name of current post */
@@ -59,6 +75,7 @@ function nightingale_wp_entry_footer() {
 		'<span class="edit-link">',
 		'</span>'
 	);
+	
 }
 endif;
 
