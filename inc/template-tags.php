@@ -59,7 +59,9 @@ function nightingale_wp_entry_footer() {
 			<div class="o-layout--right">
 				<?php
 				// Read more link
-				echo '<a href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'nightingale-wp') . '</a>';
+				if ( is_home () || is_category() || is_archive() ) {
+					echo '<a href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'nightingale-wp') . '</a>';
+				}
 				?>
 			</div><!--o-layout--right-->
 		</div><!--o-layout__item-->
