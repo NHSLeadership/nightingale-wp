@@ -67,6 +67,14 @@ function nightingale_wp_setup() {
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
+	
+	// Modify comment form
+	function nightingale_comment_form_defaults( $defaults ) {
+		$defaults['title_reply'] = __( 'Leave a Comment' );
+		return $defaults;
+	}
+	add_filter( 'comment_form_defaults', 'nightingale_comment_form_defaults' );
+	
 }
 endif;
 add_action( 'after_setup_theme', 'nightingale_wp_setup' );
