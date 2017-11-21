@@ -32,7 +32,17 @@
 			  )
 			); 
 			?>
-			<p class="c-page-footer__smallprint"><small>Copyright © <?php echo get_bloginfo( 'name' ) ." ". date('Y'); ?>. All rights reserved.</small></p>
+			<p class="c-page-footer__smallprint"><small>Copyright © 
+				<?php if (get_theme_mod('copyright')) {
+					// Display copyright holder, if set
+					echo get_theme_mod('copyright');
+				}
+				else {
+					// Otherwise, display site title as copyright holder
+					echo get_bloginfo( 'name' );
+				}
+				echo " ". date('Y')."."; ?>
+				All rights reserved.</small></p>
 		</div>
 	</footer>
 </div><!-- #page -->
