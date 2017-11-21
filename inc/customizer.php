@@ -50,6 +50,20 @@ function nightingale_wp_customize_register( $wp_customize ) {
 		'type'      => 'checkbox',
 	) ) );
 
+	// Add "Excerpts" setting within "Theme Settings" section (see above)
+	$wp_customize->add_setting( 'excerpts' , array(
+    'default'     => true,
+    'transport'   => 'refresh',
+	) );
+
+	// Add "Excerpts" control within "excerpts" setting (see above)
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'excerpts', array(
+		'label'        => 'Display Post Excerpts',
+		'section'    => 'theme_settings',
+		'settings'   => 'excerpts',
+		'type'      => 'checkbox',
+	) ) );
+
 }
 add_action( 'customize_register', 'nightingale_wp_customize_register' );
 
