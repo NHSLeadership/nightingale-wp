@@ -49,8 +49,11 @@ function nightingale_wp_entry_footer() {
 			<div class="o-layout--left">
 				<?php
 				if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-					/* translators: %s: post title */		
-					comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'nightingale-wp' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
+					if (get_theme_mod('post-listing') != 'titles') {
+						// Don't show comments link for posts listed as titles only
+						/* translators: %s: post title */		
+						comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'nightingale-wp' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
+					}
 				}
 				?>	
 			</div><!--o-layout--left-->
@@ -60,7 +63,10 @@ function nightingale_wp_entry_footer() {
 				<?php
 				// Read more link
 				if ( is_home () || is_category() || is_archive() ) {
-					echo '<a href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'nightingale-wp') . '</a>';
+					if (get_theme_mod('post-listing') == 'excerpts') {
+						// Only show "read More" link for posts listed as excerpts
+						echo '<a href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'nightingale-wp') . '</a>';
+					}
 				}
 				?>
 			</div><!--o-layout--right-->
@@ -68,15 +74,18 @@ function nightingale_wp_entry_footer() {
 	</div><!--o-layout-->
 	<?php
 	
-	edit_post_link(
-		sprintf(
-			/* translators: %s: Name of current post */
-			esc_html__( 'Edit %s', 'nightingale-wp' ),
-			the_title( '<span class="screen-reader-text">"', '"</span>', false )
-		),
-		'<span class="edit-link">',
-		'</span>'
-	);
+	if (get_theme_mod('post-listing') != 'titles') {
+		// Don't show edit link for posts listed as titles only
+		edit_post_link(
+			sprintf(
+				/* translators: %s: Name of current post */
+				esc_html__( 'Edit %s', 'nightingale-wp' ),
+				the_title( '<span class="screen-reader-text">"', '"</span>', false )
+			),
+			'<span class="edit-link">',
+			'</span>'
+		);
+	}
 	
 }
 endif;

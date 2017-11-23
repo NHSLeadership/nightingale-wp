@@ -56,7 +56,6 @@ get_header(); ?>
 				
 			endwhile;
 
-//			the_posts_navigation();
 			nightingale_pagination();
 			
 		else :

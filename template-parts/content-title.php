@@ -20,7 +20,17 @@
 
 		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php nightingale_wp_posted_on(); ?>
+			<?php
+			// Display category list
+			echo the_category(' | ', get_the_ID());
+			// Display tag(s)
+			$posttags = get_the_tags();
+			if ($posttags) {
+				foreach($posttags as $tag) {
+					echo " | <a href='/tag/$tag->slug'>" . $tag->name . '</a>'; 
+				}
+			}
+			?>
 		</div><!-- .entry-meta -->
 		<?php
 		endif; ?>
