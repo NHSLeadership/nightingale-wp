@@ -50,6 +50,20 @@ function nightingale_wp_customize_register( $wp_customize ) {
 		'type'      => 'checkbox',
 	) ) );
 
+	// Add "Copyright" setting within "Theme Settings" section (see above)
+	$wp_customize->add_setting( 'copyright' , array(
+    'default'     => get_bloginfo( 'name' ),
+    'transport'   => 'refresh',
+	) );
+
+	// Add "Breadcrumbs" control within "Theme Settings" setting (see above)
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'copyright', array(
+		'label'        => 'Copyright Holder:',
+		'section'    => 'theme_settings',
+		'settings'   => 'copyright',
+		'type'      => 'text',
+	) ) );
+
 }
 add_action( 'customize_register', 'nightingale_wp_customize_register' );
 
