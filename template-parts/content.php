@@ -20,7 +20,24 @@
 
 		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php nightingale_wp_posted_on(); ?>
+			<?php
+			// For posts that are listed as titles only, show categories and tags only
+			if (get_theme_mod('post-listing') == 'titles') {
+				// Display category list
+				echo the_category(' | ', get_the_ID());
+				// Display tag(s)
+				$posttags = get_the_tags();
+				if ($posttags) {
+					foreach($posttags as $tag) {
+						echo " | <a href='/tag/$tag->slug'>" . $tag->name . '</a>'; 
+					}
+				}
+			}
+			// For posts that are listed in full or as excerpts, show full set of meta data
+			else {
+				nightingale_wp_posted_on();
+			}
+			?>
 		</div><!-- .entry-meta -->
 		<?php
 		endif; ?>
@@ -28,12 +45,23 @@
 
 	<div class="entry-content">
 		<?php
+		if (get_theme_mod('post-listing') == 'excerpts') {
+			// Excerpts only
+			the_excerpt( sprintf(
+				/* translators: %s: Name of current post. */
+				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'nightingale-wp' ), array( 'span' => array( 'class' => array() ) ) ),
+				the_title( '<span class="screen-reader-text">"', '"</span>', false )
+			) );		
+		}
+		elseif (get_theme_mod('post-listing') != 'titles') {
+			// Full posts (i.e. not excerpts or titles only)
 			the_content( sprintf(
 				/* translators: %s: Name of current post. */
 				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'nightingale-wp' ), array( 'span' => array( 'class' => array() ) ) ),
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			) );
-
+			) );		
+		}
+		
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'nightingale-wp' ),
 				'after'  => '</div>',

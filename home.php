@@ -39,20 +39,7 @@ get_header(); ?>
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
-			
-				// Depending on customizer setting, display posts as excerpts, titles or in full
-				if (get_theme_mod('post-listing') == 'excerpts') {
-					// Excerpts only
-					get_template_part( 'template-parts/content', 'excerpt' );
-				}
-				elseif (get_theme_mod('post-listing') == 'titles') {
-					// Titles only
-					get_template_part( 'template-parts/content', 'title' );
-				}
-				else {
-					// Full posts
-					get_template_part( 'template-parts/content', get_post_format() );
-				}
+				 get_template_part( 'template-parts/content', get_post_format() );
 				
 			endwhile;
 
