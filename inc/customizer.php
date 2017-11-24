@@ -2,6 +2,11 @@
 /**
  * nightingale-wp Theme Customizer
  *
+ * Adds the following controls to a new "Theme Settings" section in the Customizer:
+ ** Login Button - allows admins to show/hide a login button in the main menu.
+ ** Breadcrumbs - allows admins to enable/disable breadcrumbs.
+ ** Post Listing - allows admins to choose how posts are displayed on post listing pages.
+ *
  * @package nightingale-wp
  */
 
