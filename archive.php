@@ -8,8 +8,11 @@
  */
 
 get_header(); ?>
+<div class="o-layout  o-layout--wide">
 
-	<div id="primary" class="content-area">
+	<!-- reduce width of primary content if sidebar contains widgets -->
+	<div id="primary" class="o-layout__item<?php if ( is_active_sidebar( 'sidebar-1' ) ) { echo ' u-8/12@lg'; }?>">
+		
 		<main id="main" class="site-main" role="main">
 
 		<?php
@@ -43,9 +46,9 @@ get_header(); ?>
 
 		endif; ?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
+	</main><!-- #main -->
+</div><!-- #primary -->
+<?php get_sidebar(); ?>
+</div><!-- .o-layout -->
 <?php
-get_sidebar();
 get_footer();
