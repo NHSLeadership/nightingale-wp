@@ -23,7 +23,7 @@ function nightingale_wp_customize_register( $wp_customize ) {
 	// Add "Theme Settings" section
 	// This appears in the WordPress dashboard under Appearance > Customize
 	$wp_customize->add_section( 'theme_settings', array(
-		'title'    => __( 'Theme Settings' ),
+		'title'    => __( 'Theme Settings', 'nightingale-wp'),
 		'priority' => 999,
 	) );
 
@@ -35,7 +35,7 @@ function nightingale_wp_customize_register( $wp_customize ) {
 
 	// Add "Login Button" control within "Theme Settings" setting (see above)
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'login_button', array(
-		'label'        => 'Display Login Button in Menu(s)',
+		'label'        => __('Display Login Button in Menu(s)', 'nightingale-wp'),
 		'section'    => 'theme_settings',
 		'settings'   => 'login_button',
 		'type'      => 'checkbox',
@@ -49,7 +49,7 @@ function nightingale_wp_customize_register( $wp_customize ) {
 
 	// Add "Breadcrumbs" control within "Theme Settings" setting (see above)
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'breadcrumbs', array(
-		'label'        => 'Display Breadcrumbs in Header',
+		'label'        => __('Display Breadcrumbs in Header', 'nightingale-wp'),
 		'section'    => 'theme_settings',
 		'settings'   => 'breadcrumbs',
 		'type'      => 'checkbox',
@@ -63,14 +63,14 @@ function nightingale_wp_customize_register( $wp_customize ) {
 
 	// Add "Post Listing" control within "post-listing" setting (see above)
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'post-listing', array(
-		'label'        => 'Post Listing Page Settings',
+		'label'        => __('Post Listing Page Settings', 'nightingale-wp'),
 		'section'    => 'theme_settings',
 		'settings'   => 'post-listing',
 		'type'      => 'select',
 		'choices'  => array(
-			'full'  => 'Display full posts',
-			'excerpts' => 'Display post excerpts only',
-			'titles' => 'Display post titles only',
+			'full'  => __('Display FULL posts', 'nightingale-wp'),
+			'excerpts' => __('Display post EXCERPTS', 'nightingale-wp'),
+			'titles' => __('Display post TITLES only', 'nightingale-wp'),
 		),
 	) ) );
 
