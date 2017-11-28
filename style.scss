@@ -72,3 +72,10 @@ $global-hints: true;
 .validation_message {
   color: $color-error;
 }
+
+/**
+* Prevent Categories widget from displaying titles twice
+*/
+label.screen-reader-text[for="cat"] {
+  display: none;
+}
