@@ -79,3 +79,10 @@ $global-hints: true;
 label.screen-reader-text[for="cat"] {
   display: none;
 }
+
+/**
+* Remove margin under Categories widget title
+*/
+h2.widget-title {
+  margin-bottom: 0;
+}
