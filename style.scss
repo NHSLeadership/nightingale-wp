@@ -30,10 +30,8 @@ $global-hints: true;
 /* Styling for widgets */
 @import "style/widgets";
 
-.custom-logo-link {
-  // Use Nightingale styling for logo
-  @extend .c-page-header__lockup;
-}
+/* Styling for logos */
+@import "style/logos";
 
 /**
  * Override Nightingale’s default nav alignment (until issue #146 is addressed).
