@@ -33,19 +33,14 @@ $global-hints: true;
 /* Styling for logos */
 @import "style/logos";
 
+/* Styling for navigation */
+@import "style/navigation";
+
 /**
  * Override Nightingale’s default nav alignment (until issue #146 is addressed).
  */
 .c-nav-primary__item {
   vertical-align: middle;
-}
-
-/**
-* Force sub-menu links to line up vertically
-*/
-.c-nav-primary__sub .c-nav-primary__item {
-  display: inline;
-  margin-left: 0;
 }
 
 /**
