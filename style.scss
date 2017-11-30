@@ -27,6 +27,13 @@ $global-hints: true;
 /* Pull in styles from Nightingale framework */
 @import "nightingale/main.scss";
 
+/**
+ * Override Nightingale’s default nav alignment (until issue #146 is addressed).
+ */
+.c-nav-primary__item {
+  vertical-align: middle;
+}
+
 /* Styling for widgets */
 @import "style/widgets";
 
@@ -36,30 +43,11 @@ $global-hints: true;
 /* Styling for navigation */
 @import "style/navigation";
 
-/**
- * Override Nightingale’s default nav alignment (until issue #146 is addressed).
- */
-.c-nav-primary__item {
-  vertical-align: middle;
-}
+/* Styling for ribbons */
+@import "style/ribbons";
 
-/**
-* Remove space above breadcrumbs and page-specific partnership ribbons
-*/
-.page-partnership-ribbon, .c-breadcrumb {
-  margin-top: -30px !important;
-}
+/* Styling for breadcrumbs */
+@import "style/breadcrumbs";
 
-/**
-* Set colour of short partnership ribbon text 
-*/
-.short-ribbon {
-  color: $color-ribbon-expandable;
-}
-
-/**
-* Apply colour to Gravity Forms error messages
-*/
-.validation_message {
-  color: $color-error;
-}
+/* Styling for forms */
+@import "style/forms";
