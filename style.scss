@@ -27,16 +27,6 @@ $global-hints: true;
 /* Pull in styles from Nightingale framework */
 @import "nightingale/main.scss";
 
-/* Map WordPress styles to Nightingale */
-.widget ul {
-  // Use Nightingale styling for lists within widgets
-  @extend .o-list-bare;
-}
-.custom-logo-link {
-  // Use Nightingale styling for logo
-  @extend .c-page-header__lockup;
-}
-
 /**
  * Override Nightingale’s default nav alignment (until issue #146 is addressed).
  */
@@ -44,46 +34,27 @@ $global-hints: true;
   vertical-align: middle;
 }
 
-/**
-* Force sub-menu links to line up vertically
-*/
-.c-nav-primary__sub .c-nav-primary__item {
-  display: inline;
-  margin-left: 0;
-}
+/* Styling for widgets */
+@import "style/widgets";
 
-/**
-* Remove space above breadcrumbs and page-specific partnership ribbons
-*/
-.page-partnership-ribbon, .c-breadcrumb {
-  margin-top: -30px !important;
-}
+/* Styling for logos */
+@import "style/logos";
 
-/**
-* Set colour of short partnership ribbon text 
-*/
-.short-ribbon {
-  color: $color-ribbon-expandable;
-}
+/* Styling for navigation */
+@import "style/navigation";
 
-/**
-* Restrict images to width of container
-* with height adjusting to maintain aspect ratio
-*/
-img {
-  max-width: 100% !important;
-  height: auto !important;
-}
-.entry-content {
-  clear: both !important;
-}
-h1, h2 {
-  margin-bottom: 0;
-}
+/* Styling for images */
+@import "style/images";
 
-/**
-* Apply colour to Gravity Forms error messages
-*/
-.validation_message {
-  color: $color-error;
-}
+/* Styling for headers */
+@import "style/headers";
+
+/* Styling for ribbons */
+@import "style/ribbons";
+
+/* Styling for breadcrumbs */
+@import "style/breadcrumbs";
+
+/* Styling for forms */
+@import "style/forms";
+
