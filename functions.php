@@ -119,9 +119,9 @@ function nightingale_wp_scripts() {
 	wp_register_script('nightingale-heading-selector', get_template_directory_uri() . '/js/heading-selector.js', array(), '1.1', true);
 	wp_enqueue_script('nightingale-heading-selector');
 	
-	// Local storage script
-	wp_register_script('nightingale-local-storage', get_template_directory_uri() . '/js/local-storage.js', array(), '1.1', true);
-	wp_enqueue_script('nightingale-local-storage');
+	// Cookies script
+	wp_register_script('nightingale-cookies', get_template_directory_uri() . '/node_modules/nightingale/js/cookies.js', array(), '1.1', true);
+	wp_enqueue_script('nightingale-cookies');
 	
 	// Yukky Safari bug fix
 	wp_register_script('nightingale-safari-bug-fix', get_template_directory_uri() . '/node_modules/nightingale/js/safari-bug-fix.js', array(), '1.1', true);
