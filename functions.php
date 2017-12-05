@@ -71,13 +71,23 @@ function nightingale_wp_setup() {
 	// Modify comment form
 	function nightingale_comment_form_defaults( $defaults ) {
 		$defaults['class_form'] = __( 'c-form-region' );
+		$defaults['comment_notes_before'] = '';
 		$defaults['title_reply'] = '';
 		$defaults['class_submit'] = __( 'c-btn  c-btn--submit c-btn--full' );
 		$defaults['label_submit'] = __( 'Submit' );
-		$defaults['comment_field'] = __( '<label for="comment">Leave a Comment</label><textarea id="comment" name="comment" cols="50" rows="8" maxlength="65525" aria-required="true" class="c-form-input c-form-comment" placeholder="Enter your comment here…"></textarea>' );
+		$defaults['comment_field'] = __( '<label for="comment">Leave a Comment</label><textarea id="comment" name="comment" cols="50" rows="8" maxlength="65525" aria-required="true" class="c-form-input c-form-comment c-form-list__item" placeholder="Enter your comment here… (Optional)"></textarea>' );
 		return $defaults;
 	}
 	add_filter( 'comment_form_defaults', 'nightingale_comment_form_defaults' );
+
+	// Modify comment form fields
+	function nightingale_comment_form_fields( $fields ) {
+		unset($fields['url']);
+		$fields['author'] = '<p class="comment-form-author"><label for="author">Full Name (Required)</label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" aria-required="true" type="text" class="c-form-input" placeholder="Jane Smith"></p>';
+		$fields['email'] = '<p class="comment-form-email"><label for="email">Email Address<small>Email is used only for verification and will not be published</small></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" class="c-form-input" placeholder="name@domain.com"></p>';
+		return $fields;
+	}
+	add_filter( 'comment_form_default_fields', 'nightingale_comment_form_fields' );
 	
 }
 endif;
