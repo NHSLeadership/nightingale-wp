@@ -6,6 +6,7 @@
  ** Login Button - allows admins to show/hide a login button in the main menu.
  ** Breadcrumbs - allows admins to enable/disable breadcrumbs.
  ** Post Listing - allows admins to choose how posts are displayed on post listing pages.
+ ** Copyright Holder - allows admins to specify organisation to appear in copyright message.
  *
  * @package nightingale-wp
  */
