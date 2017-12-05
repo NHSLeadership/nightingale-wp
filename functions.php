@@ -71,6 +71,8 @@ function nightingale_wp_setup() {
 	// Modify comment form
 	function nightingale_comment_form_defaults( $defaults ) {
 		$defaults['title_reply'] = __( 'Leave a Comment' );
+		$defaults['class_submit'] = __( 'c-btn  c-btn--submit c-btn--full' );
+		$defaults['label_submit'] = __( 'Submit' );
 		return $defaults;
 	}
 	add_filter( 'comment_form_defaults', 'nightingale_comment_form_defaults' );
