@@ -73,6 +73,7 @@ function nightingale_wp_setup() {
 		$defaults['title_reply'] = __( 'Leave a Comment' );
 		$defaults['class_submit'] = __( 'c-btn  c-btn--submit c-btn--full' );
 		$defaults['label_submit'] = __( 'Submit' );
+		$defaults['comment_field'] = __( '<textarea id="comment" name="comment" cols="50" rows="8" maxlength="65525" aria-required="true" class="c-form-input c-form-comment" placeholder="Enter your comment here…"></textarea>' );
 		return $defaults;
 	}
 	add_filter( 'comment_form_defaults', 'nightingale_comment_form_defaults' );
