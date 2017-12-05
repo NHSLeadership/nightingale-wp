@@ -72,6 +72,7 @@ function nightingale_wp_setup() {
 	function nightingale_comment_form_defaults( $defaults ) {
 		$defaults['class_form'] = __( 'c-form-region' );
 		$defaults['comment_notes_before'] = '';
+		$defaults['logged_in_as'] = '';
 		$defaults['title_reply'] = '';
 		$defaults['class_submit'] = __( 'c-btn  c-btn--submit c-btn--full' );
 		$defaults['label_submit'] = __( 'Submit' );
