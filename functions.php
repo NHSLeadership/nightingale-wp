@@ -70,7 +70,7 @@ function nightingale_wp_setup() {
 	
 	// Modify comment form
 	function nightingale_comment_form_defaults( $defaults ) {
-		$defaults['class_form'] = __( 'c-form-region' );
+		$defaults['class_form'] = __( 'c-form-region u-margin-bottom-small u-padding-bottom-tiny' );
 		$defaults['comment_notes_before'] = '';
 		$defaults['logged_in_as'] = '';
 		$defaults['title_reply'] = '';
