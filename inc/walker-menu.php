@@ -26,6 +26,7 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
     }
 
     public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+      // start element output
       $classes = array();
       if( !empty( $item->classes ) ) {
           $classes = (array) $item->classes;
@@ -45,7 +46,7 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
       
       if( $depth == 0 && $args->walker->has_children ) {
         // parent-menus
-        $item_output .= '<li class="c-nav-primary__item"><button class="c-nav-primary__link" data-expands=#menu-item-'.$item->ID.'-sub data-popup="" role="button" aria-expanded="false" aria-haspopup="true">'.$item->title.'</button></li><!-- .c-nav-primary__item -->';
+        $item_output .= '<li class="c-nav-primary__item"><button class="c-nav-primary__link" data-expands=#menu-item-'.$item->ID.'-sub data-popup="" role="button" aria-expanded="false" aria-haspopup="true">'.$item->title.'</button>';
       }
       else {
         // menus without childen (including sub-menus)
@@ -76,6 +77,14 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
       $item_output .= $args->after;
   		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 
+    }
+    
+    public function end_el( &$output, $item, $depth = 0, $args = array() ) {
+      // end element output
+      if( $depth == 0 && $args->walker->has_children ) {
+        // parent-menus
+        $output .= '</li><!-- .c-nav-primary__item -->';
+      }
     }
 
 } // Walker_Nav_Menu

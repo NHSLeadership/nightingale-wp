@@ -14,7 +14,7 @@ get_header(); ?>
 	<?php do_action('nightingale_before_content', get_the_ID()); ?>
 
 	<!-- reduce width of primary content if sidebar contains widgets -->
-	<div id="primary" class="o-layout__item<?php if ( is_active_sidebar( 'sidebar-1' ) ) { echo ' u-8/12@lg'; }?>">
+	<div id="primary" class="o-layout__item u-8/12@lg">
 
 		<main id="main" class="site-main" role="main">
 

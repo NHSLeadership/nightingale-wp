@@ -1,0 +1,21 @@
+/**
+* Use Nightingale styling for lists within widgets
+*/
+.widget ul {
+  // 
+  @extend .o-list-bare;
+}
+
+/**
+* Prevent Categories widget from displaying titles twice
+*/
+label.screen-reader-text[for="cat"] {
+  display: none;
+}
+
+/**
+* Remove margin under Categories widget title
+*/
+h2.widget-title {
+  margin-bottom: 0;
+}
