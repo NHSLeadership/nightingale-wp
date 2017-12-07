@@ -125,7 +125,7 @@ function display_cookies_ribbon() {
             <div class="c-ribbon__actions">
               <button class="c-sprite  c-sprite--close-rev" id="jsCookieBtn">Close</button>
             </div>
-            <strong class="c-ribbon__body">By default this site uses <a href='.get_option('cookies_ribbon_cookies_url').' target="_blank">cookies</a> to collect information and improve. To control cookies, you can <a href='.get_option('cookies_ribbon_browser_url').' target="_blank">adjust your browser settings</a>.</strong>
+            <strong class="c-ribbon__body">By default this site uses <a href='.get_option('cookies_ribbon_cookies_url').' class="u-links-darkbg" target="_blank">cookies</a> to collect information and improve. To control cookies, you can <a href='.get_option('cookies_ribbon_browser_url').' class="u-links-darkbg" target="_blank">adjust your browser settings</a>.</strong>
           </div>
         </div>';
 	}
@@ -140,7 +140,7 @@ function display_dev_ribbon() {
     echo '<div class="c-ribbon  c-ribbon--'.$dev_ribbon_selection.'">
         <div class="o-wrapper">
           <strong class="c-ribbon__tag">'.$dev_ribbon_selection.'</strong>
-          <strong class="c-ribbon__body">This page is part of a new service – your <a href='.get_option('dev_ribbon_url').' target="_blank">feedback</a> will help us to improve it.</strong>
+          <strong class="c-ribbon__body">This page is part of a new service – your <a href='.get_option('dev_ribbon_url').' class="u-links-darkbg" target="_blank">feedback</a> will help us to improve it.</strong>
         </div>
       </div>';
 	}
