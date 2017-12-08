@@ -38,12 +38,12 @@
 					</h1>
 				<?php } ?>
 
-				<div class="c-page-header__controls">
+				<div class="o-layout c-page-header__controls">
 					
 					<!-- Search box -->
-					<div class="o-layout--right">
+					<div class="c-form-input">
 						<?php dynamic_sidebar( 'header-widget-area' ); ?>
-					</div><!-- .o-layout--right -->
+					</div><!-- .o-layout--item -->
 					
 					<!-- Main menu -->
 					<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav" >☰</button>
