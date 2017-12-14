@@ -10,6 +10,11 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
       $item_output .= '<nav class="c-nav-primary__sub jsNavSub" id="menu-item-'.$id.'-sub" role="group" aria-label="submenu">';
       $item_output .= '<div class="o-wrapper">';
       $item_output .= '<div class="o-layout">';
+      $item_output .= '<div class="o-layout__item  u-6/12@lg">';
+      // If no subnav panel exists, start ul for submenu items here
+      if(! in_array('subnav-header', $classes) ||  in_array('subnav-description', $classes ) || in_array('subnav-button', $classes) ) {
+        $item_output .= '<ul class="c-nav-primary__sub-links">';
+      }
       $item_output .= $args->after;
   		$output .= apply_filters( 'walker_nav_menu_start_lvl', $item_output, $depth, $args );
     }
@@ -17,6 +22,7 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
     public function end_lvl( &$output, $depth = 0, $args = array() ) {
       // end sub-menus
       $item_output = $args->before;
+      $item_output .= '</ul><!-- .c-nav-primary__sub-links -->';
       $item_output .= '</div><!-- .o-layout__item -->';
       $item_output .= '</div><!-- .o-layout -->';
       $item_output .= '</div><!-- .o-wrapper -->';
@@ -38,11 +44,6 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
       }
       
       $item_output = $args->before;
-
-      // Open sub-menu panel
-      if( in_array('subnav-header', $classes) ) {
-        $item_output .= '<div class="o-layout__item  u-6/12@lg">';
-      }
       
       if( $depth == 0 && $args->walker->has_children ) {
         // parent-menus
