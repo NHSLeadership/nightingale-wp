@@ -1,5 +1,5 @@
 {
-  "name": "nightingale-wp",
+  "name": "nhsleadership/nightingale-wp",
   "version": "1.0.0",
   "description": "Wordpress theme for NHS Leadership Academy using nightingale-core",
   "scripts": {
