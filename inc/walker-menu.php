@@ -57,16 +57,20 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
           // if css class is 'subnav-description' then display sub-menu panel description
           $item_output .= '<p class="u-margin-bottom-small"><small>' . $item->title . '</small></p>';
 
-        } else if( in_array('subnav-button', $classes) ) {
+        } else if( in_array('subnav-button--primary', $classes) ) {
           // if css class is 'subnav-button' then display sub-menu panel button
           $item_output .= '<p class="u-margin-bottom-small"><a href="' . $url . '" class="c-btn  c-btn--primary  c-btn--full">'. $item->title .'</a></p>';
-          $item_output .= '</div><!-- .o-layout__item -->';
+
+        } else if( in_array('subnav-button--secondary', $classes) ) {
+          // if css class is 'subnav-button' then display sub-menu panel button
+          $item_output .= '<p class="u-margin-bottom-small"><a href="' . $url . '" class="c-btn  c-btn--secondary  c-btn--full">'. $item->title .'</a></p>';
 
         } else if( in_array('subnav-menu', $classes) ) {
           // if css class is subnav-menu then display links in columns
 
           if ($this->panel) {
-            // If a submenu panel exists, make menu list 1/4 width
+            // If a submenu panel exists, close panel div and make menu list 1/4 width
+            $item_output .= '</div><!-- .o-layout__item -->';
             $item_output .= '<div class="o-layout__item  u-4/12@lg">';
           } 
           else {
