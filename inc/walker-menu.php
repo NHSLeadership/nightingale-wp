@@ -80,7 +80,6 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
           if($submenu_items) {
             // If custom link placeholder found, loop through items in named submenu
 
-            $item_output .= '<ul class="c-nav-primary__sub-links">';
             $item_output .= '<div class="o-layout">';
 
             // Calculate column distribution based on number of submenu items & number of columns
@@ -95,15 +94,16 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
               $item_output .= '<div class="o-layout__item  u-'.(12/$columns).'/12@lg">';
 
               // Output submenu items for this column
+              $item_output .= '<ul class="c-nav-primary__sub-links">';
               $start_point = $max_column_items * $x;
               foreach( array_slice($submenu_items, $start_point, $max_column_items) as $submenu_item => $submenu_item_data ) {
                 $item_output .= '<li class = "c-nav-primary__item"><a href="' . $submenu_item_data->url . '" class = "c-nav-primary__link" >' . $submenu_item_data->title . '</a></li><!-- .c-nav-primary__item -->';
               }
+              $item_output .= '</ul><!-- .c-nav-primary__sub-links -->';
               $item_output .= '</div><!-- .o-layout__item -->';
             }
 
             $item_output .= '</div><!-- .o-layout -->';
-            $item_output .= '</ul><!-- .c-nav-primary__sub-links -->';
             
           }
           $item_output .= '</div><!-- .o-layout__item -->';
