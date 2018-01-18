@@ -21,7 +21,15 @@
 		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
 			<?php
-			nightingale_wp_posted_on();
+			// Display category list
+			echo the_category(' | ', get_the_ID());
+			// Display tag(s)
+			$posttags = get_the_tags();
+			if ($posttags) {
+				foreach($posttags as $tag) {
+					echo " | <a href='/tag/$tag->slug'>" . $tag->name . '</a>'; 
+				}
+			}
 			?>
 		</div><!-- .entry-meta -->
 		<?php
@@ -29,12 +37,7 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
-		<?php
-			the_content( sprintf(
-				/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'nightingale-wp' ), array( 'span' => array( 'class' => array() ) ) ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			) );		
+		<?php		
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'nightingale-wp' ),
 				'after'  => '</div>',
