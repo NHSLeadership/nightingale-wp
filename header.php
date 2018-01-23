@@ -38,16 +38,15 @@
 					</h1>
 				<?php } ?>
 
-				<div class="o-layout c-page-header__controls">
+				<div class="c-page-header__controls">
 					
 					<!-- Search box -->
-					<div class="c-form-input">
-						<?php dynamic_sidebar( 'header-widget-area' ); ?>
-					</div><!-- .o-layout--item -->
-					
+					<?php dynamic_sidebar( 'header-widget-area' ); ?>
+										
 					<!-- Main menu -->
-					<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav" >☰</button>
-					<nav class="c-nav-primary" id="primaryNav" role="navigation">
+					<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav">☰</button>
+					
+					<nav class="c-nav-primary" id="primaryNav">
 						<?php wp_nav_menu( array( 
 							'theme_location' => 'primary', 
 							'menu_class' => 'c-nav-primary__list', 
