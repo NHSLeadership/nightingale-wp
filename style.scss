@@ -24,6 +24,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 /* Enable/disable css hints */
 $global-hints: true;
 
+/* Set assets path */
+@import "style/settings";
+
 /* Pull in styles from Nightingale framework */
 @import "nightingale/main.scss";
 
@@ -60,4 +63,3 @@ a {
 
 /* Styling for forms */
 @import "style/forms";
-
