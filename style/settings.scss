@@ -1,0 +1,5 @@
+/* Set path to assets folder (preventing defaults in _settings.definitions.scss in Nightingale being used) */
+
+$asset-path: '/wp-content/themes/nightingale-wp/node_modules/nightingale/assets/';
+$font-path: '#{$asset-path}fonts/';
+$image-path: '#{$asset-path}img/';

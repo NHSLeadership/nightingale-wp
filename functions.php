@@ -67,6 +67,29 @@ function nightingale_wp_setup() {
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
+	
+	// Modify comment form
+	function nightingale_comment_form_defaults( $defaults ) {
+		$defaults['class_form'] = 'c-form-region u-margin-bottom-small u-padding-bottom-tiny';
+		$defaults['comment_notes_before'] = '';
+		$defaults['logged_in_as'] = '';
+		$defaults['title_reply'] = '';
+		$defaults['class_submit'] = 'c-btn  c-btn--submit c-btn--full';
+		$defaults['label_submit'] = __( 'Submit', 'nightingale-wp' );
+		$defaults['comment_field'] = '<label for="comment">'.__( 'Leave a Comment', 'nightingale-wp' ).'</label><textarea id="comment" name="comment" cols="50" rows="8" maxlength="65525" aria-required="true" class="c-form-input c-form-comment c-form-list__item" placeholder="'.__( 'Enter your comment here… (Optional)', 'nightingale-wp' ).'"></textarea>';
+		return $defaults;
+	}
+	add_filter( 'comment_form_defaults', 'nightingale_comment_form_defaults' );
+
+	// Modify comment form fields
+	function nightingale_comment_form_fields( $fields ) {
+		unset($fields['url']);
+		$fields['author'] = '<p class="comment-form-author"><label for="author">'.__( 'Full Name (Required)', 'nightingale-wp' ).'</label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" aria-required="true" type="text" class="c-form-input" placeholder="'.__( 'Jane Smith', 'nightingale-wp' ).'"></p>';
+		$fields['email'] = '<p class="comment-form-email"><label for="email">'.__( 'Email Address<small>Email is used only for verification and will not be published</small>', 'nightingale-wp' ).'</label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" class="c-form-input" placeholder="'.__( 'name@domain.com', 'nightingale-wp' ).'"></p>';
+		return $fields;
+	}
+	add_filter( 'comment_form_default_fields', 'nightingale_comment_form_fields' );
+	
 }
 endif;
 add_action( 'after_setup_theme', 'nightingale_wp_setup' );
