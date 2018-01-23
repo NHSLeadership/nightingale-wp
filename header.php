@@ -41,13 +41,12 @@
 				<div class="c-page-header__controls">
 					
 					<!-- Search box -->
-					<div class="o-layout--right">
-						<?php dynamic_sidebar( 'header-widget-area' ); ?>
-					</div><!-- .o-layout--right -->
-					
+					<?php dynamic_sidebar( 'header-widget-area' ); ?>
+										
 					<!-- Main menu -->
-					<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav" >☰</button>
-					<nav class="c-nav-primary" id="primaryNav" role="navigation">
+					<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav">☰</button>
+					
+					<nav class="c-nav-primary" id="primaryNav">
 						<?php wp_nav_menu( array( 
 							'theme_location' => 'primary', 
 							'menu_class' => 'c-nav-primary__list', 
