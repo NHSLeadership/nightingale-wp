@@ -1,0 +1,6 @@
+/**
+* Use Nightingale styling for quotes
+*/
+blockquote {
+  @extend .c-quote;
+}
