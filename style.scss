@@ -31,6 +31,13 @@ $global-hints: true;
 @import "nightingale/main.scss";
 
 /**
+ * Make sure posts are _below_ metadata (author and date)
+ */
+.entry-content {
+    clear: both;
+}
+
+/**
  * Override Nightingale’s default nav alignment (until issue #146 is addressed).
  */
 .c-nav-primary__item {
