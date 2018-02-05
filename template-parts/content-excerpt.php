@@ -9,12 +9,13 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> class="c-article">
+<article class="c-article" id="post-<?php the_ID(); ?>">
 	<header>
 		<?php
 		if ( is_single() ) :
 			the_title( '<h1>', '</h1>' );
 		else :
+			echo '<hr class="c-divider">';
 			the_title( '<h2 class="c-article__header"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
 
@@ -24,7 +25,7 @@
 		endif; ?>
 	</header>
 
-	<div class="entry-content">
+	<div class="c-article__content">
 		<?php
 			the_excerpt( sprintf(
 				/* translators: %s: Name of current post. */
@@ -36,9 +37,9 @@
 				'after'  => '</div>',
 			) );
 		?>
-	</div><!-- .entry-content -->
+	</div><!-- .c-article__content -->
 
-	<footer class="entry-footer">
+	<footer>
 		<?php nightingale_wp_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
