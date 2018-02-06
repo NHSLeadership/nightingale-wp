@@ -15,7 +15,6 @@
 		if ( is_single() ) :
 			the_title( '<h1>', '</h1>' );
 		else :
-			echo '<hr class="c-divider">';
 			the_title( '<h2 class="c-article__header"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
 
