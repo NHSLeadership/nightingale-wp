@@ -21,18 +21,18 @@ function nightingale_wp_widgets_init() {
     'before_title' => '<h4 class="widget-title">',
     'after_title' => '</h4>',
   ) );
-	
+
 	// Header widget area for search box.
 	register_sidebar( array(
 		'name'          => esc_html__( 'Header', 'nightingale-wp' ),
 		'id'            => 'header-widget-area',
 		'description'   => esc_html__( 'Add widgets here.', 'nightingale-wp' ),
-		'before_widget' => '<div class="o-layout--right"><section class="widget %2$s">',
-		'after_widget'  => '</section></div><!-- .o-layout--right -->',
+		'before_widget' => '',
+		'after_widget'  => '',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
-	
+
 }
 add_action( 'widgets_init', 'nightingale_wp_widgets_init' );
 

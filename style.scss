@@ -31,19 +31,12 @@ $global-hints: true;
 @import "nightingale/main.scss";
 
 /**
- * Override Nightingale’s default nav alignment (until issue #146 is addressed).
- */
-.c-nav-primary__item {
-  vertical-align: middle;
-}
-
-/**
  * Use white icons on dark background for external links (until issue #176 is addressed).
  */
 a {
   &.u-links-darkbg:after {
     @include sprite(new-window-rev, true)
-  }  
+  }
 }
 
 /* Styling for widgets */
