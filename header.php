@@ -54,7 +54,12 @@
 							'walker'  => new Walker_Nightingale_Menu(),
 							'container' => false,
 							'depth' => 2  // limit menu depth (otherwise login button goes astray)
-						)); ?>
+						));
+						// If required, display login/out button in nav
+						if (get_theme_mod('login_button')) {
+							wp_loginout();
+						}
+						?>
 					</nav><!-- #site-navigation -->
 
 				</div><!-- .c-page-header__controls -->
