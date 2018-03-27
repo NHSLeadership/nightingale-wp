@@ -70,8 +70,8 @@ function nightingale_wp_customize_register( $wp_customize ) {
 		'type'      => 'select',
 		'choices'  => array(
 			'full'  => __('Display FULL posts', 'nightingale-wp'),
-			'excerpts' => __('Display post EXCERPTS', 'nightingale-wp'),
-			'titles' => __('Display post TITLES only', 'nightingale-wp'),
+			'excerpt' => __('Display post EXCERPTS', 'nightingale-wp'),
+			'title' => __('Display post TITLES only', 'nightingale-wp'),
 		) ) ) );
 
 	// Add "Copyright" setting within "Theme Settings" section (see above)

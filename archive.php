@@ -12,7 +12,7 @@ get_header(); ?>
 
 	<!-- reduce width of primary content if sidebar contains widgets -->
 	<div id="primary" class="o-layout__item u-8/12@lg">
-		
+
 		<main id="main" class="site-main" role="main">
 
 		<?php
@@ -40,12 +40,11 @@ get_header(); ?>
 				 */
 
 				 // Display horizontal rule above all but the first post
-				 if ( $first_post == false ) { 
+				 if ( $first_post == false ) {
 					 echo '<hr class="c-divider">';
 				 }
 				 $first_post = false;
-
-				 get_template_part( 'template-parts/content', get_post_format() );
+				 get_template_part( 'template-parts/content', get_theme_mod('post-listing') );
 
 			endwhile;
 

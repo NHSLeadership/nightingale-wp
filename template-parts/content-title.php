@@ -15,17 +15,19 @@
 		if ( is_single() ) :
 			the_title( '<h1>', '</h1>' );
 		else :
-			the_title( '<h2 class="c-article__header"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			the_title( '<h2 class="c-article__header--titles-only"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
 
 		if ( 'post' === get_post_type() ) :
+			// Display post author and date
+			nightingale_wp_posted_on();
 			// Display category list
 			echo the_category(' | ', get_the_ID());
 			// Display tag(s)
 			$posttags = get_the_tags();
 			if ($posttags) {
 				foreach($posttags as $tag) {
-					echo " | <a href='/tag/$tag->slug'>" . $tag->name . '</a>'; 
+					echo " | <a href='/tag/$tag->slug'>" . $tag->name . '</a>';
 				}
 			}
 		endif; ?>
