@@ -12,27 +12,19 @@ if ( ! function_exists( 'nightingale_wp_posted_on' ) ) :
  * Prints HTML with meta information for the current post-date/time and author.
  */
 function nightingale_wp_posted_on() {
-	$time_string = '<time class="entry-date" datetime="%1$s">%2$s</time>';
-	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$time_string = '<time class="entry-date" datetime="%1$s">%2$s</time>';
-	}
 
-	$time_string = sprintf( $time_string,
-		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() )
-	);
-
-	$posted_on = sprintf(
-		esc_html_x( '%s', 'post date', 'nightingale-wp' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-	);
-
-	$byline = sprintf(
-		esc_html_x( '%s', 'post author', 'nightingale-wp' ),
-		'<span class="author vcard"><a class="c-comment__author url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-	);
-
-	echo '<span class="byline"> ' . $byline . '</span><span class="c-comment__date">' . $time_string . '</span>'; // WPCS: XSS OK.
+	echo '<div class="o-layout">
+		<div class="o-layout__item u-9/12@lg">
+			<div class="o-layout--left">
+				<a class="c-comment__author" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>
+			</div><!--o-layout--left-->
+		</div><!--o-layout__item-->
+		<div class="o-layout__item  u-3/12@lg">
+			<div class="o-layout--right">
+				<a class="c-comment__date" href="' . esc_url( get_day_link( get_the_time( "Y" ), get_the_time( "m" ), get_the_time( "d" ) ) ) . '" rel="bookmark">' . get_the_time( "d/m/Y" ) . '</a>
+			</div><!--o-layout--right-->
+		</div><!--o-layout__item-->
+	</div><!--o-layout-->';
 
 }
 endif;
@@ -42,20 +34,20 @@ if ( ! function_exists( 'nightingale_wp_entry_footer' ) ) :
  * Prints HTML with meta information for the categories, tags and comments.
  */
 function nightingale_wp_entry_footer() {
-	
+
 	?>
 	<div class="o-layout">
 		<div class="o-layout__item u-9/12@lg">
 			<div class="o-layout--left">
 				<?php
 				if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-					if (get_theme_mod('post-listing') != 'titles') {
+					if (get_theme_mod('post-listing') != 'title') {
 						// Don't show comments link for posts listed as titles only
-						/* translators: %s: post title */		
+						/* translators: %s: post title */
 						comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'nightingale-wp' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
 					}
 				}
-				?>	
+				?>
 			</div><!--o-layout--left-->
 		</div><!--o-layout__item-->
 		<div class="o-layout__item  u-3/12@lg">
@@ -63,7 +55,7 @@ function nightingale_wp_entry_footer() {
 				<?php
 				// Read more link
 				if ( is_home () || is_category() || is_archive() ) {
-					if (get_theme_mod('post-listing') == 'excerpts') {
+					if (get_theme_mod('post-listing') == 'excerpt') {
 						// Only show "read More" link for posts listed as excerpts
 						echo '<a href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'nightingale-wp') . '</a>';
 					}
@@ -73,8 +65,8 @@ function nightingale_wp_entry_footer() {
 		</div><!--o-layout__item-->
 	</div><!--o-layout-->
 	<?php
-	
-	if (get_theme_mod('post-listing') != 'titles') {
+
+	if (get_theme_mod('post-listing') != 'title') {
 		// Don't show edit link for posts listed as titles only
 		edit_post_link(
 			sprintf(
@@ -86,7 +78,7 @@ function nightingale_wp_entry_footer() {
 			'</span>'
 		);
 	}
-	
+
 }
 endif;
 

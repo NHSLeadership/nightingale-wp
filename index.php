@@ -16,15 +16,19 @@ get_header(); ?>
 <div class="o-layout  o-layout--wide">
 
 	<div id="primary" class="o-layout__item u-8/12@lg">
-		
+
 		<main id="main" class="site-main" role="main">
 
 		<?php
 		if ( have_posts() ) :
 
+			// Initialise variable to tag first post in loop
+			$first_post = true;
+
 			if ( is_home() && ! is_front_page() ) : ?>
 				<header>
 					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+					<hr class="c-divider">
 				</header>
 
 			<?php
@@ -38,12 +42,19 @@ get_header(); ?>
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+
+				 // Display horizontal rule above all but the first post
+				 if ( $first_post == false ) {
+					 echo '<hr class="c-divider">';
+				 }
+				 $first_post = false;
+
+				get_template_part( 'template-parts/content', get_theme_mod('post-listing') );
 
 			endwhile;
 
 			nightingale_pagination();
-			
+
 		else :
 
 			get_template_part( 'template-parts/content', 'none' );
