@@ -66,7 +66,7 @@ function nightingale_wp_entry_footer() {
 	</div><!--o-layout-->
 	<?php
 
-	if (get_theme_mod('post-listing') != 'titles') {
+	if (get_theme_mod('post-listing') != 'title') {
 		// Don't show edit link for posts listed as titles only
 		edit_post_link(
 			sprintf(
