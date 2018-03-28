@@ -55,7 +55,7 @@ function nightingale_wp_entry_footer() {
 				<?php
 				// Read more link
 				if ( is_home () || is_category() || is_archive() ) {
-					if (get_theme_mod('post-listing') == 'excerpts') {
+					if (get_theme_mod('post-listing') == 'excerpt') {
 						// Only show "read More" link for posts listed as excerpts
 						echo '<a href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'nightingale-wp') . '</a>';
 					}
