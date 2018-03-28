@@ -34,20 +34,20 @@ if ( ! function_exists( 'nightingale_wp_entry_footer' ) ) :
  * Prints HTML with meta information for the categories, tags and comments.
  */
 function nightingale_wp_entry_footer() {
-	
+
 	?>
 	<div class="o-layout">
 		<div class="o-layout__item u-9/12@lg">
 			<div class="o-layout--left">
 				<?php
 				if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-					if (get_theme_mod('post-listing') != 'titles') {
+					if (get_theme_mod('post-listing') != 'title') {
 						// Don't show comments link for posts listed as titles only
-						/* translators: %s: post title */		
+						/* translators: %s: post title */
 						comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'nightingale-wp' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
 					}
 				}
-				?>	
+				?>
 			</div><!--o-layout--left-->
 		</div><!--o-layout__item-->
 		<div class="o-layout__item  u-3/12@lg">
@@ -65,7 +65,7 @@ function nightingale_wp_entry_footer() {
 		</div><!--o-layout__item-->
 	</div><!--o-layout-->
 	<?php
-	
+
 	if (get_theme_mod('post-listing') != 'titles') {
 		// Don't show edit link for posts listed as titles only
 		edit_post_link(
@@ -78,7 +78,7 @@ function nightingale_wp_entry_footer() {
 			'</span>'
 		);
 	}
-	
+
 }
 endif;
 
