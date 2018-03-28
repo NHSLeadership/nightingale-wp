@@ -24,7 +24,7 @@
 <?php do_action('nightingale_before_header'); ?>
 
 <div id="page" class="site">
-	
+
 	<header id="jsPageHeader" class="c-page-header" role="banner">
 		<div class="o-wrapper c-page-header__inner">
 
@@ -39,37 +39,42 @@
 				<?php } ?>
 
 				<div class="c-page-header__controls">
-					
+
 					<!-- Search box -->
 					<?php dynamic_sidebar( 'header-widget-area' ); ?>
-										
+
 					<!-- Main menu -->
 					<button class="c-nav-trigger" id="jsNavTrigger" aria-label="menu" data-expands="#jsNav">☰</button>
-					
-					<nav class="c-nav-primary" id="primaryNav">
-						<?php wp_nav_menu( array( 
-							'theme_location' => 'primary', 
-							'menu_class' => 'c-nav-primary__list', 
-							'menu_id' => 'jsNav', 
+
+					<nav class="c-nav-primary c-page-header__nav" id="primaryNav">
+						<?php wp_nav_menu( array(
+							'theme_location' => 'primary',
+							'menu_class' => 'c-nav-primary__list',
+							'menu_id' => 'jsNav',
 							'walker'  => new Walker_Nightingale_Menu(),
 							'container' => false,
 							'depth' => 2  // limit menu depth (otherwise login button goes astray)
-						)); ?>
+						));
+						// If required, display login/out button in nav
+						if (get_theme_mod('login_button')) {
+							wp_loginout();
+						}
+						?>
 					</nav><!-- #site-navigation -->
-					
+
 				</div><!-- .c-page-header__controls -->
-				
+
 		</div><!-- .o-wrapper .c-page-header__inner-->
-		
+
 	</header><!-- #jsPageHeader -->
 
 	<div id="content" class="o-wrapper">
-		
+
 		<!-- Breadcrumbs -->
 		<?php nightingale_breadcrumb() ?>
-	
+
 		<!-- page-specific partnership ribbon (added via custom field named "partnership_ribbon") -->
-		<?php 
+		<?php
 		if (get_the_ID()) {
 			$PartneshipRibbonText = get_post_meta(get_the_ID(), "partnership_ribbon", true);
 			if ($PartneshipRibbonText) {

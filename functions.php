@@ -46,7 +46,7 @@ function nightingale_wp_setup() {
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'nightingale-wp' ),
 	) );
-		
+
 	/*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
@@ -67,7 +67,7 @@ function nightingale_wp_setup() {
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
-	
+
 	// Modify comment form
 	function nightingale_comment_form_defaults( $defaults ) {
 		$defaults['class_form'] = 'c-form-region u-margin-bottom-small u-padding-bottom-tiny';
@@ -89,7 +89,7 @@ function nightingale_wp_setup() {
 		return $fields;
 	}
 	add_filter( 'comment_form_default_fields', 'nightingale_comment_form_fields' );
-	
+
 }
 endif;
 add_action( 'after_setup_theme', 'nightingale_wp_setup' );
@@ -129,7 +129,7 @@ function nightingale_wp_scripts() {
 	wp_enqueue_script( 'nightingale-wp-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'nightingale-wp-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-	
+
 	// JS variables
 	wp_register_script('nightingale-javascript-variables', get_template_directory_uri() . '/js/javascript-variables.js', array(), '1.1', false);
 	wp_enqueue_script('nightingale-javascript-variables');
@@ -137,19 +137,19 @@ function nightingale_wp_scripts() {
 	// Script for menus, sub-menus, burger-menu, etc.
 	wp_register_script('nightingale-menus', get_template_directory_uri() . '/node_modules/nightingale/js/menus.js', array(), '1.1', true);
 	wp_enqueue_script('nightingale-menus');
-	
+
 	// Heading selector script
 	wp_register_script('nightingale-heading-selector', get_template_directory_uri() . '/js/heading-selector.js', array(), '1.1', true);
 	wp_enqueue_script('nightingale-heading-selector');
-	
+
 	// Cookies script
 	wp_register_script('nightingale-cookies', get_template_directory_uri() . '/node_modules/nightingale/js/cookies.js', array(), '1.1', true);
 	wp_enqueue_script('nightingale-cookies');
-	
+
 	// Yukky Safari bug fix
 	wp_register_script('nightingale-safari-bug-fix', get_template_directory_uri() . '/node_modules/nightingale/js/safari-bug-fix.js', array(), '1.1', true);
 	wp_enqueue_script('nightingale-safari-bug-fix');
-	
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
