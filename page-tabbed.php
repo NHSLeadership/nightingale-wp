@@ -18,19 +18,40 @@ get_header(); ?>
 
 			<?php
 
-			// Display tabs if post/page has a parent
+			// Get list of child page IDs (to array)
+			$child_pages = get_pages(
+			    array (
+						'parent'  => $post->post_parent,
+						'depth' => 1,
+			    )
+			);
+			$child_page_ids = wp_list_pluck( $child_pages, 'ID' );
+
+			/* Use child page IDs to look up their page templates
+			* and generate a list of page IDs to _exclude_ from tabbed navigation
+			* (ones that _don't_ use the tabbed page template) */
+			foreach ( $child_page_ids as $key => $value ) {
+				$meta = get_post_meta( $value, '', true );
+				$template_file = implode( ", ", $meta['_wp_page_template'] );
+				if ( $template_file != 'page-tabbed.php' ) {
+						$excluded_ids .= $value . ",";
+				}
+			}
+
+			// Generate navigation tabs for child pages that use the tabbed page template
 			if ( $post->post_parent ) {
-			    $children = wp_list_pages( array(
+			    $children = wp_list_pages ( array(
 			        'title_li' => '',
 			        'child_of' => $post->post_parent,
 							'depth' => 1,
 							'link_before' => '<span class="c-sprite  c-sprite--home  c-tabs__icon"></span><span class="c-tabs__text">',
 							'link_after' => '</span>',
-			        'echo'     => 0
+			        'echo'     => 0,
+							'exclude' => $excluded_ids,
 			    ) );
 			}
 
-			// Apply Nightigale styling to list items and links
+			// Apply Nightigale styling to list items and links in tabbed navigation
 			$children = str_replace('<li class="', '<li class="c-tabs__item  ', $children);
 			$children = str_replace('<a href=', '<a class="c-tabs__link" href=', $children);
 			$children = preg_replace('#<li(.*?)current_page_item(.*?)<a class="#', '<li$1current_page_item$2<a class="is-current  ', $children);
