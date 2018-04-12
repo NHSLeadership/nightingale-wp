@@ -2,7 +2,14 @@
 /**
  * Template Name: TabbedPage
  *
- * The template for displaying pages with tabbed navigation at the top
+ * The template for displaying pages with tabbed navigation at the top.
+ *
+ * Note: the parent page is not shown or included in the navigation.
+ * Only its child pages which use this template are shown
+ * so, instead of linking to the parent page, link to the first child page.
+ * Any links to the parent page will show that page without tabs.
+ *
+ * The order of the tabs is controlled by the child pages' 'order' fields.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -17,51 +24,41 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 			<?php
+			if(! empty($post->post_parent) ) {
 
-			// Get list of child page IDs (to array)
-			$child_pages = get_pages(
-			    array (
-						'parent'  => $post->post_parent,
-						'depth' => 1,
-			    )
-			);
-			$child_page_ids = wp_list_pluck( $child_pages, 'ID' );
+				// Get sibling pages that use tabbed page template
+				$args = array(
+					'post_type' => 'page',
+					'post_parent' => $post->post_parent,
+					'order' => 'ASC',
+					'depth' => 1,
+					'post_status' => 'publish',
+					'meta_query' => array(
+						array(
+							'key' => '_wp_page_template',
+							'value' => 'page-tabbed.php',
+						),
+					),
+				);
+				$my_query = new WP_Query($args);
 
-			/* Use child page IDs to look up their page templates
-			* and generate a list of page IDs to _exclude_ from tabbed navigation
-			* (ones that _don't_ use the tabbed page template) */
-			foreach ( $child_page_ids as $key => $value ) {
-				$meta = get_post_meta( $value, '', true );
-				$template_file = implode( ", ", $meta['_wp_page_template'] );
-				if ( $template_file != 'page-tabbed.php' ) {
-						$excluded_ids .= $value . ",";
-				}
+				// Display tabbed navigation links to sibling pages
+				echo '<ul class="c-tabs">';
+					while ( $my_query->have_posts() ) {
+				    $my_query->the_post();
+						$link = '<li class="c-tabs__item"><a class="c-tabs__link';
+						if ( is_page($post) ) {
+							$link .= ' is-current';
+						}
+						$link .= '" href="';
+						$link .= get_permalink($post);
+						$link .= '"><span class="c-sprite  c-sprite--home  c-tabs__icon"></span><span class="c-tabs__text">';
+						$link .= $post->post_title;
+						$link .= '</span></a></li>';
+						echo $link;
+					}
+				echo '</ul>';
 			}
-
-			// Generate navigation tabs for child pages that use the tabbed page template
-			if ( $post->post_parent ) {
-			    $children = wp_list_pages ( array(
-			        'title_li' => '',
-			        'child_of' => $post->post_parent,
-							'depth' => 1,
-							'link_before' => '<span class="c-sprite  c-sprite--home  c-tabs__icon"></span><span class="c-tabs__text">',
-							'link_after' => '</span>',
-			        'echo'     => 0,
-							'exclude' => $excluded_ids,
-			    ) );
-			}
-
-			// Apply Nightigale styling to list items and links in tabbed navigation
-			$children = str_replace('<li class="', '<li class="c-tabs__item  ', $children);
-			$children = str_replace('<a href=', '<a class="c-tabs__link" href=', $children);
-			$children = preg_replace('#<li(.*?)current_page_item(.*?)<a class="#', '<li$1current_page_item$2<a class="is-current  ', $children);
-
-			// Output tabs as unordered list
-			if ( $children ) : ?>
-			    <ul class="c-tabs">
-			        <?php echo $children; ?>
-			    </ul>
-			<?php endif;
 
 			while ( have_posts() ) : the_post();
 
