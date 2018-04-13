@@ -4,12 +4,8 @@
  *
  * The template for displaying pages with tabbed navigation at the top.
  *
- * Note: the parent page is not shown or included in the navigation.
- * Only its child pages which use this template are shown
- * so, instead of linking to the parent page, link to the first child page.
- * Any links to the parent page will show that page without tabs.
- *
- * The order of the tabs is controlled by the child pages' 'order' fields.
+ * Note: the parent page is shown under the "Overview" tab and
+ * the order of the other tabs is controlled by the child pages' 'order' fields.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -24,12 +20,37 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 			<?php
-			if(! empty($post->post_parent) ) {
 
-				// Get sibling pages that use tabbed page template
+			// Start unordered list
+			echo '<ul class="c-tabs">';
+
+				// Start first "Overview" link to parent page
+				$link = '<li class="c-tabs__item"><a class="c-tabs__link';
+
+				if( empty($post->post_parent) ) {
+					// On first arrival at the parent page, the Overview link is current (and therefore inactive)
+					// and all the other links are to child pages...
+					$link .= ' is-current';
+					$post_parent = $post->ID;
+				}
+				else {
+					// ...but, once a child page is opened, the Overview link should point to the parent page
+					// and all the other links to sibling pages
+					$post_parent = $post->post_parent;
+				}
+
+				// Finish building and displaying Overview tab
+				$link .= '" href="';
+				$link .= get_permalink($post_parent);
+				$link .= '"><span class="c-sprite  c-sprite--home  c-tabs__icon"></span><span class="c-tabs__text">';
+				$link .= 'Overview';
+				$link .= '</span></a></li>';
+				echo $link;
+
+				// Get all child/sibling pages (depending on whether this is a parent or child page) that use this tabbed page template
 				$args = array(
 					'post_type' => 'page',
-					'post_parent' => $post->post_parent,
+					'post_parent' => $post_parent,
 					'order' => 'ASC',
 					'depth' => 1,
 					'post_status' => 'publish',
@@ -42,23 +63,21 @@ get_header(); ?>
 				);
 				$my_query = new WP_Query($args);
 
-				// Display tabbed navigation links to sibling pages
-				echo '<ul class="c-tabs">';
-					while ( $my_query->have_posts() ) {
-				    $my_query->the_post();
-						$link = '<li class="c-tabs__item"><a class="c-tabs__link';
-						if ( is_page($post) ) {
-							$link .= ' is-current';
-						}
-						$link .= '" href="';
-						$link .= get_permalink($post);
-						$link .= '"><span class="c-sprite  c-sprite--home  c-tabs__icon"></span><span class="c-tabs__text">';
-						$link .= $post->post_title;
-						$link .= '</span></a></li>';
-						echo $link;
+				// Display child/sibling tabs
+				while ( $my_query->have_posts() ) {
+					$my_query->the_post();
+					$link = '<li class="c-tabs__item"><a class="c-tabs__link';
+					if ( is_page($post->ID) ) {
+						$link .= ' is-current';
 					}
+					$link .= '" href="';
+					$link .= get_permalink($post);
+					$link .= '"><span class="c-sprite  c-sprite--home  c-tabs__icon"></span><span class="c-tabs__text">';
+					$link .= $post->post_title;
+					$link .= '</span></a></li>';
+					echo $link;
+				}
 				echo '</ul>';
-			}
 
 			while ( have_posts() ) : the_post();
 
