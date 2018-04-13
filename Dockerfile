@@ -7,6 +7,6 @@ ADD . /theme
 RUN cd /theme && npm install
 RUN cd /theme && npm run build
 
-FROM scratch
+FROM alpine:latest
 COPY --from=builder /theme /theme
 RUN rm -f /theme/ssh-key
