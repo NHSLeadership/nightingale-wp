@@ -64,3 +64,4 @@
 		 echo $link;
 	 }
 	 echo '</ul>';
+	 wp_reset_query();
