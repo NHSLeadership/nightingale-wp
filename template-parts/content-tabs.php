@@ -62,11 +62,11 @@
 				 ),
 			 ),
 		 );
-		 $my_query = new WP_Query($args);
+		 $children = new WP_Query($args);
 
 		 // Display child/sibling tabs
-		 while ( $my_query->have_posts() ) {
-			 $my_query->the_post();
+		 while ( $children->have_posts() ) {
+			 $children->the_post();
 			 $link = '<li class="c-tabs__item"><a class="c-tabs__link';
 			 if ( is_page($post->ID) ) {
 				 $link .= ' is-current';
