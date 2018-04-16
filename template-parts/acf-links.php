@@ -1,17 +1,22 @@
 <?php
-if( have_rows('links') ):
-     // loop through the rows of data
-    while ( have_rows('links') ) : the_row();
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+if ( is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
+    //Check that the ACF plugin is activated
 
-        the_sub_field('url');
-        the_sub_field('title');
-        the_sub_field('description');
+	if( have_rows('links') ):
+	     // loop through the rows of data
+	    while ( have_rows('links') ) : the_row();
 
-    endwhile;
+	        the_sub_field('url');
+	        the_sub_field('title');
+	        the_sub_field('description');
 
-else :
+	    endwhile;
 
-    // no layouts found
+	else :
 
-endif;
+	    // no layouts found
+
+	endif;
+}
 ?>
