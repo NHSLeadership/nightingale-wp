@@ -7,6 +7,11 @@ ADD . /theme
 RUN cd /theme && npm install
 RUN cd /theme && npm run build
 
+# Versioning
+ARG BRANCH
+ARG BUILD
+RUN sed -i -e "s#Version: #Version: $BRANCH - $BUILD - #g" /theme/style.css
+
 FROM alpine:latest
 COPY --from=builder /theme /theme
 RUN rm -f /theme/ssh-key
