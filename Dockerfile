@@ -6,12 +6,7 @@ RUN ssh-keyscan -p 22 github.com >> ~/.ssh/known_hosts
 ADD . /theme
 RUN cd /theme && npm install
 RUN cd /theme && npm run build
-
-# Versioning
-ARG BRANCH
-ARG BUILD
-ENV BRANCH=$BRANCH
-ENV BUILD=$BUILD
+RUN printenv
 
 RUN sed -i -e "s#Version: #Version: $BRANCH - $BUILD - #g" /theme/style.css
 
