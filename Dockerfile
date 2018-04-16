@@ -12,7 +12,6 @@ ARG BRANCH
 ARG BUILD
 ENV BRANCH=$BRANCH
 ENV BUILD=$BUILD
-RUN printenv
 RUN sed -i -e "s#Version: #Version: $BRANCH - $BUILD - #g" /theme/style.css
 
 FROM alpine:latest
