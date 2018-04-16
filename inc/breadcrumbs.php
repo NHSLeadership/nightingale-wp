@@ -3,7 +3,7 @@
 * Generate breadcrumbs
 */
 function nightingale_breadcrumb() {
-  
+
   // Check that breadcrumbs are enabled in customizer
   if (get_theme_mod('breadcrumbs')) {
 
@@ -33,6 +33,14 @@ function nightingale_breadcrumb() {
             $category_name = $category->name;
             echo $category_link.'" class="c-breadcrumb__link">'.$category_name.'</a></li>';
           }
+
+					// If this is a child page, add links to its ancestors
+					if( is_page() && get_post_field( 'post_parent' ) ) {
+						$parents = get_post_ancestors( get_the_id() );
+						foreach ( array_reverse($parents) as $parent ) {
+							echo '<li class="c-breadcrumb__item"><a href =' . get_permalink( $parent ) . '>' . get_the_title( $parent ) . '</a></li>';
+						}
+					}
           ?>
 
           <!-- Display title current post/page as last item in breadcrumb -->
