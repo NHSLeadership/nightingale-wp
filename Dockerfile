@@ -10,6 +10,9 @@ RUN cd /theme && npm run build
 # Versioning
 ARG BRANCH
 ARG BUILD
+ENV BRANCH=$BRANCH
+ENV BUILD=$BUILD
+
 RUN sed -i -e "s#Version: #Version: $BRANCH - $BUILD - #g" /theme/style.css
 
 FROM alpine:latest
