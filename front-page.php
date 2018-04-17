@@ -37,5 +37,8 @@ get_header(); ?>
 <?php get_template_part( 'template-parts/content', 'secondary' ) ?>	
 <?php get_sidebar(); ?>
 </div><!-- .o-layout -->
+
+<?php get_template_part( 'template-parts/acf', 'links' );?>
+
 <?php
 get_footer();
