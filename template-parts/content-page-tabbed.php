@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying page content in page.php
+ * Template part for displaying page content in page-tabbed.php
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -17,6 +17,7 @@
 	<div class="entry-content">
 
 		<?php
+			get_template_part( 'template-parts/content', 'tabs' );
 			get_template_part( 'template-parts/acf', 'flex' );
 
 			the_content();

@@ -22,8 +22,7 @@ get_header(); ?>
 			<?php
 			while ( have_posts() ) : the_post();
 
-				get_template_part( 'template-parts/content', 'tabs' );
-				get_template_part( 'template-parts/content', 'page' );
+				get_template_part( 'template-parts/content', 'page-tabbed' );
 
 				// If comments are open or we have at least one comment, load up the comment template.
 				if ( comments_open() || get_comments_number() ) :
@@ -35,7 +34,8 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-<?php get_sidebar(); ?>
+	<?php get_template_part( 'template-parts/content', 'secondary' ) ?>
+	<?php get_sidebar(); ?>
 </div><!-- .o-layout -->
 <?php
 get_footer();
