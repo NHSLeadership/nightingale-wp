@@ -19,6 +19,10 @@ if( have_rows('content') ):
 
 					get_template_part( 'template-parts/acf', 'text' );
 
+				elseif( get_row_layout() == 'quote' ):
+
+					get_template_part( 'template-parts/acf', 'quote' );
+
 				elseif( get_row_layout() == 'leading_paragraph' ):
 
 					get_template_part( 'template-parts/acf', 'leading-paragraph' );
