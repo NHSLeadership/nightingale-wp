@@ -80,7 +80,7 @@ function nightingale_wp_customize_register( $wp_customize ) {
     'transport'   => 'refresh',
 	) );
 
-	// Add "Breadcrumbs" control within "Copyright" setting (see above)
+	// Add "Copyright" control within "Copyright" setting (see above)
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'copyright', array(
 		'label'        => __( 'Copyright Holder:', 'nightingale-wp'),
 		'section'    => 'theme_settings',
