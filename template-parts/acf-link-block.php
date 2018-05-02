@@ -4,7 +4,7 @@ if ( is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
     //Check that the ACF plugin is activated
 
 		$text = get_sub_field('link_block_title');
-		echo '<hr><h3>' . $text . '</h3>';
+		echo '<hr class="c-divider"><h3>' . $text . '</h3>';
 
 		if( have_rows('link') ):
 
@@ -20,7 +20,7 @@ if ( is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
 
 	    endwhile;
 
-			echo '</ul><hr>';
+			echo '</ul><hr class="c-divider">';
 
 		else :
 
