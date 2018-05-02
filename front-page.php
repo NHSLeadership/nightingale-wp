@@ -34,7 +34,11 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-<?php get_template_part( 'template-parts/content', 'secondary' ) ?>	
+<?php //get_template_part( 'template-parts/content', 'secondary' ) ?>
+<?php if( is_active_sidebar( 'front-page-sidebar-widget-area' ) ) :
+		dynamic_sidebar( 'front-page-sidebar-widget-area' );
+endif; ?>
+<?php //echo nightingale_recent_posts(); ?>
 <?php get_sidebar(); ?>
 </div><!-- .o-layout -->
 
