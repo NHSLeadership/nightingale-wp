@@ -33,6 +33,10 @@ if ( is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
 
 	        	get_template_part( 'template-parts/acf', 'quote' );
 
+					elseif( get_row_layout() == 'link_block' ):
+
+	        	get_template_part( 'template-parts/acf', 'link-block' );
+
 	        endif;
 
 	    endwhile;
