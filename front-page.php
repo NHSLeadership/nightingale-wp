@@ -1,11 +1,6 @@
 <?php
 /**
- * The template for displaying all pages
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
+ * The template for displaying the front page
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -34,14 +29,14 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-<?php //get_template_part( 'template-parts/content', 'secondary' ) ?>
-<?php if( is_active_sidebar( 'front-page-sidebar-widget-area' ) ) :
+
+	<?php if( is_active_sidebar( 'front-page-sidebar-widget-area' ) ) :
 		echo '<div class="widget o-layout__item  u-4/12@lg">';
 		dynamic_sidebar( 'front-page-sidebar-widget-area' );
 		echo '</div><!-- widget -->';
-endif; ?>
-<?php //echo nightingale_recent_posts(); ?>
-<?php get_sidebar(); ?>
+	endif; ?>
+
+	<?php get_sidebar(); ?>
 </div><!-- .o-layout -->
 
 <?php get_template_part( 'template-parts/acf', 'links' );?>
