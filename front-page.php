@@ -36,7 +36,9 @@ get_header(); ?>
 	</div><!-- #primary -->
 <?php //get_template_part( 'template-parts/content', 'secondary' ) ?>
 <?php if( is_active_sidebar( 'front-page-sidebar-widget-area' ) ) :
+		echo '<div class="widget o-layout__item  u-4/12@lg">';
 		dynamic_sidebar( 'front-page-sidebar-widget-area' );
+		echo '</div><!-- widget -->';
 endif; ?>
 <?php //echo nightingale_recent_posts(); ?>
 <?php get_sidebar(); ?>
