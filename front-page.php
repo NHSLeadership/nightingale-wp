@@ -29,13 +29,7 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-
-	<?php if( is_active_sidebar( 'front-page-sidebar-widget-area' ) ) :
-		echo '<div class="widget o-layout__item  u-4/12@lg">';
-		dynamic_sidebar( 'front-page-sidebar-widget-area' );
-		echo '</div><!-- widget -->';
-	endif; ?>
-
+	<?php get_template_part( 'template-parts/front-page', 'secondary' );?>
 	<?php get_sidebar(); ?>
 </div><!-- .o-layout -->
 
