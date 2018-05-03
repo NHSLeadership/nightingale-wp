@@ -1,7 +1,7 @@
 <?php
+// check that the ACF plugin is activated
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 if ( is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
-    //Check that the ACF plugin is activated
 
 	if( have_rows('links') ):
 	     // loop through the rows of data
