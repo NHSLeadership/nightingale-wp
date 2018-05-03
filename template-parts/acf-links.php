@@ -1,5 +1,5 @@
 <?php
-// Check that the ACF plugin is activated
+// check that the ACF plugin is activated
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 if ( is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
 
