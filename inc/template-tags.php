@@ -37,7 +37,7 @@ function nightingale_wp_entry_footer() {
 
 	?>
 	<div class="o-layout">
-		<div class="o-layout__item u-9/12@lg">
+		<div class="o-layout__item u-6/12@lg">
 			<div class="o-layout--left">
 				<?php
 				if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
@@ -49,16 +49,14 @@ function nightingale_wp_entry_footer() {
 				?>
 			</div><!--o-layout--left-->
 		</div><!--o-layout__item-->
-		<div class="o-layout__item  u-3/12@lg">
+		<div class="o-layout__item  u-6/12@lg">
 			<div class="o-layout--right">
 				<?php
 				// Read more link
-				if ( is_home () || is_category() || is_archive() ) {
 					if (get_theme_mod('post-listing') == 'excerpt') {
 						// Only show "read More" link for posts listed as excerpts
 						echo '<a href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'nightingale-wp') . '</a>';
 					}
-				}
 				?>
 			</div><!--o-layout--right-->
 		</div><!--o-layout__item-->
