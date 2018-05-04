@@ -33,6 +33,9 @@
 					get_template_part( 'template-parts/acf', 'flex' );
 			}
 
+			// Display featured image
+			the_post_thumbnail('medium', ['class' => 'c-media__media']);
+
 			the_excerpt( sprintf(
 				/* translators: %s: Name of current post. */
 				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'nightingale-wp' ), array( 'span' => array( 'class' => array() ) ) ),
