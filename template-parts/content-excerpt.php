@@ -27,8 +27,11 @@
 	<div class="c-article__content">
 		<?php
 
-			// Advanced Custom Fields content
-			get_template_part( 'template-parts/acf', 'flex' );
+			// Don't show post content if it's in a listing page
+			if ( is_single() ) {
+					// Advanced Custom Fields content
+					get_template_part( 'template-parts/acf', 'flex' );
+			}
 
 			the_excerpt( sprintf(
 				/* translators: %s: Name of current post. */
