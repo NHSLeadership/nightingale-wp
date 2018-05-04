@@ -42,9 +42,8 @@ function nightingale_wp_entry_footer() {
 				<?php
 				if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 					if (get_theme_mod('post-listing') != 'title') {
-						// Don't show comments link for posts listed as titles only
-						/* translators: %s: post title */
-						comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'nightingale-wp' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
+						// Don't show comment stats for posts listed as titles only
+						comments_number();
 					}
 				}
 				?>
