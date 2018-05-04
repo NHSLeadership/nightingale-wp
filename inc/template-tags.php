@@ -63,19 +63,6 @@ function nightingale_wp_entry_footer() {
 	</div><!--o-layout-->
 	<?php
 
-	if (get_theme_mod('post-listing') != 'title') {
-		// Don't show edit link for posts listed as titles only
-		edit_post_link(
-			sprintf(
-				/* translators: %s: Name of current post */
-				esc_html__( 'Edit %s', 'nightingale-wp' ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			),
-			'<span class="edit-link">',
-			'</span>'
-		);
-	}
-
 }
 endif;
 
