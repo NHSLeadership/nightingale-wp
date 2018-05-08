@@ -30,7 +30,7 @@ if ( is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
 										}
 										// Video
 										elseif ( get_sub_field('video') ) {
-											get_template_part( 'template-parts/acf', 'media' );
+											get_template_part( 'template-parts/acf', 'video' );
 										}
 										// Quote
 										while ( have_rows('quote_block') ) : the_row();
