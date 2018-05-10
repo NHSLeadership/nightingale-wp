@@ -3,13 +3,13 @@
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 if ( is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
 
-		if( have_rows('featured_pages') ):
+		if( have_rows('featured_content') ):
 
 				echo '<hr class="c-divider">';
 				echo '<div class="o-layout  o-layout--wide">';
 
 				// loop through the rows of data
-				while ( have_rows('featured_pages') ) : the_row();
+				while ( have_rows('featured_content') ) : the_row();
 
 						echo '<div class="o-layout__item  u-4/12@lg">';
 
