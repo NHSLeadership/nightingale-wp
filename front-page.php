@@ -39,7 +39,7 @@ get_header(); ?>
 </div><!-- .o-layout -->
 
 <?php get_template_part( 'template-parts/acf', 'links' );?>
-<?php get_template_part( 'template-parts/acf', 'featured-pages' );?>
+<?php get_template_part( 'template-parts/acf', 'featured-content' );?>
 
 <?php
 get_footer();
