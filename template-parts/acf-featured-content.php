@@ -8,52 +8,23 @@ if ( is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
 				echo '<hr class="c-divider">';
 				echo '<div class="o-layout  o-layout--wide">';
 
-				// loop through the rows of data
+				// loop through columns
 				while ( have_rows('featured_content') ) : the_row();
 
-						echo '<div class="o-layout__item  u-4/12@lg">';
+						if( have_rows('featured_content_item') ):
 
-						// page header with title link
-						if ( have_rows('page_header') ) :
+								echo '<div class="o-layout__item  u-4/12@lg">';
 
-								while ( have_rows('page_header') ) : the_row();
-										echo '<h3><a href="' . get_sub_field('page_link') . '">' . get_sub_field('page_title') . '</a></h3>';
-								endwhile;
+								// loop through rows
+								while ( have_rows('featured_content_item') ) : the_row();
 
-						endif;
-
-						// page body with any combination of videos, images, quotes, etc.
-						if ( have_rows('page_body') ) :
-
-								while ( have_rows('page_body') ) : the_row();
-
-										if( get_sub_field('video') ):
-
-												get_template_part( 'template-parts/acf', 'video' );
-
-										elseif( get_sub_field('image') ):
-
-												get_template_part( 'template-parts/acf', 'media' );
-
-										elseif( get_sub_field('quote') ):
-
-												get_template_part( 'template-parts/acf', 'quote' );
-
-										elseif( get_sub_field('text') ):
-
-												get_template_part( 'template-parts/acf', 'text' );
-
-										elseif( get_sub_field('button') ):
-
-												get_template_part( 'template-parts/acf', 'button' );
-
-										endif;
+										get_template_part( 'template-parts/acf', 'template-switch' );
 
 								endwhile;
 
-						endif;
+								echo '</div><!-- o-layout__item -->';
 
-						echo '</div><!-- o-layout__item -->';
+						endif;
 
 				endwhile;
 
