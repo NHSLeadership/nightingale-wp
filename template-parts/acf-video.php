@@ -9,9 +9,5 @@ $video = str_replace ('<iframe width="640" height="360"', '<iframe class="c-medi
 // Display video
 ?>
 <figure class="c-media">
-
-    <div class="c-media__masthead">
-        <?php echo $video; ?>
-    </div>
-
+		<?php echo $video; ?>
 </figure>
