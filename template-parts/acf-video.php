@@ -1,17 +1,17 @@
 <?php
 
-// get iframe HTML
-$iframe = get_sub_field('video');
+// get video iframe HTML
+$video = get_sub_field('video');
 
-// Remove hard coded dimensions from iframe and apply Nightigale class
-$iframe = str_replace ('<iframe width="640" height="360"', '<iframe class="c-media__media"', $iframe);
+// Remove hard coded dimensions from video iframe and apply Nightigale class
+$video = str_replace ('<iframe width="640" height="360"', '<iframe class="c-media__media"', $video);
 
-// Display video in $iframe
+// Display video
 ?>
 <figure class="c-media">
 
     <div class="c-media__masthead">
-        <?php echo $iframe; ?>
+        <?php echo $video; ?>
     </div>
 
 </figure>
