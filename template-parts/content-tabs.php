@@ -28,7 +28,9 @@
 		 // Start first "Overview" link to parent page
 		 $link = '<li class="c-tabs__item"><a class="c-tabs__link';
 
-		 if( empty($post->post_parent) ) {
+		 // Only show siblings if current page has no parent or parent doesn't have tabbed navigation
+		 $parent_template = get_post_meta($post->post_parent, '_wp_page_template', true);
+		 if( empty($post->post_parent) || ($parent_template!='page-tabbed.php') ) {
 			 // On first arrival at the parent page, the Overview link is current (and therefore inactive)
 			 // and all the other links are to child pages...
 			 $link .= ' is-current';
