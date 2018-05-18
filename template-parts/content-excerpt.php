@@ -27,8 +27,8 @@
 	<div class="c-article__content">
 		<?php
 
-			// Advanced Custom Fields content
-			get_template_part( 'template-parts/acf', 'flex' );
+			// Display featured image
+			the_post_thumbnail('medium', ['class' => 'c-media__media']);
 
 			the_excerpt( sprintf(
 				/* translators: %s: Name of current post. */
