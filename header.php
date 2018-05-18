@@ -80,7 +80,7 @@
 			if ($PartneshipRibbonText) {
 				$SummaryDetail = '<b>In partnership with:</b> '.$PartneshipRibbonText;
 				?>
-				<div class="c-ribbon c-ribbon--expandable page-partnership-ribbon u-margin-bottom">
+				<div class="c-ribbon c-ribbon--expandable c-ribbon--page-specific u-margin-bottom">
 					<div class="o-wrapper">
 						<?php
 						if (strlen($PartneshipRibbonText) <= 30 ) {

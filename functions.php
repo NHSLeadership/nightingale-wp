@@ -219,3 +219,8 @@ require get_template_directory() . '/inc/breadcrumbs.php';
  * Gravity Forms styling.
  */
 require get_template_directory() . '/inc/gravity-forms.php';
+
+/**
+ * Advanced Custom Fields.
+ */
+require get_template_directory() . '/inc/advanced-custom-fields.php';
