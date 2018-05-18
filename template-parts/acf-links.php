@@ -16,8 +16,7 @@ if ( is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
 						</div><!-- o-layout__item -->';
 				endwhile;
 
-				echo '</div>
-				<hr class="c-divider">';
+				echo '</div>';
 
 	else :
 
