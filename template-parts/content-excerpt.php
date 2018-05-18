@@ -27,12 +27,6 @@
 	<div class="c-article__content">
 		<?php
 
-			// Don't show post content if it's in a listing page
-			if ( is_single() ) {
-					// Advanced Custom Fields content
-					get_template_part( 'template-parts/acf', 'flex' );
-			}
-
 			// Display featured image
 			the_post_thumbnail('medium', ['class' => 'c-media__media']);
 
