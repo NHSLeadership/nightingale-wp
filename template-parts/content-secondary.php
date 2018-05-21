@@ -13,31 +13,7 @@ if ( is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
 
 	    	echo get_field('button');
 
-	        if( get_row_layout() == 'heading' ):
-
-	        	get_template_part( 'template-parts/acf', 'heading' );
-
-	        elseif( get_row_layout() == 'text' ):
-
-	        	get_template_part( 'template-parts/acf', 'text' );
-
-	        elseif( get_row_layout() == 'button' ):
-
-	        	get_template_part( 'template-parts/acf', 'button' );
-
-	        elseif( get_row_layout() == 'image' ):
-
-	        	get_template_part( 'template-parts/acf', 'media' );
-
-	        elseif( get_row_layout() == 'quote' ):
-
-	        	get_template_part( 'template-parts/acf', 'quote' );
-
-					elseif( get_row_layout() == 'link_block' ):
-
-	        	get_template_part( 'template-parts/acf', 'link-block' );
-
-	        endif;
+				get_template_part( 'template-parts/acf', 'template-switch' );
 
 	    endwhile;
 
