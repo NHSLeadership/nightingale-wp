@@ -10,7 +10,7 @@ if ( is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
 
 				// loop through the rows of data
 				while ( have_rows('links') ) : the_row();
-						echo '<div class="c-link--home-page  o-layout__item  u-4/12@lg">
+						echo '<div class="o-layout__item  u-4/12@lg">
 								<h3><a href="' . get_sub_field('url') . '">' . get_sub_field('title') . '</a></h3>
 								<p>' . get_sub_field('description') . '</p>
 						</div><!-- o-layout__item -->';
