@@ -27,8 +27,16 @@
 	<div class="c-article__content">
 		<?php
 
-			// Display featured image
-			the_post_thumbnail('medium', ['class' => 'c-media__media']);
+			// Display featured image, if present, at 100% width
+			$post_thumbnail_id = get_post_thumbnail_id();
+			if ($post_thumbnail_id) {
+				$post_thumbnail_url = wp_get_attachment_url( $post_thumbnail_id );
+				?>
+				<div class="post-image">
+					<img title="<?php the_title(); ?>" alt="thumb image" class="c-media__media" src="<?php echo $post_thumbnail_url; ?>" style="width:100%; height:auto;">
+				</div>
+				<?php
+			}
 
 			the_excerpt( sprintf(
 				/* translators: %s: Name of current post. */
