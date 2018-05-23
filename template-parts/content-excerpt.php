@@ -32,9 +32,7 @@
 			if ($post_thumbnail_id) {
 				$post_thumbnail_url = wp_get_attachment_url( $post_thumbnail_id );
 				?>
-				<div class="post-image">
-					<img title="<?php the_title(); ?>" alt="thumb image" class="c-media__media" src="<?php echo $post_thumbnail_url; ?>" style="width:100%; height:auto;">
-				</div>
+				<img title="<?php the_title(); ?>" alt="thumb image" class="c-media__media" src="<?php echo $post_thumbnail_url; ?>" style="width:100%; height:auto;">
 				<?php
 			}
 
