@@ -41,11 +41,19 @@ function nightingale_breadcrumb() {
 							echo '<li class="c-breadcrumb__item"><a href =' . get_permalink( $parent ) . '>' . get_the_title( $parent ) . '</a></li>';
 						}
 					}
+
+					// If this is search results page, show search term
+					if ( is_search() ) {
+						echo '<li class="c-breadcrumb__item">Search Results</li>';
+						echo '<li class="c-breadcrumb__item">' . get_search_query() . '</li>';
+					}
+					else {
           ?>
-
-          <!-- Display title current post/page as last item in breadcrumb -->
-          <li class="c-breadcrumb__item"><?php echo the_title(); ?></li>
-
+	          <!-- Display title current post/page as last item in breadcrumb -->
+	          <li class="c-breadcrumb__item"><?php echo the_title(); ?></li>
+					<?php
+					}
+					?>
         </ol>
       </nav>
       <?php
