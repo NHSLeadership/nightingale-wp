@@ -16,10 +16,10 @@ get_header(); ?>
 		if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<h1 class="c-search__header"><?php printf( esc_html__( 'Search Results: %s', 'nightingale-wp' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+				<h1><?php printf( esc_html__( 'Search Results: %s', 'nightingale-wp' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 				<?php
 				global $wp_query;
-				echo '<div class="c-search__meta">' . $wp_query->found_posts.' Results found</div>';
+				echo '<p>' . $wp_query->found_posts.' Results found</p>';
 				?>
 			</header><!-- .page-header -->
 
@@ -38,7 +38,7 @@ get_header(); ?>
 
 			endwhile;
 
-			the_posts_navigation();
+			nightingale_pagination();
 
 		else :
 
