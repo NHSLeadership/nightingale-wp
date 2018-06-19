@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 $image = get_sub_field('image');
 
-if( !empty($image) ): 
+if( !empty($image) ):
 
 	// vars
 	$url = $image['url'];
@@ -21,7 +21,7 @@ if( !empty($image) ):
 <figure class="c-media">
 
     <div class="c-media__masthead">
-        <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>"  class="c-media__media">
+        <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>"  class="c-media__media" width=100% height=auto>
     </div>
 
     <?php if( $caption ): ?>
