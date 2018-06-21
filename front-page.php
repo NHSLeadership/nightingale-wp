@@ -19,8 +19,8 @@ get_header(); ?>
 
 				get_template_part( 'template-parts/content', 'page' );
 
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
+				// Load up the comment template if comments or pingbacks are open.
+				if ( comments_open() || pings_open() ) :
 					comments_template();
 				endif;
 
