@@ -49,6 +49,13 @@
 	</div><!-- .c-article__content -->
 
 	<footer>
-		<?php nightingale_wp_entry_footer(); ?>
+		<div class="o-layout">
+			<?php nightingale_wp_entry_footer(); ?>
+			<div class="o-layout__item  u-6/12@lg">
+				<div class="o-layout--right">
+					<?php echo '<a href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'nightingale-wp') . '</a>'; ?>
+				</div><!--o-layout--right-->
+			</div><!--o-layout__item-->
+		</div><!--o-layout-->
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

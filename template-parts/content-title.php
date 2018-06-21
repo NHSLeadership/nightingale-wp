@@ -43,6 +43,8 @@
 	</div><!-- .c-article__content -->
 
 	<footer>
-		<?php nightingale_wp_entry_footer(); ?>
+		<div class="o-layout">
+			<?php nightingale_wp_entry_footer(); ?>
+		</div><!--o-layout-->
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
