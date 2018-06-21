@@ -21,7 +21,7 @@ if( !empty($image) ):
 <figure class="c-media">
 
     <div class="c-media__masthead">
-        <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>"  class="c-media__media" width=100% height=auto>
+        <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>"  class="c-media__media" width="100%" height="auto">
     </div>
 
     <?php if( $caption ): ?>
