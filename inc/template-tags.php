@@ -36,31 +36,18 @@ if ( ! function_exists( 'nightingale_wp_entry_footer' ) ) :
 function nightingale_wp_entry_footer() {
 
 	?>
-	<div class="o-layout">
-		<div class="o-layout__item u-6/12@lg">
-			<div class="o-layout--left">
-				<?php
-				if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-					if (get_theme_mod('post-listing') != 'title') {
-						// Don't show comment stats for posts listed as titles only
-						comments_number();
-					}
+	<div class="o-layout__item u-6/12@lg">
+		<div class="o-layout--left">
+			<?php
+			if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+				if (get_theme_mod('post-listing') != 'title') {
+					// Don't show comment stats for posts listed as titles only
+					comments_number();
 				}
-				?>
-			</div><!--o-layout--left-->
-		</div><!--o-layout__item-->
-		<div class="o-layout__item  u-6/12@lg">
-			<div class="o-layout--right">
-				<?php
-				// Read more link
-					if (get_theme_mod('post-listing') == 'excerpt') {
-						// Only show "read More" link for posts listed as excerpts
-						echo '<a href="'. get_permalink( get_the_ID() ) . '">' . __('Read More', 'nightingale-wp') . '</a>';
-					}
-				?>
-			</div><!--o-layout--right-->
-		</div><!--o-layout__item-->
-	</div><!--o-layout-->
+			}
+			?>
+		</div><!--o-layout--left-->
+	</div><!--o-layout__item-->
 	<?php
 
 }
