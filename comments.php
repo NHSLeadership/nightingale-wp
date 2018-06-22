@@ -23,15 +23,6 @@ if ( post_password_required() ) {
 <div id="comments" class="comments-area">
 
 	<?php
-	// Hide pingbacks if they are disabled
-	if (! pings_open() ) : ?>
-		<style>
-			.pingback {
-				display: none;
-			}
-		</style>
-	<?php endif;
-
 	// You can start editing here -- including this comment!
 	if ( have_comments() ) : ?>
 		<h2 class="comments-title">
@@ -58,9 +49,17 @@ if ( post_password_required() ) {
 
 		<ol class="comment-list">
 			<?php
+				if ( pings_open() ) {
+					// Only show pingbacks if enabled in settings
+					$comment_type = 'all';
+				}
+				else {
+					$comment_type = 'comment';
+				}
 				wp_list_comments( array(
 					'style'      => 'ol',
 					'short_ping' => true,
+					'type' => $comment_type,
 				) );
 			?>
 		</ol><!-- .comment-list -->
