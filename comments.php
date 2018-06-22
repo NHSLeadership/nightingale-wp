@@ -49,9 +49,17 @@ if ( post_password_required() ) {
 
 		<ol class="comment-list">
 			<?php
+				if ( pings_open() ) {
+					// Only show pingbacks if enabled in settings
+					$comment_type = 'all';
+				}
+				else {
+					$comment_type = 'comment';
+				}
 				wp_list_comments( array(
 					'style'      => 'ol',
 					'short_ping' => true,
+					'type' => $comment_type,
 				) );
 			?>
 		</ol><!-- .comment-list -->
