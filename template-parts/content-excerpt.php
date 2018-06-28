@@ -31,9 +31,11 @@
 			$post_thumbnail_id = get_post_thumbnail_id();
 			if ($post_thumbnail_id) {
 				$post_thumbnail_url = wp_get_attachment_url( $post_thumbnail_id );
-				?>
-				<img title="<?php the_title(); ?>" alt="thumb image" class="c-media__media" src="<?php echo $post_thumbnail_url; ?>" style="width:100%; height:auto;">
-				<?php
+				if ($post_thumbnail_url) {
+					?>
+					<img title="<?php the_title(); ?>" alt="thumb image" class="c-media__media" src="<?php echo $post_thumbnail_url; ?>" style="width:100%; height:auto;">
+					<?php
+				}
 			}
 
 			the_excerpt( sprintf(
