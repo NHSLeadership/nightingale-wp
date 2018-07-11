@@ -29,7 +29,6 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-	<?php get_template_part( 'template-parts/front-page', 'secondary' );?>
 	<?php get_sidebar(); ?>
 
 </div><!-- .o-layout -->
