@@ -54,6 +54,7 @@
 		 $args = array(
 			 'post_type' => 'page',
 			 'post_parent' => $post_parent,
+			 'orderby' => 'menu_order',
 			 'order' => 'ASC',
 			 'depth' => 1,
 			 'post_status' => 'publish',
