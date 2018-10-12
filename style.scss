@@ -62,3 +62,8 @@ a {
 
 /* WordPress generated classes */
 @import "style/wordpress";
+
+/* Styling for fallback elements */
+.fallback-only {
+   display: none;
+}
