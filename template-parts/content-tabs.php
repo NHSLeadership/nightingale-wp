@@ -67,18 +67,29 @@
 		 );
 		 $children = new WP_Query($args);
 
+		 // Define tab icons (based on image sprite definitions in Nightingale)
+		 $icons = array ( "user", "menu", "info", "pencil", "currency", "speaker");
+
 		 // Display child/sibling tabs
 		 while ( $children->have_posts() ) {
 			 $children->the_post();
+			 // Define tab icon
+			 $icon = current ( $icons );
+			 // Build tab
 			 $link = '<li class="c-tabs__item"><a class="c-tabs__link';
 			 if ( is_page($post->ID) ) {
 				 $link .= ' is-current';
 			 }
 			 $link .= '" href="';
 			 $link .= get_permalink($post);
-			 $link .= '"><span class="c-sprite  c-sprite--home  c-tabs__icon"></span><span class="c-tabs__text">';
+			 $link .= '"><span class="c-sprite  c-sprite--'.$icon.'  c-tabs__icon"></span><span class="c-tabs__text">';
 			 $link .= $post->post_title;
 			 $link .= '</span></a></li>';
+			 // If number of tabs exceeds number of icons, reset to start of icon array (icons will repeat from the start)
+			 if ( ! next ( $icons ) ) {
+				 reset ( $icons );
+			 }
+			 // Display tab
 			 echo $link;
 		 }
 		 echo '</ul>';
