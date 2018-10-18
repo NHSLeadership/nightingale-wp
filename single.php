@@ -23,7 +23,8 @@ get_header(); ?>
 
 						get_template_part( 'template-parts/content', get_post_format() );
 
-						the_post_navigation();
+						// Commented out line below as temporary fix to stop displaying related posts
+						// the_post_navigation();
 
 						// Load up the comment template if comments or pingbacks are open.
 						if ( comments_open() || pings_open() ) :
