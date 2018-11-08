@@ -24,3 +24,9 @@
 	@extend	.c-form-dropdown__select;
 	@extend	.c-form-input;
 }
+
+// Apply information card styling to any radio buttons with class c-form-selection-panel
+.c-form-selection-panel .c-form-checkbox--radio {
+	@extend .c-card;
+	@extend .c-card--information;
+}
