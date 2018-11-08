@@ -12,3 +12,11 @@
 	 @extend .c-btn;
 	 @extend .c-btn--submit;
 }
+
+/**
+* Apply Nightingale styling to chained select dropdowns
+*/
+.gfield_chainedselect select {
+	@extend	.c-form-dropdown__select;
+	@extend .c-form-input;
+}
