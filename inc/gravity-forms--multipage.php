@@ -1,6 +1,6 @@
 <?php
 /**
- * Styling for the extra bits that sit outside the main form area in multipart forms.
+ * Styling for the extra bits that sit outside the main form area in multipage forms.
  */
 
 // Style the previous button

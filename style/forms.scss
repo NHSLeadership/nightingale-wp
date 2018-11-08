@@ -4,3 +4,11 @@
 .validation_message {
   color: $color-error;
 }
+
+/**
+* Apply Nightingale styling to nested form add entry button
+*/
+.gpnf-add-entry {
+	 @extend .c-btn;
+	 @extend .c-btn--submit;
+}
