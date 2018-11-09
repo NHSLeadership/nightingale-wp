@@ -4,3 +4,29 @@
 .validation_message {
   color: $color-error;
 }
+
+/**
+* Apply Nightingale styling to nested form add entry button
+*/
+.gpnf-add-entry {
+	 @extend .c-btn;
+	 @extend .c-btn--submit;
+}
+
+// Style chained select dropdowns
+.gfield_chainedselect select {
+	@extend	.c-form-dropdown__select;
+	@extend .c-form-input;
+}
+
+// Style country lists
+.address_country select {
+	@extend	.c-form-dropdown__select;
+	@extend	.c-form-input;
+}
+
+// Apply information card styling to any radio buttons with class c-form-selection-panel
+.c-form-selection-panel .c-form-checkbox--radio {
+	@extend .c-card;
+	@extend .c-card--information;
+}
