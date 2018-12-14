@@ -6,6 +6,7 @@ RUN ssh-keyscan -p 22 github.com >> ~/.ssh/known_hosts
 ADD . /theme
 RUN cd /theme && npm install
 RUN cd /theme && npm run build
+RUN cd /theme && npm run build-minify
 RUN rm -f /theme/ssh-key
 
 # Versioning
