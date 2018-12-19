@@ -146,10 +146,6 @@ function nightingale_wp_scripts() {
 	wp_register_script('nightingale-cookies', get_template_directory_uri() . '/node_modules/nightingale/js/cookies.js', array(), '1.1', true);
 	wp_enqueue_script('nightingale-cookies');
 
-	// Yukky Safari bug fix
-	wp_register_script('nightingale-safari-bug-fix', get_template_directory_uri() . '/js/safari-bug-fix.js', array(), '1.1', true);
-	wp_enqueue_script('nightingale-safari-bug-fix');
-
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
