@@ -14,6 +14,24 @@
 
 	</div><!-- #o-wrapper -->
 
+	<script>
+    // Eww, eww, ewwww! Forcing a repaint to get around a really, really odd
+    // Safari bug: https://twitter.com/csswizardry/status/897110955448029184
+    (function(){
+      var ua = navigator.userAgent.toLowerCase();
+      if (ua.indexOf('safari') != -1) {
+        if (ua.indexOf('chrome') > -1) {
+        } else {
+          function ready() {
+            var page = document.getElementById('jsPage');
+            page.style.color = '#231f21';
+          };
+          document.addEventListener("DOMContentLoaded", ready);
+        }
+      }
+    }());
+  </script>
+
 	<footer class="c-page-footer">
 		<div class="o-wrapper">
 			<?php if (is_active_sidebar('footer-widget-area-1') || is_active_sidebar('footer-widget-area-2') || is_active_sidebar('footer-widget-area-3')) {
@@ -30,9 +48,9 @@
 					'menu_class' => 'c-page-footer__nav',
 			    'container' => false
 			  )
-			); 
+			);
 			?>
-			<p class="c-page-footer__smallprint"><small>Copyright © 
+			<p class="c-page-footer__smallprint"><small>Copyright ©
 				<?php if (get_theme_mod('copyright')) {
 					// Display copyright holder, if set
 					echo get_theme_mod('copyright');
