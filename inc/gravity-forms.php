@@ -121,7 +121,7 @@ add_filter( 'gform_field_content', function ( $field_content, $field ) {
 }, 10, 2 );
 
 // Extend expiration of save and continue links from 30 days to 1 year
-add_filter( 'gform_incomplete_submissions_expiration_days', 'gwp_days', 1, 10 );
+add_filter( 'gform_incomplete_submissions_expiration_days', 'gwp_days', 10, 1 );
 function gwp_days( $expiration_days ) {
     $expiration_days = 365;
     return $expiration_days;
