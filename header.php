@@ -15,6 +15,15 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0">
 <link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="apple-touch-icon" sizes="180x180" href="/wp-content/themes/nightingale-wp/assets/img/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/wp-content/themes/nightingale-wp/assets/img/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/wp-content/themes/nightingale-wp/assets/img/favicon-16x16.png">
+	<link rel="manifest" href="/wp-content/themes/nightingale-wp/assets/img/site.webmanifest">
+	<link rel="mask-icon" href="/wp-content/themes/nightingale-wp/assets/img/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="/wp-content/themes/nightingale-wp/assets/img/favicon.ico">
+	<meta name="msapplication-TileColor" content="#2d89ef">
+	<meta name="msapplication-config" content="/wp-content/themes/nightingale-wp/assets/img/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
 <?php wp_head(); ?>
 </head>
 
