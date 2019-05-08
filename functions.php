@@ -218,11 +218,6 @@ require get_template_directory() . '/inc/gravity-forms.php';
 require get_template_directory() . '/inc/gravity-forms--multipage.php';
 
 /**
- * Gravity View plugin.
- */
-require get_template_directory() . '/inc/gravity-view.php';
-
-/**
  * Prevent Advanced Custom Fields from disabling standard custom fields.
  */
 require get_template_directory() . '/inc/advanced-custom-fields.php';
