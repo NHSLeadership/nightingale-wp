@@ -220,7 +220,7 @@ require get_template_directory() . '/inc/gravity-forms--multipage.php';
 /**
  * Gravity Flow Token Settings
  */
-require get_template_directory(). 'inc/gravity-flow.php';
+require get_template_directory(). '/inc/gravity-flow.php';
 
 /**
  * Prevent Advanced Custom Fields from disabling standard custom fields.
