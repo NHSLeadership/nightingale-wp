@@ -166,6 +166,21 @@ function prefix_register_colors() {
 				'color' => '#231f20',
 			),
 			array(
+				'name'  => esc_html__( 'Emergency Services Red', 'prefix_textdomain' ),
+				'slug' => 'emergency_red',
+				'color' => '#da291c',
+			),
+			array(
+				'name'  => esc_html__( 'NHS Yellow', 'prefix_textdomain' ),
+				'slug' => 'nhs_yellow',
+				'color' => '#fae100',
+			),
+			array(
+				'name'  => esc_html__( 'NHS Warm Yellow', 'prefix_textdomain' ),
+				'slug' => 'nhs_warm_yellow',
+				'color' => '#ffb81c',
+			),
+			array(
 				'name'  => esc_html__( 'NHS Dark Grey', 'prefix_textdomain' ),
 				'slug' => 'nhs_grey_dark',
 				'color' => '#425563',
