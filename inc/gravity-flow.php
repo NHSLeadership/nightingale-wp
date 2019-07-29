@@ -27,8 +27,3 @@ function sh_gravityflowformconnector_form_submission_token_expiration_days( $day
 }
 
 // end token submission tweak
-
-// gravityflow_site_cookie_path
-add_filter( 'gravityflow_site_cookie_path', function( $path ) {
-     return '/';
-});
