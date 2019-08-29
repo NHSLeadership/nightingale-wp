@@ -1,9 +1,9 @@
 <?php
 class Walker_Nightingale_Menu extends Walker_Nav_Menu {
-    
+
     private $menuID;  // Store menu id so that sub-menus can reference their parent menus
     private $panel = False; // Indicates whether or not a submenu panel exists
-    
+
     public function start_lvl( &$output, $depth = 0, $args = array() ) {
       // start sub-menus
       $item_output = $args->before;
@@ -36,9 +36,9 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
       if( !empty( $item->url ) ) {
           $url = $item->url;
       }
-      
+      $args = (object) $args;  // cast $args array to object
       $item_output = $args->before;
-      
+
       if( $depth == 0 && $args->walker->has_children ) {
         // parent-menus
         $item_output .= '<li class="c-nav-primary__item"><button class="c-nav-primary__link" data-expands=#menu-item-'.$item->ID.'-sub data-popup="" role="button" aria-expanded="false" aria-haspopup="true">'.$item->title.'</button>';
@@ -72,7 +72,7 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
             // If a submenu panel exists, close panel div and make menu list 1/4 width
             $item_output .= '</div><!-- .o-layout__item -->';
             $item_output .= '<div class="o-layout__item  u-4/12@lg">';
-          } 
+          }
           else {
             // Otherwise, make menu list full width
             $item_output .= '<div class="o-layout__item">';
@@ -92,7 +92,7 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
             $max_column_items = ceil($submenu_items_count/$columns);
 
             // Loop though columns
-            for ($x = 0 ; $x < $columns; $x++) { 
+            for ($x = 0 ; $x < $columns; $x++) {
 
               // Size column based on how many 12ths it needs
               $item_output .= '<div class="o-layout__item  u-'.(12/$columns).'/12@lg">';
@@ -108,7 +108,7 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
             }
 
             $item_output .= '</div><!-- .o-layout -->';
-            
+
           }
           $item_output .= '</div><!-- .o-layout__item -->';
         }
@@ -125,13 +125,14 @@ class Walker_Nightingale_Menu extends Walker_Nav_Menu {
   		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 
     }
-    
+
     public function end_el( &$output, $item, $depth = 0, $args = array() ) {
       // end element output
+			$args = (object) $args;  // cast $args array to object
       if( $depth == 0 && $args->walker->has_children ) {
         // parent-menus
         $output .= '</li><!-- .c-nav-primary__item -->';
       }
     }
-    
+
 } // Walker_Nav_Menu
