@@ -79,8 +79,8 @@ add_filter( 'gform_field_content', function ( $field_content, $field ) {
 
     // Selects
     if ( $field->type == 'select' ) {
-      $field_content = str_replace( "ginput_container ginput_container_select", "c-form-dropdown", $field_content );
-      $field_content = str_replace( "gfield_select", "c-form-dropdown__select  c-form-input", $field_content );
+      $field_content = str_replace( "ginput_container ginput_container_select", "ginput_container ginput_container_select c-form-dropdown", $field_content );
+      $field_content = str_replace( "gfield_select", "gfield_select c-form-dropdown__select  c-form-input", $field_content );
     }
 
     // Emails
