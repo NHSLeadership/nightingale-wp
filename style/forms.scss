@@ -30,3 +30,12 @@
 	@extend .c-card;
 	@extend .c-card--information;
 }
+
+// Dropdown Css extension for Gravity Forms Ajax compatibility
+.gform_wrapper select {
+  @extend .c-form-dropdown__select;
+}
+
+body .gform_wrapper .top_label div.ginput_container {
+  @extend .c-form-dropdown;
+}
