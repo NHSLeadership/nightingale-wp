@@ -112,3 +112,10 @@ a img.aligncenter {
 	overscroll-behavior-y: auto;
   }
 }
+
+/* Editor bug reversal */
+@media (min-width: 600px) {
+  .edit-post-layout__content {
+	overscroll-behavior-y: auto;
+  }
+}
