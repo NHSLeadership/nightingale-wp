@@ -13,4 +13,3 @@ function display_child_pages() {
 	return $childpages;
 }
 add_shortcode('display_child_pages', 'display_child_pages');
-?>
