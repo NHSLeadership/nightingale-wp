@@ -1,8 +1,8 @@
 <?php
 function display_child_pages() {
 	// use shortcode to display in full all direct child pages of current page
-	global $post;
-	$child_pages = get_pages( array( 'child_of' => $post->ID, 'sort_column' => 'menu_order', 'sort_order' => 'asc' ) );
+	$post_id = get_the_ID();
+	$child_pages = get_pages( array( 'child_of' => $post_id, 'sort_column' => 'menu_order', 'sort_order' => 'asc' ) );
 	foreach ( $child_pages as $child_page ) {
 		$content = $child_page->post_content;
 		$page_title = $child_page->post_title;
