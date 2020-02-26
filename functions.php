@@ -226,3 +226,8 @@ require get_template_directory(). '/inc/gravity-flow.php';
  * Prevent Advanced Custom Fields from disabling standard custom fields.
  */
 require get_template_directory() . '/inc/advanced-custom-fields.php';
+
+/**
+ * Provide shortcode for dispaying child pages within a parent page.
+ */
+require get_template_directory() . '/inc/display-child-pages.php';
